@@ -1,0 +1,30 @@
+{
+  "name": "@vhyxseal/vue",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "typecheck": "tsc --project tsconfig.test.json"
+  },
+  "peerDependencies": {
+    "vue": ">=3.3.0"
+  },
+  "dependencies": {
+    "@vhyxseal/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@vue/test-utils": "^2.4.0",
+    "@vitejs/plugin-vue": "^5.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0",
+    "vue": "^3.4.0"
+  }
+}
