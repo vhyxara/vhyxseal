@@ -30,11 +30,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build
-        run: pnpm build
+      - name: Build packages
+        run: pnpm --filter "./packages/**" build
 
       - name: Test
-        run: pnpm test
+        run: pnpm --filter "./packages/**" test
 
       - name: Typecheck
-        run: pnpm typecheck
+        run: pnpm --filter "./packages/**" typecheck
