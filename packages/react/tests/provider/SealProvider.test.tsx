@@ -323,7 +323,8 @@ describe("manifest generation", () => {
 
   it("onManifestGenerated receives the manifest object", async () => {
     const contract = makeContract("cb-check-btn");
-    let receivedManifest: Parameters<Required<SealProviderProps>["onManifestGenerated"]>[0] | null = null;
+    // Definite assignment — onManifestGenerated callback assigns during act (TS 5.9 closure narrowing)
+    let receivedManifest!: Parameters<Required<SealProviderProps>["onManifestGenerated"]>[0];
 
     function wrapperWithCallback({ children }: { children: React.ReactNode }) {
       return (
@@ -345,8 +346,8 @@ describe("manifest generation", () => {
       result.current.registerContract(contract);
     });
 
-    expect(receivedManifest).not.toBeNull();
-    expect(receivedManifest?.domain).toBe("example.com");
+    expect(receivedManifest).not.toBeUndefined();
+    expect(receivedManifest.domain).toBe("example.com");
   });
 });
 

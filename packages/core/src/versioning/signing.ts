@@ -9,6 +9,11 @@
 import type { VhyxSealManifest } from "../manifest/types.js";
 import { VhyxSealError, ErrorCode } from "../errors/index.js";
 import { generateFingerprint } from "../manifest/generator.js";
+import { getActiveKey } from "../keys/index.js";
+
+// DECISION-D2: fires once per cold start when signing is called without a
+// real key configured, so stub status is impossible to miss for active devs.
+let _d2Warned = false;
 
 // ---------------------------------------------------------------------------
 // Types
@@ -91,6 +96,17 @@ export function signManifest(
       suggestion:
         "Use a signing key that is bound to the same domain as the manifest being signed.",
     });
+  }
+
+  // DECISION-D2: warn once per cold start when no real key is registered
+  if (!_d2Warned && getActiveKey() === null) {
+    _d2Warned = true;
+    console.warn(
+      "[VhyxSeal] STUB: signManifest is using a stub implementation. " +
+        "No active signing key is registered. " +
+        "Manifests are NOT cryptographically signed. " +
+        "See DECISION-D2 and README security status.",
+    );
   }
 
   return {

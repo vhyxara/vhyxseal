@@ -114,7 +114,7 @@ describe("logAudit — circular buffer at MAX_ENTRIES (50)", () => {
 describe("getAuditLog — immutability", () => {
   it("returns a copy — mutations do not affect the store", () => {
     logAudit({ action: "token_issued", componentId: "x", domain: null, result: "success" });
-    const log = getAuditLog() as Array<{ action: string }>;
+    const log = getAuditLog() as unknown as Array<{ action: string }>;
     // Mutate the returned array
     (log as unknown[]).push({ action: "injected", componentId: null, domain: null, result: "failure", timestamp: "" });
     // Store should be unaffected
