@@ -134,7 +134,8 @@ describe("Display — ref forwarding", () => {
 describe("Display — contract registration", () => {
   it("registers contract in SealContext when provided", async () => {
     const contract = makeContract("disp-reg-test");
-    let capturedCtx: SealContextValue | null = null;
+    // Definite assignment — ContextCapture assigns during render (TS 5.9 closure narrowing)
+    let capturedCtx!: SealContextValue;
 
     render(
       <SealProvider config={validConfig} dev={false}>
@@ -144,12 +145,13 @@ describe("Display — contract registration", () => {
     );
 
     await act(async () => {});
-    expect(capturedCtx?.contracts.has("disp-reg-test")).toBe(true);
+    expect(capturedCtx.contracts.has("disp-reg-test")).toBe(true);
   });
 
   it("unregisters contract when component unmounts", async () => {
     const contract = makeContract("disp-unmount-test");
-    let capturedCtx: SealContextValue | null = null;
+    // Definite assignment — ContextCapture assigns during render (TS 5.9 closure narrowing)
+    let capturedCtx!: SealContextValue;
 
     function Parent() {
       const [show, setShow] = useState(true);
@@ -169,9 +171,9 @@ describe("Display — contract registration", () => {
 
     render(<Parent />);
     await act(async () => {});
-    expect(capturedCtx?.contracts.has("disp-unmount-test")).toBe(true);
+    expect(capturedCtx.contracts.has("disp-unmount-test")).toBe(true);
 
     await act(async () => { screen.getByTestId("toggle").click(); });
-    expect(capturedCtx?.contracts.has("disp-unmount-test")).toBe(false);
+    expect(capturedCtx.contracts.has("disp-unmount-test")).toBe(false);
   });
 });
