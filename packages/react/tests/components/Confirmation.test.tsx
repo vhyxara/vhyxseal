@@ -48,8 +48,10 @@ function ContextCapture({
 
 /** Renders Confirmation with a testable UI wired to the render prop state. */
 function renderConfirmation(contract?: ReturnType<typeof makeContract>) {
+  // exactOptionalPropertyTypes: pass contract only when defined, never pass undefined explicitly
+  const contractProps = contract !== undefined ? { contract } : {};
   render(
-    <Confirmation contract={contract}>
+    <Confirmation {...contractProps}>
       {({
         confirmed,
         isPending,
@@ -177,7 +179,8 @@ describe("Confirmation — without SealProvider", () => {
 describe("Confirmation — contract registration", () => {
   it("registers contract in SealContext when provided", async () => {
     const contract = makeContract("conf-reg-test");
-    let capturedCtx: SealContextValue | null = null;
+    // Definite assignment — ContextCapture assigns during render (TS 5.9 closure narrowing)
+    let capturedCtx!: SealContextValue;
 
     render(
       <SealProvider config={validConfig} dev={false}>
@@ -189,12 +192,13 @@ describe("Confirmation — contract registration", () => {
     );
 
     await act(async () => {});
-    expect(capturedCtx?.contracts.has("conf-reg-test")).toBe(true);
+    expect(capturedCtx.contracts.has("conf-reg-test")).toBe(true);
   });
 
   it("unregisters contract when component unmounts", async () => {
     const contract = makeContract("conf-unmount-test");
-    let capturedCtx: SealContextValue | null = null;
+    // Definite assignment — ContextCapture assigns during render (TS 5.9 closure narrowing)
+    let capturedCtx!: SealContextValue;
 
     function Parent() {
       const [show, setShow] = useState(true);
@@ -218,9 +222,9 @@ describe("Confirmation — contract registration", () => {
 
     render(<Parent />);
     await act(async () => {});
-    expect(capturedCtx?.contracts.has("conf-unmount-test")).toBe(true);
+    expect(capturedCtx.contracts.has("conf-unmount-test")).toBe(true);
 
     await act(async () => { screen.getByTestId("toggle").click(); });
-    expect(capturedCtx?.contracts.has("conf-unmount-test")).toBe(false);
+    expect(capturedCtx.contracts.has("conf-unmount-test")).toBe(false);
   });
 });

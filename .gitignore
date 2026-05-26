@@ -1,0 +1,31 @@
+node_modules/
+dist/
+.env
+.env.local
+*.log
+coverage/
+.turbo/
+
+/tests
+
+packages/*/tests/**/*.js
+packages/*/tests/**/*.js.map
+packages/*/tests/**/*.d.ts
+
+# Build outputs
+dist/
+build/
+.next/
+
+# TypeScript
+*.tsbuildinfo
+
+# Test artifacts — compiled files that end up in test directories
+packages/*/tests/**/*.js
+packages/*/tests/**/*.d.ts
+packages/*/tests/**/*.d.ts.map
+
+# Editor
+.vscode/
+.DS_Store
+

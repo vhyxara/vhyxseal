@@ -6,3 +6,7 @@ export * from "./security/index.js";
 export * from "./registry/index.js";
 export * from "./manifest/index.js";
 export * from "./versioning/index.js";
+export * from "./tokens/index.js";
+export * from "./keys/index.js";
+export * from "./domain/index.js";
+export * from "./audit/index.js";

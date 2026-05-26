@@ -69,7 +69,8 @@ beforeEach(() => {
 describe("Scenario 1 — component lifecycle with SealProvider", () => {
   it("contract registers on mount, unregisters on unmount, re-registers on re-mount", async () => {
     const contract = makeContract("s1-lifecycle-btn");
-    let capturedCtx: ReturnType<typeof useSealContext> | null = null;
+    // Definite assignment — ContextReader assigns during render (TS 5.9 closure narrowing)
+    let capturedCtx!: ReturnType<typeof useSealContext>;
 
     function ContextReader() {
       capturedCtx = useSealContext();
@@ -96,15 +97,15 @@ describe("Scenario 1 — component lifecycle with SealProvider", () => {
     await act(async () => {});
 
     // Mounted — registered
-    expect(capturedCtx?.contracts.has("s1-lifecycle-btn")).toBe(true);
+    expect(capturedCtx.contracts.has("s1-lifecycle-btn")).toBe(true);
 
     // Unmount
     await act(async () => { screen.getByTestId("toggle").click(); });
-    expect(capturedCtx?.contracts.has("s1-lifecycle-btn")).toBe(false);
+    expect(capturedCtx.contracts.has("s1-lifecycle-btn")).toBe(false);
 
     // Re-mount
     await act(async () => { screen.getByTestId("toggle").click(); });
-    expect(capturedCtx?.contracts.has("s1-lifecycle-btn")).toBe(true);
+    expect(capturedCtx.contracts.has("s1-lifecycle-btn")).toBe(true);
   });
 
   it("useContract hook returns the contract registered by the Button component", async () => {
@@ -315,11 +316,12 @@ describe("Scenario 5 — manifest generation with multiple components", () => {
     const c2 = makeContract("s5-inp", "input");
     const c3 = makeContract("s5-form", "input");
 
-    let capturedManifest: Readonly<VhyxSealManifest> | null = null;
+    // Definite assignment — ManifestReader assigns during render (TS 5.9 closure narrowing)
+    let capturedManifest!: Readonly<VhyxSealManifest>;
 
     function ManifestReader() {
       const { manifest } = useCapability();
-      capturedManifest = manifest;
+      if (manifest !== null) capturedManifest = manifest;
       return null;
     }
 
@@ -333,18 +335,12 @@ describe("Scenario 5 — manifest generation with multiple components", () => {
     );
     await act(async () => {});
 
-    expect(capturedManifest).not.toBeNull();
-    expect(capturedManifest?.domain).toBe("integration-test.com");
-    expect(
-      capturedManifest?.components.some((c) => c.id === "s5-btn"),
-    ).toBe(true);
-    expect(
-      capturedManifest?.components.some((c) => c.id === "s5-inp"),
-    ).toBe(true);
-    expect(
-      capturedManifest?.components.some((c) => c.id === "s5-form"),
-    ).toBe(true);
-    expect(capturedManifest?.components).toHaveLength(3);
+    expect(capturedManifest).not.toBeUndefined();
+    expect(capturedManifest.domain).toBe("integration-test.com");
+    expect(capturedManifest.components.some((c) => c.id === "s5-btn")).toBe(true);
+    expect(capturedManifest.components.some((c) => c.id === "s5-inp")).toBe(true);
+    expect(capturedManifest.components.some((c) => c.id === "s5-form")).toBe(true);
+    expect(capturedManifest.components).toHaveLength(3);
   });
 });
 
@@ -425,13 +421,13 @@ describe("Scenario 7 — inferContract → defineContract → component", () => 
       consequence: partial.consequence ?? "Creates an order",
       affects: partial.affects ?? ["orders"],
       contractVersion: "1.0.0",
-      safetyLevel: partial.safetyLevel,
-      requiresConfirmation: partial.requiresConfirmation,
-      reversible: partial.reversible,
-      destructive: partial.destructive,
+      // safetyLevel, requiresConfirmation, reversible, destructive omitted here —
+      // defineContract applies INTENT_DEFAULTS for "place-order" (exactOptionalPropertyTypes:
+      // partial inference fields are boolean | undefined; omit to avoid explicit undefined)
     });
 
-    let capturedCtx: ReturnType<typeof useSealContext> | null = null;
+    // Definite assignment — ContextReader assigns during render (TS 5.9 closure narrowing)
+    let capturedCtx!: ReturnType<typeof useSealContext>;
     function ContextReader() {
       capturedCtx = useSealContext();
       return null;
@@ -445,8 +441,8 @@ describe("Scenario 7 — inferContract → defineContract → component", () => 
     );
     await act(async () => {});
 
-    expect(capturedCtx?.contracts.has("s7-inferred-btn")).toBe(true);
-    expect(capturedCtx?.contracts.get("s7-inferred-btn")?.intent).toBe(
+    expect(capturedCtx.contracts.has("s7-inferred-btn")).toBe(true);
+    expect(capturedCtx.contracts.get("s7-inferred-btn")?.intent).toBe(
       "place-order",
     );
   });
@@ -474,7 +470,8 @@ describe("Scenario 7 — inferContract → defineContract → component", () => 
       contractVersion: "1.0.0",
     });
 
-    let capturedCtx: ReturnType<typeof useSealContext> | null = null;
+    // Definite assignment — ContextReader assigns during render (TS 5.9 closure narrowing)
+    let capturedCtx!: ReturnType<typeof useSealContext>;
     function ContextReader() {
       capturedCtx = useSealContext();
       return null;
@@ -488,7 +485,7 @@ describe("Scenario 7 — inferContract → defineContract → component", () => 
     );
     await act(async () => {});
 
-    const registered = capturedCtx?.contracts.get("s7-inferred-delete");
+    const registered = capturedCtx.contracts.get("s7-inferred-delete");
     expect(registered).toBeDefined();
     // delete-account intent defaults: safetyLevel "critical", destructive true
     expect(registered?.safetyLevel).toBe("critical");
