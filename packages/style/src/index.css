@@ -1,0 +1,19 @@
+/**
+ * VhyxSeal — style package entry point
+ *
+ * Imports all VhyxSeal CSS design tokens.
+ * This is the recommended import for most users.
+ *
+ * Includes:
+ *   - Color tokens (--vhyxseal-color-*)
+ *   - Safety level tokens (--vhyxseal-safety-*)
+ *
+ * Usage: @import '@vhyxseal/style';
+ *
+ * Individual imports also available:
+ *   @import '@vhyxseal/style/colors';
+ *   @import '@vhyxseal/style/safety';
+ */
+
+@import './colors.css';
+@import './safety.css';

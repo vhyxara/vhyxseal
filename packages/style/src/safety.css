@@ -1,0 +1,39 @@
+/**
+ * VhyxSeal — safety level color tokens
+ *
+ * Maps SafetyLevel enum values to color tokens.
+ * Sourced from safetyColor() in packages/devtools/src/panel/DevToolsPanel.tsx.
+ *
+ * NOTE: The safety level → color mapping is intentional and non-obvious.
+ *
+ *   "low"       → gray  (agent can proceed freely — not alarming)
+ *   "medium"    → blue  (informational caution — agent proceeds with care)
+ *   "high"      → yellow (warning — human confirmation recommended)
+ *   "critical"  → red   (always require human confirmation)
+ *   "sensitive" → red   (extra protections; same urgency as critical)
+ *
+ * Green is not used for any safety level. It is reserved for contract
+ * health status (full / verified contracts) via --vhyxseal-color-full.
+ *
+ * Usage (standalone): @import '@vhyxseal/style/safety';
+ * Usage (via bundle): @import '@vhyxseal/style'; (includes colors automatically)
+ */
+
+@import './colors.css';
+
+:root {
+  /** low — agent can proceed freely, no human confirmation needed */
+  --vhyxseal-safety-low:       var(--vhyxseal-color-neutral);
+
+  /** medium — proceed with care, awareness required */
+  --vhyxseal-safety-medium:    var(--vhyxseal-color-info);
+
+  /** high — confirm with human before acting */
+  --vhyxseal-safety-high:      var(--vhyxseal-color-inferred);
+
+  /** critical — always require explicit human confirmation */
+  --vhyxseal-safety-critical:  var(--vhyxseal-color-missing);
+
+  /** sensitive — medical/financial data; same urgency as critical */
+  --vhyxseal-safety-sensitive: var(--vhyxseal-color-missing);
+}

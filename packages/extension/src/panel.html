@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VhyxSeal DevTools Panel</title>
+  <style>
+    /* Inlined from @vhyxseal/style — update when style package tokens change.
+       Values sourced from packages/style/src/colors.css and safety.css */
+    :root {
+      --vhyxseal-color-full:        #22c55e;
+      --vhyxseal-color-inferred:    #eab308;
+      --vhyxseal-color-missing:     #ef4444;
+      --vhyxseal-color-neutral:     #6b7280;
+      --vhyxseal-color-info:        #3b82f6;
+      --vhyxseal-color-bg:          #111827;
+      --vhyxseal-color-surface:     #1f2937;
+      --vhyxseal-color-border:      #374151;
+      --vhyxseal-color-text:        #f9fafb;
+      --vhyxseal-color-text-muted:  #6b7280;
+      --vhyxseal-safety-low:        var(--vhyxseal-color-neutral);
+      --vhyxseal-safety-medium:     var(--vhyxseal-color-info);
+      --vhyxseal-safety-high:       var(--vhyxseal-color-inferred);
+      --vhyxseal-safety-critical:   var(--vhyxseal-color-missing);
+      --vhyxseal-safety-sensitive:  var(--vhyxseal-color-missing);
+    }
+  </style>
+  <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+
+  <div id="state-loading">Inspecting page...</div>
+
+  <div id="state-not-found" style="display:none">VhyxSeal not detected on this page.
+Install @vhyxseal/nextjs to enable agent-readable contracts.</div>
+
+  <div id="state-error" style="display:none"></div>
+
+  <div id="panel-content" style="display:none">
+
+    <header class="panel-header">
+      <div class="panel-title">
+        <span>🔒 VhyxSeal</span>
+        <span id="tab-domain" class="domain-label"></span>
+      </div>
+      <button id="refresh-btn" class="refresh-btn">↻ Refresh</button>
+    </header>
+
+    <section class="panel-section">
+      <div class="section-title">Contract Summary</div>
+      <div class="metric">
+        <span class="metric-label">Total contracts</span>
+        <span id="cov-total" class="metric-value">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">Full</span>
+        <span id="cov-full" class="metric-value status-full">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">Inferred</span>
+        <span id="cov-inferred" class="metric-value status-inferred">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">Coverage</span>
+        <span id="cov-pct" class="metric-value">—</span>
+      </div>
+    </section>
+
+    <section class="panel-section">
+      <div class="section-title">Manifest Info</div>
+      <div class="metric">
+        <span class="metric-label">Fingerprint</span>
+        <span id="info-fingerprint" class="metric-value status-neutral">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">Generated</span>
+        <span id="info-generated" class="metric-value">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">Schema version</span>
+        <span id="info-version" class="metric-value">—</span>
+      </div>
+    </section>
+
+    <section class="panel-section">
+      <div class="section-title">Agent Policy</div>
+      <div class="metric">
+        <span class="metric-label">Allowed agents</span>
+        <span id="ap-agents" class="metric-value status-neutral">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">Manifest access</span>
+        <span id="ap-access" class="metric-value">—</span>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="panel.js"></script>
+</body>
+</html>
