@@ -127,7 +127,8 @@ describe("withAgentContract — inside SealProvider", () => {
     }
     const Wrapped = withAgentContract(Inner, contract);
 
-    let capturedCtx: SealContextValue | null = null;
+    // Definite assignment — ContextCapture assigns during render (TS 5.9 closure narrowing)
+    let capturedCtx!: SealContextValue;
 
     function ContextCapture() {
       capturedCtx = useSealContext();
@@ -154,13 +155,13 @@ describe("withAgentContract — inside SealProvider", () => {
 
     render(<Parent />);
     await act(async () => {});
-    expect(capturedCtx?.contracts.has("hoc-unmount-btn")).toBe(true);
+    expect(capturedCtx.contracts.has("hoc-unmount-btn")).toBe(true);
 
     await act(async () => {
       screen.getByTestId("toggle").click();
     });
 
-    expect(capturedCtx?.contracts.has("hoc-unmount-btn")).toBe(false);
+    expect(capturedCtx.contracts.has("hoc-unmount-btn")).toBe(false);
   });
 
   it("sets displayName correctly", () => {
@@ -182,7 +183,8 @@ describe("withAgentContract — inside SealProvider", () => {
     const WrappedA = withAgentContract(Inner, contractA);
     const WrappedB = withAgentContract(Inner, contractB);
 
-    let capturedCtx: SealContextValue | null = null;
+    // Definite assignment — ContextCapture assigns during render (TS 5.9 closure narrowing)
+    let capturedCtx!: SealContextValue;
 
     function ContextCapture() {
       capturedCtx = useSealContext();
@@ -209,15 +211,15 @@ describe("withAgentContract — inside SealProvider", () => {
 
     render(<Parent />);
     await act(async () => {});
-    expect(capturedCtx?.contracts.has("hoc-fp-a")).toBe(true);
-    expect(capturedCtx?.contracts.has("hoc-fp-b")).toBe(false);
+    expect(capturedCtx.contracts.has("hoc-fp-a")).toBe(true);
+    expect(capturedCtx.contracts.has("hoc-fp-b")).toBe(false);
 
     await act(async () => {
       screen.getByTestId("switch").click();
     });
 
-    expect(capturedCtx?.contracts.has("hoc-fp-a")).toBe(false);
-    expect(capturedCtx?.contracts.has("hoc-fp-b")).toBe(true);
+    expect(capturedCtx.contracts.has("hoc-fp-a")).toBe(false);
+    expect(capturedCtx.contracts.has("hoc-fp-b")).toBe(true);
   });
 });
 
