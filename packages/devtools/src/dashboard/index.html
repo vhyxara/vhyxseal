@@ -1,0 +1,342 @@
+<!-- No authentication — local/dev use only.
+     Auth required before any public deployment. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VhyxSeal Audit Dashboard</title>
+  <style>
+    /* Inlined from @vhyxseal/style — update when style package tokens change.
+       Values sourced from packages/style/src/colors.css and safety.css */
+    :root {
+      --vhyxseal-color-full:        #22c55e;
+      --vhyxseal-color-inferred:    #eab308;
+      --vhyxseal-color-missing:     #ef4444;
+      --vhyxseal-color-neutral:     #6b7280;
+      --vhyxseal-color-info:        #3b82f6;
+      --vhyxseal-color-bg:          #111827;
+      --vhyxseal-color-surface:     #1f2937;
+      --vhyxseal-color-border:      #374151;
+      --vhyxseal-color-text:        #f9fafb;
+      --vhyxseal-color-text-muted:  #6b7280;
+      --vhyxseal-safety-low:        var(--vhyxseal-color-neutral);
+      --vhyxseal-safety-medium:     var(--vhyxseal-color-info);
+      --vhyxseal-safety-high:       var(--vhyxseal-color-inferred);
+      --vhyxseal-safety-critical:   var(--vhyxseal-color-missing);
+      --vhyxseal-safety-sensitive:  var(--vhyxseal-color-missing);
+    }
+  </style>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+  <header>
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h1>🔒 VhyxSeal Audit Dashboard</h1>
+      <span class="refresh-timer" id="refresh-timer">Refreshing in 30s</span>
+    </div>
+    <div id="generated-at" class="metric__label" style="margin-top:0.25rem;font-size:0.75rem"></div>
+  </header>
+
+  <div id="state-loading" class="state-loading">Loading dashboard data…</div>
+  <div id="state-error" class="state-error" style="display:none">
+    Dashboard endpoint unreachable. Ensure vhyxsealPlugin is configured and server is running.
+  </div>
+
+  <div id="dashboard" style="display:none">
+
+    <!-- P1 — Contract Coverage (largest section) -->
+    <div class="section section--coverage">
+      <div class="section__title">P1 — Contract Coverage</div>
+      <div class="coverage-bar">
+        <div class="coverage-bar__full" id="coverage-bar-fill" style="width:0%"></div>
+      </div>
+      <div class="metric">
+        <span class="metric__label">Full contracts</span>
+        <span class="metric__value status-full" id="cov-full">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric__label">Inferred contracts</span>
+        <span class="metric__value status-inferred" id="cov-inferred">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric__label">Missing (detection pending)</span>
+        <span class="metric__value status-neutral" id="cov-missing">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric__label">Total registered</span>
+        <span class="metric__value" id="cov-total">—</span>
+      </div>
+    </div>
+
+    <!-- P2 — Manifest Health -->
+    <div class="section">
+      <div class="section__title">P2 — Manifest Health</div>
+      <div class="metric">
+        <span class="metric__label">Last generated</span>
+        <span class="metric__value" id="mh-generated">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric__label">Fingerprint</span>
+        <span class="metric__value status-neutral" id="mh-fingerprint">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric__label">Signature valid</span>
+        <span class="metric__value" id="mh-signature">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric__label">Schema version</span>
+        <span class="metric__value" id="mh-version">—</span>
+      </div>
+    </div>
+
+    <!-- P3 — Domain Verification -->
+    <div class="section">
+      <div class="section__title">P3 — Domain Verification</div>
+      <div class="metric">
+        <span class="metric__label">Registered domains</span>
+        <span class="metric__value" id="dv-registered">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric__label">Verified domains</span>
+        <span class="metric__value status-full" id="dv-verified">—</span>
+      </div>
+      <div id="dv-domains-list" style="margin-top:0.5rem"></div>
+    </div>
+
+    <!-- P4 — Key Management -->
+    <div class="section">
+      <div class="section__title">P4 — Key Management</div>
+      <div class="metric">
+        <span class="metric__label">Active key ID</span>
+        <span class="metric__value status-neutral" id="km-active">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric__label">Total keys registered</span>
+        <span class="metric__value" id="km-count">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric__label">Rotation due</span>
+        <span class="metric__value" id="km-rotation">—</span>
+      </div>
+    </div>
+
+    <!-- P5 — Action Tokens -->
+    <div class="section">
+      <div class="section__title">P5 — Action Tokens</div>
+      <div class="metric">
+        <span class="metric__label">Issued (lifetime)</span>
+        <span class="metric__value" id="at-issued">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric__label">Used (verified)</span>
+        <span class="metric__value status-full" id="at-used">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric__label">Expired (evicted)</span>
+        <span class="metric__value status-neutral" id="at-expired">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric__label">Replay attempts</span>
+        <span class="metric__value" id="at-replay">—</span>
+      </div>
+    </div>
+
+    <!-- P6 — Agent Policy -->
+    <div class="section">
+      <div class="section__title">P6 — Agent Policy</div>
+      <div class="metric">
+        <span class="metric__label">Manifest access</span>
+        <span class="metric__value" id="ap-access">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric__label">Allowed agents</span>
+        <span class="metric__value status-neutral" id="ap-agents">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric__label">Rate limits configured</span>
+        <span class="metric__value" id="ap-ratelimits">—</span>
+      </div>
+    </div>
+
+    <!-- P7 — Audit Log -->
+    <div class="section">
+      <div class="section__title">P7 — Audit Log
+        <span class="refresh-timer" style="float:right;font-size:0.7rem">last 50 actions</span>
+      </div>
+      <div id="audit-log-list">
+        <div class="metric__label" style="font-size:0.8rem">No audit events recorded.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Change this to your full server URL when opening via file:// protocol
+    // e.g. const DASHBOARD_URL = 'http://localhost:3000/__agent__/dashboard.json';
+    const DASHBOARD_URL = '/__agent__/dashboard.json';
+
+    const $ = (id) => document.getElementById(id);
+    let countdown = 30;
+    let refreshTimer;
+
+    function renderNull(value, fallback) {
+      return (value === null || value === undefined) ? fallback : String(value);
+    }
+
+    function render(data) {
+      // Header
+      $('generated-at').textContent = 'Generated: ' + data.generatedAt;
+
+      // P1 — Contract Coverage
+      const cov = data.contractCoverage;
+      const total = cov.total || 0;
+      const full = cov.full || 0;
+      const pct = total > 0 ? Math.round((full / total) * 100) : 0;
+      $('coverage-bar-fill').style.width = pct + '%';
+      $('cov-full').textContent = String(full);
+      $('cov-inferred').textContent = String(cov.inferred || 0);
+      $('cov-missing').textContent = cov.missing === null
+        ? 'unknown (detection pending)'
+        : String(cov.missing);
+      $('cov-total').textContent = String(total);
+
+      // P2 — Manifest Health
+      const mh = data.manifestHealth;
+      $('mh-generated').textContent = renderNull(mh.lastGenerated, 'not yet generated');
+      $('mh-fingerprint').textContent = renderNull(mh.fingerprint, 'none');
+      const sigEl = $('mh-signature');
+      sigEl.textContent = mh.signatureValid ? 'valid' : 'unsigned (alpha stub)';
+      sigEl.className = 'metric__value ' + (mh.signatureValid ? 'status-full' : 'status-inferred');
+      $('mh-version').textContent = mh.version;
+
+      // P3 — Domain Verification
+      const dv = data.domainVerification;
+      $('dv-registered').textContent = String(dv.registeredDomains);
+      $('dv-verified').textContent = String(dv.verifiedDomains);
+      const domainList = $('dv-domains-list');
+      domainList.innerHTML = '';
+      if (dv.domains.length === 0) {
+        domainList.innerHTML = '<div class="metric__label" style="font-size:0.8rem">No domains registered</div>';
+      } else {
+        dv.domains.forEach((d) => {
+          const row = document.createElement('div');
+          row.className = 'metric';
+          row.style.marginTop = '0.25rem';
+          const labelSpan = document.createElement('span');
+          labelSpan.className = 'metric__label';
+          labelSpan.style.fontSize = '0.8rem';
+          labelSpan.textContent = d.domain;
+          const valueSpan = document.createElement('span');
+          valueSpan.className = 'metric__value ' + (d.verified ? 'status-full' : 'status-inferred');
+          valueSpan.style.fontSize = '0.8rem';
+          valueSpan.textContent = d.verified ? 'verified' : 'pending';
+          row.appendChild(labelSpan);
+          row.appendChild(valueSpan);
+          domainList.appendChild(row);
+        });
+      }
+
+      // P4 — Key Management
+      const km = data.keyManagement;
+      $('km-active').textContent = renderNull(km.activeKeyId, 'none configured');
+      $('km-count').textContent = String(km.keyCount);
+      $('km-rotation').textContent = renderNull(km.rotationDue, 'no expiry set');
+
+      // P5 — Action Tokens
+      const at = data.actionTokens;
+      $('at-issued').textContent = String(at.issued);
+      $('at-used').textContent = String(at.used);
+      $('at-expired').textContent = String(at.expired);
+      const replayEl = $('at-replay');
+      replayEl.textContent = String(at.replayAttempts);
+      replayEl.className = 'metric__value' + (at.replayAttempts > 0 ? ' replay-alert' : '');
+
+      // P6 — Agent Policy
+      const ap = data.agentPolicy;
+      $('ap-access').textContent = ap.manifestAccess;
+      const agents = ap.allowedAgents;
+      $('ap-agents').textContent = (Array.isArray(agents) && agents.length > 0)
+        ? agents.join(', ')
+        : 'all (*)';
+      $('ap-ratelimits').textContent = ap.rateLimitsConfigured ? 'yes' : 'no (defaults)';
+
+      // P7 — Audit Log
+      const log = data.auditLog;
+      const logEl = $('audit-log-list');
+      logEl.innerHTML = '';
+      if (!log || log.entries.length === 0) {
+        logEl.innerHTML = '<div class="metric__label" style="font-size:0.8rem">No audit events recorded.</div>';
+      } else {
+        [...log.entries].reverse().forEach((entry) => {
+          const row = document.createElement('div');
+          row.className = 'metric';
+          const resultClass = entry.result === 'success' ? 'status-full' : 'status-missing';
+          const context = entry.domain || entry.componentId || '';
+          const labelSpan = document.createElement('span');
+          labelSpan.className = 'metric__label';
+          labelSpan.style.fontSize = '0.75rem';
+          labelSpan.textContent = entry.action + (context ? ' ' + context : '');
+          const valueSpan = document.createElement('span');
+          valueSpan.className = 'metric__value ' + resultClass;
+          valueSpan.style.fontSize = '0.75rem';
+          valueSpan.textContent = entry.result;
+          row.appendChild(labelSpan);
+          row.appendChild(valueSpan);
+          logEl.appendChild(row);
+        });
+      }
+    }
+
+    function showLoading() {
+      $('state-loading').style.display = '';
+      $('state-error').style.display = 'none';
+      $('dashboard').style.display = 'none';
+    }
+
+    function showError() {
+      $('state-loading').style.display = 'none';
+      $('state-error').style.display = '';
+      $('dashboard').style.display = 'none';
+    }
+
+    function showDashboard(data) {
+      $('state-loading').style.display = 'none';
+      $('state-error').style.display = 'none';
+      $('dashboard').style.display = '';
+      render(data);
+    }
+
+    async function fetchDashboard() {
+      try {
+        const response = await fetch(DASHBOARD_URL);
+        if (!response.ok) { showError(); return; }
+        const data = await response.json();
+        showDashboard(data);
+      } catch (_err) {
+        showError();
+      }
+    }
+
+    function startCountdown() {
+      clearInterval(refreshTimer);
+      countdown = 30;
+      $('refresh-timer').textContent = 'Refreshing in 30s';
+      refreshTimer = setInterval(() => {
+        countdown--;
+        $('refresh-timer').textContent = 'Refreshing in ' + countdown + 's';
+        if (countdown <= 0) {
+          clearInterval(refreshTimer);
+          fetchDashboard().then(() => { startCountdown(); });
+        }
+      }, 1000);
+    }
+
+    // Initial load — show loading state, then fetch, then start auto-refresh
+    showLoading();
+    fetchDashboard().then(() => { startCountdown(); });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+/**
+ * VhyxSeal — color design tokens
+ *
+ * All values sourced from packages/devtools/src/panel/DevToolsPanel.tsx.
+ * Do not hand-edit these values. Update DevToolsPanel.tsx first, then
+ * sync here to keep the source of truth in one place.
+ *
+ * Usage: @import '@vhyxseal/style/colors';
+ */
+
+:root {
+  /* ── Contract health colors ─────────────────────────────────────── */
+
+  /** Green — full contract (verifiedBy !== "auto" and fingerprint set) */
+  --vhyxseal-color-full:        #22c55e;
+
+  /** Yellow — inferred contract (verifiedBy === "auto") */
+  --vhyxseal-color-inferred:    #eab308;
+
+  /** Red — missing contract, error state */
+  --vhyxseal-color-missing:     #ef4444;
+
+  /* ── Neutral / info colors ──────────────────────────────────────── */
+
+  /** Gray — neutral, disabled, muted labels, low-safety indicator */
+  --vhyxseal-color-neutral:     #6b7280;
+
+  /** Blue — agent activity, informational, medium-safety indicator */
+  --vhyxseal-color-info:        #3b82f6;
+
+  /* ── Panel surface colors ───────────────────────────────────────── */
+
+  /** Dark background — outermost panel background color */
+  --vhyxseal-color-bg:          #111827;
+
+  /** Surface — panel header and inner section backgrounds */
+  --vhyxseal-color-surface:     #1f2937;
+
+  /** Border — panel outline and section dividers */
+  --vhyxseal-color-border:      #374151;
+
+  /* ── Text colors ────────────────────────────────────────────────── */
+
+  /** Primary text — panel body and contract labels */
+  --vhyxseal-color-text:        #f9fafb;
+
+  /** Secondary text — muted labels, version numbers, metadata */
+  --vhyxseal-color-text-muted:  #6b7280;
+}

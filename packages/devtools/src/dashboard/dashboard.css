@@ -1,0 +1,115 @@
+/* VhyxSeal Audit Dashboard — structural styles only.
+   Colors via CSS custom properties from @vhyxseal/style tokens.
+   Zero hardcoded hex values — update :root in index.html to change colors. */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--vhyxseal-color-bg);
+  color: var(--vhyxseal-color-text);
+  font-family: monospace;
+  font-size: 14px;
+  padding: 1.5rem;
+  min-height: 100vh;
+}
+
+header {
+  border-bottom: 1px solid var(--vhyxseal-color-border);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+header h1 {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.section {
+  background: var(--vhyxseal-color-surface);
+  border: 1px solid var(--vhyxseal-color-border);
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+/* P1 — largest section, most visual weight */
+.section--coverage {
+  padding: 1.5rem;
+  border-width: 2px;
+}
+
+.section__title {
+  color: var(--vhyxseal-color-text);
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--vhyxseal-color-border);
+  padding-bottom: 0.5rem;
+}
+
+.coverage-bar {
+  background: var(--vhyxseal-color-border);
+  border-radius: 4px;
+  height: 14px;
+  margin: 0.5rem 0 1rem 0;
+  overflow: hidden;
+}
+
+.coverage-bar__full {
+  background: var(--vhyxseal-color-full);
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.35rem;
+  line-height: 1.5;
+}
+
+.metric__label {
+  color: var(--vhyxseal-color-text-muted);
+  font-size: 0.85rem;
+}
+
+.metric__value {
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.status-full     { color: var(--vhyxseal-color-full); }
+.status-inferred { color: var(--vhyxseal-color-inferred); }
+.status-missing  { color: var(--vhyxseal-color-missing); }
+.status-neutral  { color: var(--vhyxseal-color-neutral); }
+.status-info     { color: var(--vhyxseal-color-info); }
+
+/* P5 — replay attempts highlighted when > 0 */
+.replay-alert {
+  color: var(--vhyxseal-color-missing);
+  font-weight: bold;
+}
+
+.state-loading,
+.state-error {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--vhyxseal-color-text-muted);
+  font-size: 0.9rem;
+}
+
+.state-error {
+  color: var(--vhyxseal-color-missing);
+}
+
+.refresh-timer {
+  color: var(--vhyxseal-color-text-muted);
+  font-size: 0.75rem;
+}

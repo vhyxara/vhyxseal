@@ -1,0 +1,101 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  background-color: var(--vhyxseal-color-bg);
+  color: var(--vhyxseal-color-text);
+  padding: 8px;
+  min-height: 100vh;
+}
+
+/* State containers */
+#state-loading, #state-not-found, #state-error {
+  padding: 16px 8px;
+  font-size: 12px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+#state-not-found { color: var(--vhyxseal-color-neutral); }
+#state-error     { color: var(--vhyxseal-color-missing); }
+
+/* Panel header */
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--vhyxseal-color-border);
+  margin-bottom: 8px;
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.domain-label {
+  font-size: 11px;
+  color: var(--vhyxseal-color-text-muted);
+  font-weight: 400;
+}
+
+.refresh-btn {
+  background: var(--vhyxseal-color-surface);
+  border: 1px solid var(--vhyxseal-color-border);
+  color: var(--vhyxseal-color-text);
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.refresh-btn:hover {
+  border-color: var(--vhyxseal-color-neutral);
+}
+
+/* Sections */
+.panel-section {
+  margin-bottom: 10px;
+  padding: 8px;
+  background-color: var(--vhyxseal-color-surface);
+  border-radius: 4px;
+  border: 1px solid var(--vhyxseal-color-border);
+}
+
+.section-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--vhyxseal-color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+/* Metrics */
+.metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 0;
+}
+
+.metric-label {
+  font-size: 11px;
+  color: var(--vhyxseal-color-text-muted);
+}
+
+.metric-value {
+  font-family: 'SF Mono', 'Monaco', 'Cascadia Code', monospace;
+  font-size: 11px;
+  color: var(--vhyxseal-color-text);
+}
+
+/* Status colors */
+.status-full     { color: var(--vhyxseal-color-full); }
+.status-inferred { color: var(--vhyxseal-color-inferred); }
+.status-missing  { color: var(--vhyxseal-color-missing); }
+.status-neutral  { color: var(--vhyxseal-color-neutral); }
