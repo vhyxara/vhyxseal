@@ -1,0 +1,167 @@
+/**
+ * VhyxSeal docs — global styles
+ *
+ * @vhyxseal/style is imported in layout.tsx (JS import), which gives
+ * Next.js App Router correct control over CSS chunking. This file
+ * consumes the resulting CSS custom properties — no @import needed here.
+ *
+ * Zero hardcoded color values. Every color is a var() reference to a
+ * token from @vhyxseal/style (--vhyxseal-color-*). Theme switching is
+ * handled by next-themes via data-theme="light"|"dark" on <html>.
+ */
+
+/* ── Semantic layout tokens — aliases for @vhyxseal/style color tokens ─── */
+/*                                                                           */
+/* These --docs-* aliases exist so page components can say "docs-specific   */
+/* color" without coupling to the library internals. Both dark (:root) and  */
+/* light (:root[data-theme="light"]) values flow through automatically.     */
+
+:root {
+  --docs-bg:           var(--vhyxseal-color-bg);
+  --docs-surface:      var(--vhyxseal-color-surface);
+  --docs-border:       var(--vhyxseal-color-border);
+  --docs-text:         var(--vhyxseal-color-text);
+  --docs-text-muted:   var(--vhyxseal-color-text-muted);
+  --docs-code-bg:      var(--vhyxseal-color-bg);
+  --docs-link:         var(--vhyxseal-color-info);
+  --docs-link-hover:   var(--vhyxseal-color-full);
+
+  /* ── Layout dimensions (not colors — safe as fixed values) ────────── */
+  --docs-sidebar-width:  240px;
+  --docs-header-height:  56px;
+}
+
+/* ── Base reset ────────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, sans-serif;
+  background-color: var(--docs-bg);
+  color: var(--docs-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Typography ────────────────────────────────────────────────────────── */
+
+a {
+  color: var(--docs-link);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--docs-link-hover);
+  text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  color: var(--docs-text);
+  line-height: 1.3;
+}
+
+p {
+  margin-top: 0;
+  color: var(--docs-text);
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", ui-monospace,
+    Menlo, Monaco, "Courier New", monospace;
+  font-size: 0.875em;
+}
+
+/* ── Shiki dual theme — data-theme drives light vs dark token colors ───── */
+/*                                                                           */
+/* Shiki generates inline CSS variables (--shiki-dark, --shiki-light etc.)  */
+/* on each token's <span>. These rules apply the correct variable set based  */
+/* on the data-theme attribute set by next-themes on <html>.                 */
+
+:root:not([data-theme="light"]) .shiki,
+:root:not([data-theme="light"]) .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+:root[data-theme="light"] .shiki,
+:root[data-theme="light"] .shiki span {
+  color: var(--shiki-light) !important;
+  background-color: var(--shiki-light-bg) !important;
+  font-style: var(--shiki-light-font-style) !important;
+  font-weight: var(--shiki-light-font-weight) !important;
+  text-decoration: var(--shiki-light-text-decoration) !important;
+}
+
+/* Shiki pre block — remove its inline background in favour of border/radius */
+.shiki {
+  padding: 16px 20px;
+  overflow-x: auto;
+  border-radius: 0;
+  margin: 0;
+}
+
+/* ── On This Page — hide at narrow viewports ──────────────────────────── */
+
+@media (max-width: 1200px) {
+  .docs-on-this-page {
+    display: none;
+  }
+}
+
+/* ── Mobile — collapse sidebar ─────────────────────────────────────────── */
+/*                                                                           */
+/* Setting --docs-sidebar-width to 0 makes the main's inline                */
+/* marginLeft: var(--docs-sidebar-width) resolve to 0 automatically.         */
+
+@media (max-width: 768px) {
+  :root {
+    --docs-sidebar-width: 0px;
+  }
+
+  aside[aria-label="Docs navigation"] {
+    display: none;
+  }
+}
+
+/* ── Scrollbar (minimal, non-intrusive) ────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--docs-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--docs-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--docs-text-muted);
+}
