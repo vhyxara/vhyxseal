@@ -1,6 +1,6 @@
 {
   "name": "@vhyxseal/style",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0-rc.3",
   "description": "VhyxSeal CSS design tokens for DevTools and CLI tooling (alpha — tokens may change before 1.0)",
   "type": "module",
   "exports": {
