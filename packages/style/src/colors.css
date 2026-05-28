@@ -28,6 +28,9 @@
   /** Blue — agent activity, informational, medium-safety indicator */
   --vhyxseal-color-info:        #3b82f6;
 
+  /** Purple — capability level, higher abstraction (CLAUDE.md Section 18) */
+  --vhyxseal-color-capability:  #a855f7;
+
   /* ── Panel surface colors ───────────────────────────────────────── */
 
   /** Dark background — outermost panel background color */
@@ -46,4 +49,61 @@
 
   /** Secondary text — muted labels, version numbers, metadata */
   --vhyxseal-color-text-muted:  #6b7280;
+}
+
+/**
+ * Light mode overrides.
+ *
+ * Applied when next-themes sets data-theme="light" on <html>.
+ * Surface/text/border tokens are inverted for readability on white.
+ * Health and safety brand colors are darkened for light-background contrast
+ * (the dark-mode values are too light to meet contrast ratios on white).
+ * Safety semantic tokens (--vhyxseal-safety-*) reference color tokens
+ * via var() and pick up these values automatically — no changes needed there.
+ *
+ * DECISION-014 (dark mode native) is preserved:
+ * DevTools uses :root defaults (dark) exclusively.
+ * Light mode is additive, scoped to [data-theme="light"] only.
+ */
+:root[data-theme="light"] {
+  /* ── Panel surface colors (light) ──────────────────────────────────── */
+
+  /** Light background — white */
+  --vhyxseal-color-bg:          #ffffff;
+
+  /** Surface — light gray panels and cards */
+  --vhyxseal-color-surface:     #f3f4f6;
+
+  /** Border — light separator lines */
+  --vhyxseal-color-border:      #e5e7eb;
+
+  /* ── Text colors (light) ────────────────────────────────────────────── */
+
+  /** Primary text — near-black on white */
+  --vhyxseal-color-text:        #111827;
+
+  /** Secondary text — muted gray (same as dark — neutral gray works both ways) */
+  --vhyxseal-color-text-muted:  #6b7280;
+
+  /* ── Contract health colors (light — darkened for contrast on white) ── */
+
+  /** Green — full contract */
+  --vhyxseal-color-full:        #16a34a;
+
+  /** Yellow — inferred contract */
+  --vhyxseal-color-inferred:    #ca8a04;
+
+  /** Red — missing contract, error state */
+  --vhyxseal-color-missing:     #dc2626;
+
+  /* ── Neutral / info colors (light) ─────────────────────────────────── */
+
+  /** Gray — neutral, disabled, muted labels */
+  --vhyxseal-color-neutral:     #4b5563;
+
+  /** Blue — agent activity, informational */
+  --vhyxseal-color-info:        #2563eb;
+
+  /** Purple — capability (light — darkened for contrast on white bg) */
+  --vhyxseal-color-capability:  #9333ea;
 }
