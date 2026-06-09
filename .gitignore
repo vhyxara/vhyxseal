@@ -30,3 +30,10 @@ packages/*/tests/**/*.d.ts.map
 .DS_Store
 
 apps/docs/public/pagefind/
+
+# vhyxdesign
+.vhyxdesign/screenshots/
+.vhyxdesign/reports/
+.vhyxdesign/screenshots/
+.vhyxdesign/reports/
+.vhyxdesign/cache/

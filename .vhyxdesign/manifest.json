@@ -1,0 +1,30 @@
+{
+  "apps": {
+    "docs": {
+      "baseUrl": "https://docs.vhyxseal.com",
+      "routes": [
+        {
+          "name": "home",
+          "path": "/",
+          "requires_auth": false,
+          "spec_section": "",
+          "viewport": "both"
+        },
+        {
+          "name": "getting-started",
+          "path": "/getting-started",
+          "requires_auth": false,
+          "spec_section": "",
+          "viewport": "both"
+        },
+        {
+          "name": "api-reference",
+          "path": "/api-reference",
+          "requires_auth": false,
+          "spec_section": "",
+          "viewport": "both"
+        }
+      ]
+    }
+  }
+}
