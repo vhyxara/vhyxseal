@@ -1,11 +1,13 @@
 {
   "name": "@vhyxseal/devtools",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0-rc.3",
   "type": "module",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
     }
   },
   "files": [
@@ -20,8 +22,8 @@
     "react": ">=18.0.0"
   },
   "dependencies": {
-    "@vhyxseal/core": "1.0.0-rc.1",
-    "@vhyxseal/react": "1.0.0-rc.1"
+    "@vhyxseal/core": "workspace:*",
+    "@vhyxseal/react": "workspace:*"
   },
   "devDependencies": {
     "@testing-library/react": "^16.0.0",

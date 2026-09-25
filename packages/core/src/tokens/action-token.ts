@@ -1,4 +1,4 @@
-import { randomBytes } from "crypto";
+import { randomHex } from "../crypto/index.js";
 import { logAudit } from "../audit/index.js";
 
 interface IssuedToken {
@@ -47,7 +47,7 @@ export function issueToken(
   ttlMs: number = 60000,
 ): string {
   evictExpired();
-  const tokenId = randomBytes(32).toString("hex");
+  const tokenId = randomHex(32);
   issued.set(tokenId, {
     contractId,
     componentId,

@@ -10,3 +10,4 @@ export * from "./tokens/index.js";
 export * from "./keys/index.js";
 export * from "./domain/index.js";
 export * from "./audit/index.js";
+export { randomHex, sha256Hex, hmacSha256Hex, constantTimeEqual } from "./crypto/index.js";

@@ -76,10 +76,12 @@ export function SealProvider({
     if (dev !== undefined) {
       return dev;
     }
-    if (typeof process !== "undefined" && process.env !== undefined) {
-      return process.env["NODE_ENV"] !== "production";
+    try {
+      return process.env.NODE_ENV !== "production";
+    } catch {
+      // No `process` in plain browser bundles — assume development.
+      return true;
     }
-    return true;
   }, [dev]);
 
   // The contracts map — keyed by component id.
@@ -127,18 +129,33 @@ export function SealProvider({
     });
   }, []);
 
+  // Inline `config={{...}}` objects are new on every render. Keying on the
+  // serialised value keeps the manifest from regenerating when nothing changed.
+  const configKey = JSON.stringify(config);
+  const stableConfig = useMemo<ManifestConfig>(() => {
+    if (config.domain.trim().length > 0) return config;
+    // An empty domain makes generateManifest throw on every render. Fall back
+    // to the current host so development setups work with zero config.
+    const fallback =
+      typeof window !== "undefined" && window.location.hostname
+        ? window.location.hostname
+        : "localhost";
+    return { ...config, domain: fallback };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [configKey]);
+
   // Generate manifest whenever contracts or config changes.
   const manifest = useMemo<Readonly<VhyxSealManifest> | null>(() => {
     try {
       const contractsArray = Array.from(contracts.values());
-      return generateManifest(contractsArray, config);
+      return generateManifest(contractsArray, stableConfig);
     } catch (err) {
       if (isDev) {
         console.error("[VhyxSeal] Manifest generation failed:", err);
       }
       return null;
     }
-  }, [contracts, config, isDev]);
+  }, [contracts, stableConfig, isDev]);
 
   // Notify the caller when a new manifest is produced.
   useEffect(() => {
