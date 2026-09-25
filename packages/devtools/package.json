@@ -1,6 +1,6 @@
 {
   "name": "@vhyxseal/devtools",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0-rc.2",
   "type": "module",
   "exports": {
     ".": {
@@ -8,7 +8,9 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "test": "vitest run",
@@ -18,8 +20,8 @@
     "react": ">=18.0.0"
   },
   "dependencies": {
-    "@vhyxseal/core": "workspace:*",
-    "@vhyxseal/react": "workspace:*"
+    "@vhyxseal/core": "1.0.0-rc.1",
+    "@vhyxseal/react": "1.0.0-rc.1"
   },
   "devDependencies": {
     "@testing-library/react": "^16.0.0",

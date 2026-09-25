@@ -1,7 +1,7 @@
 {
   "name": "@vhyxseal/core",
-  "version": "1.0.0-rc.1",
-  "description": "VhyxSeal core — zero dependency semantic contract layer",
+  "version": "1.0.0-rc.2",
+  "description": "VhyxSeal core \u2014 zero dependency semantic contract layer",
   "license": "MIT",
   "private": false,
   "type": "module",

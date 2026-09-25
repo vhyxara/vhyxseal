@@ -110,8 +110,8 @@ importers:
   packages/cli:
     dependencies:
       '@vhyxseal/core':
-        specifier: workspace:*
-        version: link:../core
+        specifier: 1.0.0-rc.1
+        version: 1.0.0-rc.1
     devDependencies:
       '@types/node':
         specifier: ^20.0.0
@@ -135,11 +135,11 @@ importers:
   packages/devtools:
     dependencies:
       '@vhyxseal/core':
-        specifier: workspace:*
-        version: link:../core
+        specifier: 1.0.0-rc.1
+        version: 1.0.0-rc.1
       '@vhyxseal/react':
-        specifier: workspace:*
-        version: link:../react
+        specifier: 1.0.0-rc.1
+        version: 1.0.0-rc.1(react@19.2.6)
     devDependencies:
       '@testing-library/react':
         specifier: ^16.0.0
@@ -169,8 +169,8 @@ importers:
   packages/nextjs:
     dependencies:
       '@vhyxseal/core':
-        specifier: workspace:*
-        version: link:../core
+        specifier: 1.0.0-rc.1
+        version: 1.0.0-rc.1
     devDependencies:
       '@types/node':
         specifier: ^20.0.0
@@ -197,8 +197,8 @@ importers:
   packages/react:
     dependencies:
       '@vhyxseal/core':
-        specifier: workspace:*
-        version: link:../core
+        specifier: 1.0.0-rc.1
+        version: 1.0.0-rc.1
     devDependencies:
       '@testing-library/dom':
         specifier: ^10.0.0
@@ -239,8 +239,8 @@ importers:
   packages/testing:
     dependencies:
       '@vhyxseal/core':
-        specifier: workspace:*
-        version: link:../core
+        specifier: 1.0.0-rc.1
+        version: 1.0.0-rc.1
     devDependencies:
       '@types/node':
         specifier: ^20.0.0
@@ -255,8 +255,8 @@ importers:
   packages/vanilla:
     dependencies:
       '@vhyxseal/core':
-        specifier: workspace:*
-        version: link:../core
+        specifier: 1.0.0-rc.1
+        version: 1.0.0-rc.1
     devDependencies:
       '@types/node':
         specifier: ^20.0.0
@@ -271,8 +271,8 @@ importers:
   packages/vue:
     dependencies:
       '@vhyxseal/core':
-        specifier: workspace:*
-        version: link:../core
+        specifier: 1.0.0-rc.1
+        version: 1.0.0-rc.1
     devDependencies:
       '@vitejs/plugin-vue':
         specifier: ^5.0.0
@@ -1101,6 +1101,14 @@ packages:
 
   '@ungap/structured-clone@1.3.1':
     resolution: {integrity: sha512-mUFwbeTqrVgDQxFveS+df2yfap6iuP20NAKAsBt5jDEoOTDew+zwLAOilHCeQJOVSvmgCX4ogqIrA0mnyr08yQ==}
+
+  '@vhyxseal/core@1.0.0-rc.1':
+    resolution: {integrity: sha512-CRJpzeIxG2egbtKA/iJwK6ybii7iR58604hTlhF6AXCTYF3nU9lVbK0ryzub4Uq8B7uLIm4PC/5XIuoREWo03Q==}
+
+  '@vhyxseal/react@1.0.0-rc.1':
+    resolution: {integrity: sha512-Dwkl6wAbUwelCJZBnRZpKUMgmGbKpEIDy3GZ36Ix0BwfEQtNngGW/cTfvC0LgJBbih1XviLPSsLiIQqLe3xe5w==}
+    peerDependencies:
+      react: '>=18.0.0'
 
   '@vitejs/plugin-react@4.7.0':
     resolution: {integrity: sha512-gUu9hwfWvvEDBBmgtAowQCojwZmJ5mcLn3aufeCsitijs3+f2NsrPtlAWIR6OPiqljl96GVCUbLe0HyqIpVaoA==}
@@ -3039,6 +3047,13 @@ snapshots:
       '@types/node': 20.19.41
 
   '@ungap/structured-clone@1.3.1': {}
+
+  '@vhyxseal/core@1.0.0-rc.1': {}
+
+  '@vhyxseal/react@1.0.0-rc.1(react@19.2.6)':
+    dependencies:
+      '@vhyxseal/core': link:packages/core
+      react: 19.2.6
 
   '@vitejs/plugin-react@4.7.0(vite@5.4.21(@types/node@20.19.41))':
     dependencies:
