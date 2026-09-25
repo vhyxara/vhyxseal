@@ -7,6 +7,9 @@ import { Search } from "../components/Search";
 // CSS imports — @vhyxseal/style first so its custom properties are declared
 // before globals.css aliases them via var(). Next.js respects import order.
 import "@vhyxseal/style";
+// VhyxUI (tokens only — no reset — plus component styles in @layer components) for dogfooded pages.
+import "@vhyxui/tokens/tokens.css";
+import "@vhyxui/react/style.css";
 import "./globals.css";
 
 export const metadata: Metadata = {

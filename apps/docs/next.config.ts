@@ -4,6 +4,8 @@ import { vhyxsealPlugin } from "@vhyxseal/nextjs";
 // vhyxsealPlugin automatically injects:
 // - Cache-Control and X-VhyxSeal-Version headers for /__agent__/manifest.json
 // - Rewrite: /__agent__/manifest.json → /api/vhyxseal-manifest
-const nextConfig: NextConfig = {};
+const nextConfig: NextConfig = {
+  transpilePackages: ["@vhyxui/react", "@vhyxui/core", "@vhyxchart/react", "@vhyxchart/core"],
+};
 
 export default vhyxsealPlugin(nextConfig);

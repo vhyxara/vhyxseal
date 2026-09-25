@@ -46,6 +46,8 @@ const NAV_SECTIONS: readonly NavSection[] = [
     title: "Security",
     links: [
       { label: "Security Architecture", href: "/security" },
+      { label: "CLI", href: "/cli" },
+      { label: "Visualize contracts", href: "/visualize" },
     ],
   },
   {
