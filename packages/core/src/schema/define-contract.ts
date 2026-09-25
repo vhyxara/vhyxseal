@@ -16,13 +16,17 @@ import { VhyxSealError, ErrorCode } from "../errors/index.js";
 // Internal helpers
 // ---------------------------------------------------------------------------
 
-/** Checks which required ComponentContract fields are absent or invalid. */
+/**
+ * Checks which required ComponentContract fields are absent or invalid.
+ * Pass a set of field names to `exclude` to skip checking those fields.
+ */
 function findMissingFields(
   contract: Readonly<Partial<ComponentContract>>,
+  exclude: ReadonlyArray<keyof ComponentContract> = [],
 ): ReadonlyArray<keyof ComponentContract> {
   const missing: Array<keyof ComponentContract> = [];
 
-  if (typeof contract.id !== "string" || contract.id.length === 0) {
+  if (!exclude.includes("id") && (typeof contract.id !== "string" || contract.id.length === 0)) {
     missing.push("id");
   }
   if (contract.type === undefined) {
@@ -152,4 +156,65 @@ export function defineContract(
 
   // Step 7 — return complete, frozen contract
   return Object.freeze(withMeta) as Readonly<ComponentContract>;
+}
+
+/**
+ * Defines a component contract template without an `id`.
+ * Use this for component library defaults where the id is instance-specific
+ * and injected at render time by spreading the template with a concrete id.
+ *
+ * The fingerprint is generated from all provided fields excluding `id`.
+ * Two calls with identical fields produce identical fingerprints, making
+ * templates stable across renders and safe for equality checks.
+ *
+ * @param template - The contract definition. All required ComponentContract
+ *   fields except `id` must be present.
+ * @returns A readonly, fingerprinted contract template (no `id` field).
+ * @throws {VhyxSealError} VHYX_CONTRACT_VALIDATION_FAILED if any required
+ *   field other than `id` is missing. recoverable: true.
+ * @example
+ * // In your component library:
+ * export const buttonTemplate = defineContractTemplate({
+ *   type: 'action',
+ *   intent: 'trigger-action',
+ *   description: 'Generic action button',
+ *   requires: [],
+ *   requiredPermissions: [],
+ *   consequence: 'Triggers the associated action',
+ *   affects: [],
+ *   reversible: false,
+ *   safetyLevel: 'low',
+ *   requiresConfirmation: false,
+ *   destructive: false,
+ *   contractVersion: '1.0.0',
+ * })
+ *
+ * // At render time:
+ * const contract = { ...buttonTemplate, id: componentId }
+ */
+export function defineContractTemplate(
+  template: Readonly<Partial<Omit<ComponentContract, "id">>>,
+): Readonly<Omit<ComponentContract, "id"> & { readonly fingerprint: string }> {
+  // Validate all required fields except id
+  const missingFields = findMissingFields(
+    template as Readonly<Partial<ComponentContract>>,
+    ["id"],
+  );
+  if (missingFields.length > 0) {
+    throw new VhyxSealError({
+      code: ErrorCode.VHYX_CONTRACT_VALIDATION_FAILED,
+      message: `Contract template missing required fields: ${missingFields.join(", ")}`,
+      context: { missingFields },
+      severity: "error",
+      recoverable: true,
+      suggestion: `Add the missing fields to the template: ${missingFields.join(", ")}.`,
+    });
+  }
+
+  const fingerprint = generateFingerprint(JSON.stringify(template));
+
+  return Object.freeze({
+    ...template,
+    fingerprint,
+  }) as Readonly<Omit<ComponentContract, "id"> & { readonly fingerprint: string }>;
 }
