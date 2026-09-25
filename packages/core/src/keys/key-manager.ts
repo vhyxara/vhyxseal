@@ -1,4 +1,4 @@
-import { randomBytes } from "crypto";
+import { randomHex } from "../crypto/index.js";
 import { VhyxSealError, ErrorCode } from "../errors/index.js";
 import { logAudit } from "../audit/index.js";
 
@@ -63,7 +63,7 @@ export function registerKey(secret: string, ttlMs?: number): string {
     });
   }
 
-  const keyId = randomBytes(16).toString("hex");
+  const keyId = randomHex(16);
   const now = Date.now();
   const expiresAt =
     ttlMs !== undefined && ttlMs > 0 ? now + ttlMs : 0;

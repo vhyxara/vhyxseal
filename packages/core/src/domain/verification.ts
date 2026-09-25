@@ -16,7 +16,7 @@
  *   - The signing key ID is stored at issuance — key rotation does not invalidate tokens.
  */
 
-import { randomBytes, createHmac, timingSafeEqual } from "crypto";
+import { randomHex, hmacSha256Hex, constantTimeEqual } from "../crypto/index.js";
 import { VhyxSealError, ErrorCode } from "../errors/index.js";
 import { getActiveKey, listKeys } from "../keys/index.js";
 import { createDomainRegistry } from "../registry/domain-registry.js";
@@ -80,9 +80,7 @@ function computeTokenHmac(
   token: string,
   secret: string,
 ): string {
-  return createHmac("sha256", Buffer.from(secret, "hex"))
-    .update(`${domain}:${token}`, "utf8")
-    .digest("hex");
+  return hmacSha256Hex(secret, `${domain}:${token}`);
 }
 
 // ---------------------------------------------------------------------------
@@ -141,7 +139,7 @@ export function issueDomainToken(domain: string): string {
   }
 
   // Step 3: generate token — crypto.randomBytes only (Constraint 5 / STAGE-4A-CONSTRAINTS)
-  const token = randomBytes(32).toString("hex");
+  const token = randomHex(32);
 
   // Step 4: compute HMAC of "domain:token" using the active key secret
   const hmacSignature = computeTokenHmac(domain, token, keyRecord.secret);
@@ -238,14 +236,7 @@ export function verifyDomainToken(domain: string, token: string): boolean {
     // Step 6: recompute HMAC and compare with stored signature (constant-time)
     const recomputed = computeTokenHmac(domain, token, keyRecord.secret);
 
-    const recomputedBuf = Buffer.from(recomputed, "hex");
-    const storedBuf = Buffer.from(entry.hmacSignature, "hex");
-
-    if (recomputedBuf.length !== storedBuf.length) {
-      return false;
-    }
-
-    const verified = timingSafeEqual(recomputedBuf, storedBuf);
+    const verified = constantTimeEqual(recomputed, entry.hmacSignature.toLowerCase());
     if (verified) {
       verifiedDomainsSet.add(domain);
       logAudit({

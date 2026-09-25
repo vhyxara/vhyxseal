@@ -5,7 +5,7 @@
  * is a Stage 4B concern.
  */
 
-import { randomBytes } from "crypto";
+import { randomHex } from "../crypto/index.js";
 
 export interface DomainVerificationToken {
   domain: string;
@@ -46,7 +46,7 @@ export function createDomainRegistry(): DomainRegistry {
     const now = new Date();
     const record: DomainVerificationToken = {
       domain,
-      token: randomBytes(32).toString("hex"),
+      token: randomHex(32),
       issuedAt: now.toISOString(),
       expiresAt: new Date(now.getTime() + TOKEN_EXPIRY_MS).toISOString(),
       verified: false,

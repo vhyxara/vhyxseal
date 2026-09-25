@@ -18,7 +18,13 @@ export type {
   VersionStage,
 } from "./version-negotiation.js";
 
-export { signManifest, verifyManifest } from "./signing.js";
+export {
+  signManifest,
+  verifyManifest,
+  attachSignature,
+  canonicalManifestPayload,
+  SIGNATURE_PREFIX,
+} from "./signing.js";
 
 export type {
   SigningKey,

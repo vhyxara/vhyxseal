@@ -1,12 +1,28 @@
 import {
+  forwardRef,
   useContext,
   useEffect,
-  type ReactNode,
   type ComponentType,
-  type FunctionComponent,
+  type ForwardedRef,
+  type PropsWithoutRef,
+  type ReactNode,
 } from "react";
 import type { ComponentContract } from "@vhyxseal/core";
 import { SealContext } from "../provider/context.js";
+
+// Contract ids already warned about for rendering outside a SealProvider.
+// Warning once per id keeps dev consoles readable in apps that intentionally
+// render without a provider (tests, storybook, opt-out).
+const warnedOutsideProvider = new Set<string>();
+
+function isProduction(): boolean {
+  try {
+    return process.env.NODE_ENV === "production";
+  } catch {
+    // `process` is undefined in plain browser bundles (Vite, esbuild, Deno).
+    return false;
+  }
+}
 
 /**
  * Wraps any React component with a VhyxSeal contract without modifying the original.
@@ -40,12 +56,18 @@ export function withAgentContract<P extends object>(
   WrappedComponent: ComponentType<P>,
   contract: Readonly<ComponentContract>,
 ): ComponentType<P> {
-  const WithAgentContract: FunctionComponent<P> = (props: P): ReactNode => {
+  // Refs are forwarded so wrapped components keep imperative handles
+  // (focus management, measurement) on React 18, where `ref` is not a prop.
+  const WithAgentContract = forwardRef(function WithAgentContract(
+    props: PropsWithoutRef<P>,
+    ref: ForwardedRef<unknown>,
+  ): ReactNode {
     const ctx = useContext(SealContext);
 
     useEffect(() => {
       if (ctx === null) {
-        if (process.env["NODE_ENV"] !== "production") {
+        if (!isProduction() && !warnedOutsideProvider.has(contract.id)) {
+          warnedOutsideProvider.add(contract.id);
           console.warn(
             `[VhyxSeal] withAgentContract: component "${contract.id}" rendered ` +
               `outside SealProvider. Contract not registered.`,
@@ -65,11 +87,17 @@ export function withAgentContract<P extends object>(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [contract.fingerprint]);
 
-    return <WrappedComponent {...props} />;
-  };
+    // PropsWithoutRef<P> is P minus `ref`; re-adding the forwarded ref restores
+    // the full prop object the wrapped component expects.
+    const forwarded = (ref === null ? props : { ...props, ref }) as P;
+    return <WrappedComponent {...forwarded} />;
+  });
 
   WithAgentContract.displayName = `WithAgentContract(${
     WrappedComponent.displayName || WrappedComponent.name || "Component"
   })`;
-  return WithAgentContract;
+  // forwardRef returns an exotic component; it is callable with P exactly like
+  // the ComponentType<P> this HOC has always promised, so the public
+  // signature stays unchanged for existing consumers.
+  return WithAgentContract as unknown as ComponentType<P>;
 }

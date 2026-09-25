@@ -1,18 +1,19 @@
 {
   "name": "@vhyxseal/core",
-  "version": "1.0.0-rc.2",
-  "description": "VhyxSeal core \u2014 zero dependency semantic contract layer",
+  "version": "1.0.0-rc.3",
+  "description": "VhyxSeal core — zero dependency semantic contract layer",
   "license": "MIT",
   "private": false,
   "type": "module",
-  "main": "./dist/index.cjs",
+  "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
     }
   },
   "files": [
