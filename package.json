@@ -22,5 +22,17 @@
     "turbo": "^2.0.0",
     "typescript": "^5.4.0",
     "vitest": "^1.6.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "@vhyxseal/core": "workspace:*",
+      "@vhyxseal/react": "workspace:*",
+      "@vhyxui/core": "file:.tarballs/vhyxui-core-0.2.0-alpha.tgz",
+      "@vhyxui/react": "file:.tarballs/vhyxui-react-0.4.0-alpha.tgz",
+      "@vhyxui/tokens": "file:.tarballs/vhyxui-tokens-0.2.0-alpha.tgz",
+      "@vhyxui/blocks": "file:.tarballs/vhyxui-blocks-0.1.0-alpha.tgz",
+      "@vhyxchart/core": "file:.tarballs/vhyxchart-core-0.1.0-alpha.tgz",
+      "@vhyxchart/react": "file:.tarballs/vhyxchart-react-0.1.0-alpha.tgz"
+    }
   }
 }

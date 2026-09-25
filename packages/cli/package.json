@@ -11,6 +11,11 @@
       "import": "./dist/index.js",
       "require": "./dist/index.js",
       "default": "./dist/index.js"
+    },
+    "./visualize": {
+      "types": "./dist/visualize/index.d.ts",
+      "import": "./dist/visualize/index.js",
+      "default": "./dist/visualize/index.js"
     }
   },
   "files": [

@@ -1,0 +1,12 @@
+@import '@vhyxui/tokens/index.css';
+@import '@vhyxui/react/style.css';
+@import '@vhyxui/blocks/style.css';
+
+body {
+  margin: 0;
+}
+
+code,
+pre {
+  font-family: var(--vhyx-font-mono);
+}

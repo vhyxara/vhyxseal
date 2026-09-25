@@ -132,7 +132,7 @@ const manifestTs = `export interface VhyxSealManifest {
   verificationToken: string;
 
   // Integrity
-  signature: string;         // HMAC-SHA256 or "unsigned" (stub)
+  signature: string;         // "hmac-sha256:<hex>" or "unsigned"
   signedAt: string;
   fingerprint: string;
 

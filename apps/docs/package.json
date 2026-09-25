@@ -16,7 +16,14 @@
     "next-themes": "^0.4.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "shiki": "^1.0.0"
+    "shiki": "^1.0.0",
+    "@vhyxui/react": "0.4.0-alpha",
+    "@vhyxui/tokens": "0.2.0-alpha",
+    "@vhyxui/blocks": "0.1.0-alpha",
+    "@vhyxui/core": "0.2.0-alpha",
+    "@vhyxchart/react": "0.1.0-alpha",
+    "@vhyxchart/core": "0.1.0-alpha",
+    "@vhyxseal/cli": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

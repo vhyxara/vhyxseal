@@ -4,18 +4,20 @@ import { PrevNext } from "../../components/PrevNext";
 
 // ── Code examples ─────────────────────────────────────────────────────────
 
-const signingCode = `// Manifest signing — configured automatically by @vhyxseal/nextjs
-// Manual signing API from @vhyxseal/core:
-import { signManifest, verifyManifest } from '@vhyxseal/core'
+const signingCode = `// Real HMAC-SHA256 signing — zero dependencies, identical in Node, browsers and edge runtimes
+import { registerKey, attachSignature, verifyManifest, generateManifest } from '@vhyxseal/core'
 
-// Sign at build time or request time
-const signed = signManifest(manifest, privateKey)
-// { signature: "sha256:...", signedAt: "..." }
+registerKey(process.env.VHYXSEAL_SECRET)          // 32+ random bytes as hex (vhyxseal keygen)
+const signed = attachSignature(generateManifest(contracts, config))
+// signed.signature === "hmac-sha256:9f2c…"  (over a canonical, key-sorted payload)
 
-// Verify before trusting any contract data
-const result = verifyManifest(signedManifest, publicKey)
-// { valid: true, domain: "example.com", ... }
-// On failure: all safety defaults apply — agents cannot act`;
+const result = verifyManifest(signed, signed.signature, {
+  algorithm: 'hmac-sha256', keyHex: secret, domain: 'example.com',
+})
+// { valid: true } — any edit to the manifest → { valid: false, reason }
+// On failure: all safety defaults apply — agents cannot act
+
+// CLI:  vhyxseal keygen  ·  vhyxseal sign manifest.json  ·  vhyxseal sign manifest.json --verify`;
 
 const injectionCode = `// Sanitization runs automatically on all string fields
 // Zero configuration required — built into defineContract()
@@ -226,7 +228,10 @@ export default function SecurityPage(): React.ReactElement {
           Every manifest is cryptographically signed at build time. Agents
           verify the signature before trusting any contract data. Signature
           failure triggers maximum safety defaults — agents cannot act.
-          Currently a stub — see Known Limitations below.
+          Implemented as HMAC-SHA256 over a canonical serialisation (rc.3).
+          HMAC is symmetric: it proves integrity between parties sharing the
+          key (your server and your agent gateway). Public-key signatures for
+          third-party agents are planned — see Known Limitations below.
         </p>
         <CodeBlock code={signingCode} lang="typescript" />
 
