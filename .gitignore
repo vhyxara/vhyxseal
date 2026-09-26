@@ -30,3 +30,6 @@ packages/*/tests/**/*.d.ts.map
 .DS_Store
 
 apps/docs/public/pagefind/
+
+# Local notes
+/internal-tools/
