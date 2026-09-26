@@ -1,6 +1,28 @@
 {
   "name": "@vhyxseal/nextjs",
   "version": "1.0.0-rc.3",
+  "description": "Next.js integration for VhyxSeal: config plugin and /__agent__/manifest.json route handler",
+  "keywords": [
+    "vhyxseal",
+    "ai-agents",
+    "agentic-web",
+    "nextjs",
+    "next",
+    "route-handler"
+  ],
+  "license": "MIT",
+  "homepage": "https://vhyxseal.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vhyxara/vhyxseal.git",
+    "directory": "packages/nextjs"
+  },
+  "bugs": {
+    "url": "https://github.com/vhyxara/vhyxseal/issues"
+  },
+  "engines": {
+    "node": ">=20.19"
+  },
   "type": "module",
   "exports": {
     ".": {

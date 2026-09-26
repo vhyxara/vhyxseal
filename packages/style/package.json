@@ -2,6 +2,26 @@
   "name": "@vhyxseal/style",
   "version": "1.0.0-rc.3",
   "description": "VhyxSeal CSS design tokens for DevTools and CLI tooling (alpha — tokens may change before 1.0)",
+  "keywords": [
+    "vhyxseal",
+    "ai-agents",
+    "agentic-web",
+    "css",
+    "design-tokens"
+  ],
+  "license": "MIT",
+  "homepage": "https://vhyxseal.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vhyxara/vhyxseal.git",
+    "directory": "packages/style"
+  },
+  "bugs": {
+    "url": "https://github.com/vhyxara/vhyxseal/issues"
+  },
+  "engines": {
+    "node": ">=20.19"
+  },
   "type": "module",
   "exports": {
     ".": "./src/index.css",
@@ -10,11 +30,5 @@
   },
   "files": [
     "src"
-  ],
-  "license": "MIT",
-  "homepage": "https://vhyxseal.dev",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/vhyxara/vhyxseal"
-  }
+  ]
 }
