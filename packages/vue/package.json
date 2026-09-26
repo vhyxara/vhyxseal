@@ -1,6 +1,28 @@
 {
   "name": "@vhyxseal/vue",
   "version": "1.0.0-rc.3",
+  "description": "Vue 3 adapter for VhyxSeal: plugin, composables and contract-aware components",
+  "keywords": [
+    "vhyxseal",
+    "ai-agents",
+    "agentic-web",
+    "vue",
+    "vue3",
+    "composables"
+  ],
+  "license": "MIT",
+  "homepage": "https://vhyxseal.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vhyxara/vhyxseal.git",
+    "directory": "packages/vue"
+  },
+  "bugs": {
+    "url": "https://github.com/vhyxara/vhyxseal/issues"
+  },
+  "engines": {
+    "node": ">=20.19"
+  },
   "type": "module",
   "exports": {
     ".": {

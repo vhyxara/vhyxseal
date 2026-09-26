@@ -2,7 +2,28 @@
   "name": "@vhyxseal/core",
   "version": "1.0.0-rc.3",
   "description": "VhyxSeal core — zero dependency semantic contract layer",
+  "keywords": [
+    "vhyxseal",
+    "ai-agents",
+    "agentic-web",
+    "contracts",
+    "manifest",
+    "hmac",
+    "security"
+  ],
   "license": "MIT",
+  "homepage": "https://vhyxseal.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vhyxara/vhyxseal.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/vhyxara/vhyxseal/issues"
+  },
+  "engines": {
+    "node": ">=20.19"
+  },
   "private": false,
   "type": "module",
   "main": "./dist/index.js",

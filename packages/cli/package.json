@@ -1,6 +1,28 @@
 {
   "name": "@vhyxseal/cli",
   "version": "1.0.0-rc.3",
+  "description": "VhyxSeal command line: init, simulate, verify, audit, diff, keygen, sign and visualize agent contracts",
+  "keywords": [
+    "vhyxseal",
+    "ai-agents",
+    "agentic-web",
+    "cli",
+    "manifest",
+    "signing"
+  ],
+  "license": "MIT",
+  "homepage": "https://vhyxseal.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vhyxara/vhyxseal.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/vhyxara/vhyxseal/issues"
+  },
+  "engines": {
+    "node": ">=20.19"
+  },
   "type": "module",
   "bin": {
     "vhyxseal": "./dist/bin.js"

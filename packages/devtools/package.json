@@ -1,6 +1,28 @@
 {
   "name": "@vhyxseal/devtools",
   "version": "1.0.0-rc.3",
+  "description": "In-page DevTools panel and contract overlay for inspecting VhyxSeal contracts during development",
+  "keywords": [
+    "vhyxseal",
+    "ai-agents",
+    "agentic-web",
+    "devtools",
+    "react",
+    "debugging"
+  ],
+  "license": "MIT",
+  "homepage": "https://vhyxseal.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vhyxara/vhyxseal.git",
+    "directory": "packages/devtools"
+  },
+  "bugs": {
+    "url": "https://github.com/vhyxara/vhyxseal/issues"
+  },
+  "engines": {
+    "node": ">=20.19"
+  },
   "type": "module",
   "exports": {
     ".": {
