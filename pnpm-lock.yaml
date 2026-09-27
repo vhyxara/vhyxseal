@@ -7,12 +7,6 @@ settings:
 overrides:
   '@vhyxseal/core': workspace:*
   '@vhyxseal/react': workspace:*
-  '@vhyxui/core': file:.tarballs/vhyxui-core-0.2.0-alpha.tgz
-  '@vhyxui/react': file:.tarballs/vhyxui-react-0.4.0-alpha.tgz
-  '@vhyxui/tokens': file:.tarballs/vhyxui-tokens-0.2.0-alpha.tgz
-  '@vhyxui/blocks': file:.tarballs/vhyxui-blocks-0.1.0-alpha.tgz
-  '@vhyxchart/core': file:.tarballs/vhyxchart-core-0.1.0-alpha.tgz
-  '@vhyxchart/react': file:.tarballs/vhyxchart-react-0.1.0-alpha.tgz
 
 importers:
 
@@ -40,11 +34,11 @@ importers:
   apps/docs:
     dependencies:
       '@vhyxchart/core':
-        specifier: file:/home/user/vhyxseal/.tarballs/vhyxchart-core-0.1.0-alpha.tgz
-        version: file:.tarballs/vhyxchart-core-0.1.0-alpha.tgz
+        specifier: 0.1.0-alpha
+        version: 0.1.0-alpha
       '@vhyxchart/react':
-        specifier: file:/home/user/vhyxseal/.tarballs/vhyxchart-react-0.1.0-alpha.tgz
-        version: file:.tarballs/vhyxchart-react-0.1.0-alpha.tgz(react@19.2.6)
+        specifier: 0.1.0-alpha
+        version: 0.1.0-alpha(react@19.2.6)
       '@vhyxseal/cli':
         specifier: workspace:*
         version: link:../../packages/cli
@@ -61,17 +55,17 @@ importers:
         specifier: workspace:*
         version: link:../../packages/style
       '@vhyxui/blocks':
-        specifier: file:/home/user/vhyxseal/.tarballs/vhyxui-blocks-0.1.0-alpha.tgz
-        version: file:.tarballs/vhyxui-blocks-0.1.0-alpha.tgz(@vhyxui/react@file:.tarballs/vhyxui-react-0.4.0-alpha.tgz(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        specifier: 0.1.0-alpha
+        version: 0.1.0-alpha(@vhyxui/react@0.4.0-alpha(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@vhyxui/core':
-        specifier: file:/home/user/vhyxseal/.tarballs/vhyxui-core-0.2.0-alpha.tgz
-        version: file:.tarballs/vhyxui-core-0.2.0-alpha.tgz(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        specifier: 0.2.0-alpha
+        version: 0.2.0-alpha(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@vhyxui/react':
-        specifier: file:/home/user/vhyxseal/.tarballs/vhyxui-react-0.4.0-alpha.tgz
-        version: file:.tarballs/vhyxui-react-0.4.0-alpha.tgz(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        specifier: 0.4.0-alpha
+        version: 0.4.0-alpha(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@vhyxui/tokens':
-        specifier: file:/home/user/vhyxseal/.tarballs/vhyxui-tokens-0.2.0-alpha.tgz
-        version: file:.tarballs/vhyxui-tokens-0.2.0-alpha.tgz
+        specifier: 0.2.0-alpha
+        version: 0.2.0-alpha
       next:
         specifier: ^15.0.0
         version: 15.5.18(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
@@ -107,11 +101,11 @@ importers:
   apps/playground:
     dependencies:
       '@vhyxchart/core':
-        specifier: file:/home/user/vhyxseal/.tarballs/vhyxchart-core-0.1.0-alpha.tgz
-        version: file:.tarballs/vhyxchart-core-0.1.0-alpha.tgz
+        specifier: 0.1.0-alpha
+        version: 0.1.0-alpha
       '@vhyxchart/react':
-        specifier: file:/home/user/vhyxseal/.tarballs/vhyxchart-react-0.1.0-alpha.tgz
-        version: file:.tarballs/vhyxchart-react-0.1.0-alpha.tgz(react@19.2.6)
+        specifier: 0.1.0-alpha
+        version: 0.1.0-alpha(react@19.2.6)
       '@vhyxseal/cli':
         specifier: workspace:*
         version: link:../../packages/cli
@@ -125,17 +119,17 @@ importers:
         specifier: workspace:*
         version: link:../../packages/react
       '@vhyxui/blocks':
-        specifier: file:/home/user/vhyxseal/.tarballs/vhyxui-blocks-0.1.0-alpha.tgz
-        version: file:.tarballs/vhyxui-blocks-0.1.0-alpha.tgz(@vhyxui/react@file:.tarballs/vhyxui-react-0.4.0-alpha.tgz(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        specifier: 0.1.0-alpha
+        version: 0.1.0-alpha(@vhyxui/react@0.4.0-alpha(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@vhyxui/core':
-        specifier: file:/home/user/vhyxseal/.tarballs/vhyxui-core-0.2.0-alpha.tgz
-        version: file:.tarballs/vhyxui-core-0.2.0-alpha.tgz(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        specifier: 0.2.0-alpha
+        version: 0.2.0-alpha(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@vhyxui/react':
-        specifier: file:/home/user/vhyxseal/.tarballs/vhyxui-react-0.4.0-alpha.tgz
-        version: file:.tarballs/vhyxui-react-0.4.0-alpha.tgz(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        specifier: 0.4.0-alpha
+        version: 0.4.0-alpha(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@vhyxui/tokens':
-        specifier: file:/home/user/vhyxseal/.tarballs/vhyxui-tokens-0.2.0-alpha.tgz
-        version: file:.tarballs/vhyxui-tokens-0.2.0-alpha.tgz
+        specifier: 0.2.0-alpha
+        version: 0.2.0-alpha
       next:
         specifier: ^15.0.0
         version: 15.5.18(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
@@ -1154,45 +1148,48 @@ packages:
   '@ungap/structured-clone@1.3.1':
     resolution: {integrity: sha512-mUFwbeTqrVgDQxFveS+df2yfap6iuP20NAKAsBt5jDEoOTDew+zwLAOilHCeQJOVSvmgCX4ogqIrA0mnyr08yQ==}
 
-  '@vhyxchart/core@file:.tarballs/vhyxchart-core-0.1.0-alpha.tgz':
-    resolution: {integrity: sha512-KaCi1xDB3xaXbpaGjSFCVOVJlelyeBcJf+bVvf/nrinz3kM5tnMaLVEZwgfugAbkrO3Uo57LgqSx9c+LDwGTcQ==, tarball: file:.tarballs/vhyxchart-core-0.1.0-alpha.tgz}
-    version: 0.1.0-alpha
+  '@vhyxchart/core@0.1.0-alpha':
+    resolution: {integrity: sha512-Np466MV9t3gTu4Go811tdtXaEhXSC5IgIfVSISK05W3IQFXf6JJ2w61XOS9ztO9bZiushVD+cd+0P42KvLy5wA==}
+    engines: {node: '>=20.19'}
 
-  '@vhyxchart/react@file:.tarballs/vhyxchart-react-0.1.0-alpha.tgz':
-    resolution: {integrity: sha512-KjLrlscFaFlAWWy6QXYyVsiyaFe14C27f9fIko22/Czvonkhb6H1IqkxShWJUpXKSvwgpgpQihnD4jz3r0ZnJA==, tarball: file:.tarballs/vhyxchart-react-0.1.0-alpha.tgz}
-    version: 0.1.0-alpha
+  '@vhyxchart/react@0.1.0-alpha':
+    resolution: {integrity: sha512-t2i2oj6FNl7jp7AamIhIXeYgxlMm/0vvf8gJ9OX+D9BaDX9WWSokvhoprRbMqcIZFlBy0LQmwatygk/k/W0KeA==}
+    engines: {node: '>=20.19'}
     peerDependencies:
       react: '>=18'
 
-  '@vhyxui/blocks@file:.tarballs/vhyxui-blocks-0.1.0-alpha.tgz':
-    resolution: {integrity: sha512-hcyb4H4og1Spp76kx4y1O6rDdyfOI/rNeaE7UZXP2ePFvJwBly6t8wj+RxpdIiL9vqXHrxiKuvs8rMhA92rG6w==, tarball: file:.tarballs/vhyxui-blocks-0.1.0-alpha.tgz}
-    version: 0.1.0-alpha
+  '@vhyxui/blocks@0.1.0-alpha':
+    resolution: {integrity: sha512-cFwoBolEohYgH0xo/fZWXaB7LTTea1EAV6NIntopTBK+FEWCD3A+RtKGUrA/Q49ena4SG36d4mq34vygrdjcEQ==}
+    engines: {node: '>=20.19'}
     peerDependencies:
-      '@vhyxui/react': file:/home/user/vhyxseal/.tarballs/vhyxui-react-0.4.0-alpha.tgz
-      react: '>=18'
-      react-dom: '>=18'
-
-  '@vhyxui/core@file:.tarballs/vhyxui-core-0.2.0-alpha.tgz':
-    resolution: {integrity: sha512-iZKs/8uCUE+AZ36VPf3isBQRFZvH2Zu/GArSiMQZyOIIRhfAOBuFWQwfBaTvWAfHNwkXgQVP0EvaphNb5uMW9w==, tarball: file:.tarballs/vhyxui-core-0.2.0-alpha.tgz}
-    version: 0.2.0-alpha
-    peerDependencies:
+      '@vhyxui/react': '>=0.4.0-alpha'
       react: '>=18'
       react-dom: '>=18'
 
-  '@vhyxui/react@file:.tarballs/vhyxui-react-0.4.0-alpha.tgz':
-    resolution: {integrity: sha512-N3W4a9Fj0cDfy4DwcXMZhBdQsB8dYGeBVJjcjDVkdVg/neMFzb+yqdk93oBx7zDWMMv44dhy/+K2fruXCc3O/Q==, tarball: file:.tarballs/vhyxui-react-0.4.0-alpha.tgz}
-    version: 0.4.0-alpha
+  '@vhyxui/core@0.2.0-alpha':
+    resolution: {integrity: sha512-GTQen0qAPcAe+5kkpS+Kq+KFHaVq0hSijonco5fl09/hC6Ch3OEmiMXIe7GAKfPj1hoBd1iU9tcZX1Wdfr9jKw==}
+    engines: {node: '>=20.19'}
     peerDependencies:
+      react: '>=18'
+      react-dom: '>=18'
+
+  '@vhyxui/react@0.4.0-alpha':
+    resolution: {integrity: sha512-wUimR4+vRIpxnG3eA3BfeTMsWUwr0d79CsGBqqY0vcDqcbFduq5GVhix0blRpxuS1POLOnoZR6yRk5FGwsJNVQ==}
+    engines: {node: '>=20.19'}
+    peerDependencies:
+      '@testing-library/react': '>=14'
       react: '>=18'
       react-dom: '>=18'
       react-hook-form: '>=7'
     peerDependenciesMeta:
+      '@testing-library/react':
+        optional: true
       react-hook-form:
         optional: true
 
-  '@vhyxui/tokens@file:.tarballs/vhyxui-tokens-0.2.0-alpha.tgz':
-    resolution: {integrity: sha512-R57XDi4i3rNj7vSimgoHInbik0KB7gQf1IceIzlM1OKBcz28dmGgfyWSvxOU3IR+3nQCH0/Yg64SfYOFCI7KUA==, tarball: file:.tarballs/vhyxui-tokens-0.2.0-alpha.tgz}
-    version: 0.2.0-alpha
+  '@vhyxui/tokens@0.2.0-alpha':
+    resolution: {integrity: sha512-ZINzPY5RdnSA98Xy1UCfPJRPNqvC3IBu4aQ6Y0yj1SqSHyWyScTMtztWKUetYDi63UrMI8whhFEqR9kzBJHW8g==}
+    engines: {node: '>=20.19'}
 
   '@vitejs/plugin-react@4.7.0':
     resolution: {integrity: sha512-gUu9hwfWvvEDBBmgtAowQCojwZmJ5mcLn3aufeCsitijs3+f2NsrPtlAWIR6OPiqljl96GVCUbLe0HyqIpVaoA==}
@@ -3132,33 +3129,35 @@ snapshots:
 
   '@ungap/structured-clone@1.3.1': {}
 
-  '@vhyxchart/core@file:.tarballs/vhyxchart-core-0.1.0-alpha.tgz': {}
+  '@vhyxchart/core@0.1.0-alpha': {}
 
-  '@vhyxchart/react@file:.tarballs/vhyxchart-react-0.1.0-alpha.tgz(react@19.2.6)':
+  '@vhyxchart/react@0.1.0-alpha(react@19.2.6)':
     dependencies:
-      '@vhyxchart/core': file:.tarballs/vhyxchart-core-0.1.0-alpha.tgz
+      '@vhyxchart/core': 0.1.0-alpha
       react: 19.2.6
 
-  '@vhyxui/blocks@file:.tarballs/vhyxui-blocks-0.1.0-alpha.tgz(@vhyxui/react@file:.tarballs/vhyxui-react-0.4.0-alpha.tgz(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@vhyxui/blocks@0.1.0-alpha(@vhyxui/react@0.4.0-alpha(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
     dependencies:
-      '@vhyxui/react': file:.tarballs/vhyxui-react-0.4.0-alpha.tgz(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      '@vhyxui/react': 0.4.0-alpha(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       react: 19.2.6
       react-dom: 19.2.6(react@19.2.6)
 
-  '@vhyxui/core@file:.tarballs/vhyxui-core-0.2.0-alpha.tgz(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@vhyxui/core@0.2.0-alpha(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
     dependencies:
       '@vhyxseal/core': link:packages/core
       react: 19.2.6
       react-dom: 19.2.6(react@19.2.6)
 
-  '@vhyxui/react@file:.tarballs/vhyxui-react-0.4.0-alpha.tgz(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@vhyxui/react@0.4.0-alpha(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
     dependencies:
       '@vhyxseal/react': link:packages/react
-      '@vhyxui/core': file:.tarballs/vhyxui-core-0.2.0-alpha.tgz(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      '@vhyxui/core': 0.2.0-alpha(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       react: 19.2.6
       react-dom: 19.2.6(react@19.2.6)
+    optionalDependencies:
+      '@testing-library/react': 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
 
-  '@vhyxui/tokens@file:.tarballs/vhyxui-tokens-0.2.0-alpha.tgz': {}
+  '@vhyxui/tokens@0.2.0-alpha': {}
 
   '@vitejs/plugin-react@4.7.0(vite@5.4.21(@types/node@20.19.41))':
     dependencies:
