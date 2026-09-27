@@ -57,6 +57,6 @@ const SealedCheckoutButton = withAgentContract(CheckoutButton, placeOrder);
 
 ## Links
 
-- Documentation — https://vhyxseal.dev
+- Documentation — https://vhyxseal.com
 - Source — https://github.com/vhyxara/vhyxseal/tree/main/packages/react
 - License — MIT

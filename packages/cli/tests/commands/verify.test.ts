@@ -9,7 +9,7 @@ import { verify } from "../../src/commands/verify.js";
 function makeManifestJson(components: Array<Record<string, unknown>>): Record<string, unknown> {
   return {
     vhyxseal: "1.0.0",
-    schemaUrl: "https://vhyxseal.dev/schema/1.0.0.json",
+    schemaUrl: "https://vhyxseal.com/schema/1.0.0.json",
     domain: "test.com",
     domainVerified: false,
     verificationToken: "",

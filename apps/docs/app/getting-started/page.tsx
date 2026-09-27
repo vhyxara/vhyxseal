@@ -84,7 +84,7 @@ export default function RootLayout({ children }) {
 const manifestExample = `// GET /__agent__/manifest.json
 {
   "vhyxseal": "1.0.0",
-  "schemaUrl": "https://vhyxseal.dev/schema/1.0.0",
+  "schemaUrl": "https://vhyxseal.com/schema/1.0.0",
   "domain": "your-site.com",
   "domainVerified": false,
   "verificationToken": "",

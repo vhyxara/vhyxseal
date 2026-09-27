@@ -42,6 +42,6 @@ import { diffManifests, manifestToVhyxChart } from "@vhyxseal/cli";
 
 ## Links
 
-- Documentation — https://vhyxseal.dev
+- Documentation — https://vhyxseal.com
 - Source — https://github.com/vhyxara/vhyxseal/tree/main/packages/cli
 - License — MIT

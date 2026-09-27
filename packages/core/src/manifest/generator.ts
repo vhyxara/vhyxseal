@@ -17,7 +17,7 @@ import type { VhyxSealManifest, AgentPolicy, ManifestConfig } from "./types.js";
 // ---------------------------------------------------------------------------
 
 const DEFAULT_SCHEMA_VERSION = "1.0.0";
-const SCHEMA_URL_BASE = "https://vhyxseal.dev/schema/";
+const SCHEMA_URL_BASE = "https://vhyxseal.com/schema/";
 const DEFAULT_CACHE_DURATION_SECONDS = 3600;
 
 const DEFAULT_AGENT_POLICY: Readonly<AgentPolicy> = {

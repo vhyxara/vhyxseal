@@ -31,6 +31,6 @@ expect(placeOrder).toBeAgentSafe();
 
 ## Links
 
-- Documentation — https://vhyxseal.dev
+- Documentation — https://vhyxseal.com
 - Source — https://github.com/vhyxara/vhyxseal/tree/main/packages/testing
 - License — MIT
