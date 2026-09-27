@@ -1,6 +1,6 @@
 {
   "name": "@vhyxseal/testing",
-  "version": "1.0.0-rc.3",
+  "version": "1.0.0-rc.4",
   "description": "Test utilities for VhyxSeal: contract verification, drift detection, custom matchers and a mock agent session",
   "keywords": [
     "vhyxseal",
@@ -12,7 +12,7 @@
     "matchers"
   ],
   "license": "MIT",
-  "homepage": "https://vhyxseal.dev",
+  "homepage": "https://vhyxseal.com",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vhyxara/vhyxseal.git",

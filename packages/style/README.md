@@ -123,4 +123,4 @@ VhyxSeal visual language.
 
 ## Parent Package
 
-Part of the [VhyxSeal](https://vhyxseal.dev) ecosystem by [Vhyxara](https://vhyxara.com).
+Part of the [VhyxSeal](https://vhyxseal.com) ecosystem by [Vhyxara](https://vhyxara.com).

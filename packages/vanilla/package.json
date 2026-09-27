@@ -1,6 +1,6 @@
 {
   "name": "@vhyxseal/vanilla",
-  "version": "1.0.0-rc.3",
+  "version": "1.0.0-rc.4",
   "description": "Framework-free VhyxSeal custom elements (<seal-button>, <seal-form> …), safe to import during SSR",
   "keywords": [
     "vhyxseal",
@@ -10,7 +10,7 @@
     "custom-elements"
   ],
   "license": "MIT",
-  "homepage": "https://vhyxseal.dev",
+  "homepage": "https://vhyxseal.com",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vhyxara/vhyxseal.git",

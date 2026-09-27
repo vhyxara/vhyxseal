@@ -1,6 +1,6 @@
 {
   "name": "@vhyxseal/cli",
-  "version": "1.0.0-rc.3",
+  "version": "1.0.0-rc.4",
   "description": "VhyxSeal command line: init, simulate, verify, audit, diff, keygen, sign and visualize agent contracts",
   "keywords": [
     "vhyxseal",
@@ -11,7 +11,7 @@
     "signing"
   ],
   "license": "MIT",
-  "homepage": "https://vhyxseal.dev",
+  "homepage": "https://vhyxseal.com",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vhyxara/vhyxseal.git",

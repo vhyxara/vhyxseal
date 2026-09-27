@@ -20,7 +20,7 @@ function makeManifest(
 ): Record<string, unknown> {
   return {
     vhyxseal: "1.0.0",
-    schemaUrl: "https://vhyxseal.dev/schema/1.0.0",
+    schemaUrl: "https://vhyxseal.com/schema/1.0.0",
     domain,
     domainVerified: false,
     verificationToken: "",

@@ -123,7 +123,7 @@ describe("generateManifest — basic shape", () => {
 
   it("schemaUrl uses default version when schemaVersion not provided", () => {
     const result = generateManifest([], validConfig);
-    expect(result.schemaUrl).toBe("https://vhyxseal.dev/schema/1.0.0");
+    expect(result.schemaUrl).toBe("https://vhyxseal.com/schema/1.0.0");
   });
 
   it("schemaVersion override is reflected in schemaUrl and vhyxseal field", () => {
@@ -131,7 +131,7 @@ describe("generateManifest — basic shape", () => {
       ...validConfig,
       schemaVersion: "2.0.0",
     });
-    expect(result.schemaUrl).toBe("https://vhyxseal.dev/schema/2.0.0");
+    expect(result.schemaUrl).toBe("https://vhyxseal.com/schema/2.0.0");
     expect(result.vhyxseal).toBe("2.0.0");
   });
 

@@ -32,7 +32,7 @@ export function Shell({ children }: { children: React.ReactNode }): React.ReactE
   const pathname = usePathname();
   const nav = NAV.map((g) => ({ ...g, items: g.items.map((i) => ({ ...i, active: i.href === pathname })) }));
   return (
-    <VhyxUIProvider theme="dark" domain="playground.vhyxseal.dev">
+    <VhyxUIProvider theme="dark" domain="playground.vhyxseal.com">
       <AppShell
         brand={<HStack gap={2}><Text as="span" weight="bold" mono>VhyxSeal</Text><Badge size="sm" variant="info">playground</Badge></HStack>}
         nav={nav}

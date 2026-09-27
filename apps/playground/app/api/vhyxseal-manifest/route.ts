@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 
 export function GET(request: NextRequest) {
   const result = handleManifestRoute(request, {
-    domain: "playground.vhyxseal.dev",
+    domain: "playground.vhyxseal.com",
     domainVerified: false,
     verificationToken: "",
     contracts: [],

@@ -38,6 +38,6 @@ import { ContractOverlay } from "@vhyxseal/devtools";
 
 ## Links
 
-- Documentation — https://vhyxseal.dev
+- Documentation — https://vhyxseal.com
 - Source — https://github.com/vhyxara/vhyxseal/tree/main/packages/devtools
 - License — MIT

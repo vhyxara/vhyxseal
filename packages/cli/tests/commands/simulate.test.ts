@@ -5,7 +5,7 @@ import { simulate } from "../../src/commands/simulate.js";
 function makeValidManifestJson(): Record<string, unknown> {
   return {
     vhyxseal: "1.0.0",
-    schemaUrl: "https://vhyxseal.dev/schema/1.0.0.json",
+    schemaUrl: "https://vhyxseal.com/schema/1.0.0.json",
     domain: "example.com",
     domainVerified: false,
     verificationToken: "",

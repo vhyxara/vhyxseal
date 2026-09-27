@@ -63,6 +63,6 @@ edge runtimes and workers.
 
 ## Links
 
-- Documentation — https://vhyxseal.dev
+- Documentation — https://vhyxseal.com
 - Source — https://github.com/vhyxara/vhyxseal/tree/main/packages/core
 - License — MIT

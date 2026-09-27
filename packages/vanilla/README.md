@@ -47,6 +47,6 @@ Call it again in the browser.
 
 ## Links
 
-- Documentation — https://vhyxseal.dev
+- Documentation — https://vhyxseal.com
 - Source — https://github.com/vhyxara/vhyxseal/tree/main/packages/vanilla
 - License — MIT
