@@ -1,6 +1,6 @@
 {
   "name": "@vhyxseal/devtools",
-  "version": "1.0.0-rc.4",
+  "version": "1.0.0-rc.5",
   "description": "In-page DevTools panel and contract overlay for inspecting VhyxSeal contracts during development",
   "keywords": [
     "vhyxseal",

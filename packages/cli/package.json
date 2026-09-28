@@ -1,6 +1,6 @@
 {
   "name": "@vhyxseal/cli",
-  "version": "1.0.0-rc.4",
+  "version": "1.0.0-rc.5",
   "description": "VhyxSeal command line: init, simulate, verify, audit, diff, keygen, sign and visualize agent contracts",
   "keywords": [
     "vhyxseal",

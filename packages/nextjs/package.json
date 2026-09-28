@@ -1,6 +1,6 @@
 {
   "name": "@vhyxseal/nextjs",
-  "version": "1.0.0-rc.4",
+  "version": "1.0.0-rc.5",
   "description": "Next.js integration for VhyxSeal: config plugin and /__agent__/manifest.json route handler",
   "keywords": [
     "vhyxseal",
