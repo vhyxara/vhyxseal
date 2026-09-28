@@ -1,6 +1,7 @@
 import React from "react";
 import type { ReactNode } from "react";
 import { useCapability } from "@vhyxseal/react";
+import { AlertIcon, CheckCircleIcon, LockIcon, XCircleIcon } from "../icons.js";
 import type { ComponentContract, SafetyLevel } from "@vhyxseal/core";
 
 export interface DevToolsPanelProps {
@@ -52,10 +53,10 @@ const rowStyle: React.CSSProperties = {
   alignItems: "center",
 };
 
-function statusIcon(contract: Readonly<ComponentContract>): string {
-  if (contract.verifiedBy === "auto") return "⚠️";
-  if (!contract.fingerprint) return "❌";
-  return "✅";
+function statusIcon(contract: Readonly<ComponentContract>): ReactNode {
+  if (contract.verifiedBy === "auto") return <span style={{ color: colors.yellow }}><AlertIcon title="Inferred — review" /></span>;
+  if (!contract.fingerprint) return <span style={{ color: colors.red }}><XCircleIcon title="Missing fingerprint" /></span>;
+  return <span style={{ color: colors.green }}><CheckCircleIcon title="Verified" /></span>;
 }
 
 function safetyColor(level: SafetyLevel): string {
@@ -91,7 +92,7 @@ export function DevToolsPanel({ forceVisible }: DevToolsPanelProps): ReactNode {
   return (
     <div style={panelStyle}>
       <div style={headerStyle}>
-        <span>🔒 VhyxSeal DevTools</span>
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}><LockIcon />VhyxSeal DevTools</span>
         <span style={{ color: colors.gray }}>v1.0.0</span>
       </div>
 

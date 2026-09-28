@@ -93,13 +93,13 @@ describe("DevToolsPanel", () => {
   it("renders panel with forceVisible={true} even in production", () => {
     vi.stubEnv("NODE_ENV", "production");
     const { getByText } = render(<DevToolsPanel forceVisible={true} />, { wrapper });
-    expect(getByText("🔒 VhyxSeal DevTools")).toBeDefined();
+    expect(getByText("VhyxSeal DevTools")).toBeDefined();
   });
 
   it("renders in development (NODE_ENV is not production)", () => {
     // vitest sets NODE_ENV to "test" by default — not "production"
     const { getByText } = render(<DevToolsPanel />, { wrapper });
-    expect(getByText("🔒 VhyxSeal DevTools")).toBeDefined();
+    expect(getByText("VhyxSeal DevTools")).toBeDefined();
   });
 
   it("shows correct contract count", async () => {
