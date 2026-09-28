@@ -8,10 +8,10 @@ export const colors = {
 } as const;
 
 export const symbols = {
-  pass:   "✅",
-  warn:   "⚠️ ",
-  fail:   "❌",
-  info:   "ℹ️ ",
+  pass:   "✔",
+  warn:   "!",
+  fail:   "✖",
+  info:   "i",
   bullet: "•",
 } as const;
 
