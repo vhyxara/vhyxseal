@@ -74,11 +74,11 @@ Maps `SafetyLevel` values to display colors. Matches the `safetyColor()` functio
 
 These colors are consistent across all VhyxSeal tooling (DevTools panel, CLI output):
 
-- 🟢 **Green** (`#22c55e`) — healthy, complete, verified contract
-- 🟡 **Yellow** (`#eab308`) — inferred contract, needs review, high-safety warning
-- 🔴 **Red** (`#ef4444`) — broken, stale, critical-safety, error
-- 🔵 **Blue** (`#3b82f6`) — informational, agent activity, medium-safety
-- ⚫ **Gray** (`#6b7280`) — disabled, inactive, metadata, low-safety
+- **Green** (`#22c55e`) — healthy, complete, verified contract
+- **Yellow** (`#eab308`) — inferred contract, needs review, high-safety warning
+- **Red** (`#ef4444`) — broken, stale, critical-safety, error
+- **Blue** (`#3b82f6`) — informational, agent activity, medium-safety
+- **Gray** (`#6b7280`) — disabled, inactive, metadata, low-safety
 
 ---
 
