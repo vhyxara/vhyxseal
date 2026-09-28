@@ -167,7 +167,7 @@ describe("ContractOverlay", () => {
     const wrapperDiv = container.firstChild as HTMLElement;
     fireEvent.mouseEnter(wrapperDiv);
     await waitFor(() => {
-      expect(getByText("⚠️ Requires confirmation")).toBeDefined();
+      expect(getByText("Requires confirmation")).toBeDefined();
     });
   });
 
@@ -184,7 +184,7 @@ describe("ContractOverlay", () => {
     const wrapperDiv = container.querySelector("div[style*='position: relative']") as HTMLElement;
     fireEvent.mouseEnter(wrapperDiv);
     await waitFor(() => {
-      expect(getByText("✓ No confirmation needed")).toBeDefined();
+      expect(getByText("No confirmation needed")).toBeDefined();
     });
   });
 });

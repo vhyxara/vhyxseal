@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { AlertIcon, CheckCircleIcon } from "../icons.js";
 import type { ReactNode } from "react";
 import { useContract } from "@vhyxseal/react";
 import type { SafetyLevel } from "@vhyxseal/core";
@@ -83,9 +84,11 @@ export function ContractOverlay({
             </span>
           </div>
           <div>
-            {contract.requiresConfirmation
-              ? "⚠️ Requires confirmation"
-              : "✓ No confirmation needed"}
+            {contract.requiresConfirmation ? (
+              <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}><AlertIcon />Requires confirmation</span>
+            ) : (
+              <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}><CheckCircleIcon />No confirmation needed</span>
+            )}
           </div>
         </div>
       )}
