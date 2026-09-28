@@ -1,5 +1,6 @@
 "use client";
 
+import { TriangleAlertIcon } from '@vhyxui/icons';
 import { Button } from "@vhyxseal/react";
 import { inferContract } from "@vhyxseal/core";
 import { DemoLayout } from "../components/Layout";
@@ -55,7 +56,7 @@ export default function Level0Page() {
             }}
           >
             <p style={{ color: "#eab308", fontSize: "11px", fontFamily: "monospace", margin: "0 0 8px" }}>
-              ⚠ INFERRED — not specified by developer
+              <TriangleAlertIcon /> INFERRED — not specified by developer
             </p>
             <p style={{ color: "#94a3b8", fontSize: "12px", margin: 0, lineHeight: 1.6 }}>
               Confidence: <strong style={{ color: "#f1f5f9" }}>{inferred.confidence}</strong>

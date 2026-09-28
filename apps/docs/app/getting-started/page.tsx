@@ -122,11 +122,11 @@ const verifyCode = `# Point the CLI simulator at your running app
 npx vhyxseal simulate http://localhost:3000
 
 # Expected output:
-# ✅ Manifest found at /__agent__/manifest.json
-# ✅ Schema version: 1.0.0
-# ✅ Components: 12 registered
-# ✅ Capabilities: 3 defined
-# ⚠️  4 components using inferred contracts — consider upgrading`;
+# ✔ Manifest found at /__agent__/manifest.json
+# ✔ Schema version: 1.0.0
+# ✔ Components: 12 registered
+# ✔ Capabilities: 3 defined
+# ! 4 components using inferred contracts — consider upgrading`;
 
 // ── Styles ───────────────────────────────────────────────────────────────────
 

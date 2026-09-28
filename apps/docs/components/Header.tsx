@@ -1,5 +1,6 @@
 "use client";
 
+import { LockIcon, MoonIcon, SunIcon } from '@vhyxui/icons';
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
@@ -39,7 +40,7 @@ export function Header(): React.ReactElement {
     <header style={headerStyle}>
       {/* Wordmark */}
       <a href="/" style={wordmarkStyle}>
-        🔒 VhyxSeal
+        <LockIcon /> VhyxSeal
       </a>
 
       {/* Center nav */}
@@ -90,7 +91,7 @@ export function Header(): React.ReactElement {
             aria-label={`Switch to ${resolvedTheme === "light" ? "dark" : "light"} mode`}
             style={themeButtonStyle}
           >
-            {resolvedTheme === "light" ? "🌙" : "☀️"}
+            {resolvedTheme === "light" ? <MoonIcon /> : <SunIcon />}
           </button>
         ) : (
           // Placeholder preserves layout during SSR / before hydration
