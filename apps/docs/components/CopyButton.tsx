@@ -1,5 +1,6 @@
 "use client";
 
+import { CheckIcon } from '@vhyxui/icons';
 import { useState } from "react";
 
 interface CopyButtonProps {
@@ -41,7 +42,7 @@ export function CopyButton({ code }: CopyButtonProps): React.ReactElement {
       }}
       aria-label="Copy code"
     >
-      {copied ? "✓ Copied" : "Copy"}
+      {copied ? <><CheckIcon /> Copied</> : "Copy"}
     </button>
   );
 }

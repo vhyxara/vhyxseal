@@ -1,5 +1,6 @@
 "use client";
 
+import { CircleCheckIcon } from '@vhyxui/icons';
 import { SealProvider, Button, useCapability } from "@vhyxseal/react";
 import { defineContract } from "@vhyxseal/core";
 import { DemoLayout } from "../components/Layout";
@@ -126,7 +127,7 @@ function Level3Inner() {
             }}
           >
             <p style={{ color: "#22c55e", fontSize: "11px", fontFamily: "monospace", margin: "0 0 8px" }}>
-              ✓ FULL — complete contract
+              <CircleCheckIcon /> FULL — complete contract
             </p>
             <ul style={{ margin: 0, padding: "0 0 0 16px", color: "#94a3b8", fontSize: "12px", lineHeight: 1.8 }}>
               <li>3 preconditions (auth, cart items, payment method)</li>

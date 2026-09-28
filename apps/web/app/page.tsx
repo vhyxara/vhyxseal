@@ -1,5 +1,6 @@
 'use client';
 
+import { EyeOffIcon, LayersIcon, PackageIcon, PenLineIcon, SparklesIcon, TicketIcon } from '@vhyxui/icons';
 import React, { useMemo, useState } from 'react';
 import { defineContract } from '@vhyxseal/core';
 import { VhyxChart } from '@vhyxchart/react';
@@ -236,12 +237,12 @@ export default function Home() {
             title="Security is the foundation, not a feature"
             description="VhyxSeal sits between agents and your site, so every layer assumes the one above it can fail."
             features={[
-              { icon: '🧱', title: 'Structural trust', description: 'Agents decide from typed fields — safety level, confirmation, destructive — never from free text alone.' },
-              { icon: '✍️', title: 'Signed manifests', description: 'HMAC-SHA256 over a canonical payload, bound to your domain. Tampering is detected.' },
-              { icon: '🧼', title: 'Injection sanitising', description: 'Every string field is checked for prompt injection and length-limited before an agent sees it.' },
-              { icon: '🎟️', title: 'Single-use tokens', description: 'Each agent action carries a short-lived token that is rejected on replay.' },
-              { icon: '🫥', title: 'Abstract conditions', description: 'Contracts say user.hasPaymentMethod, never your database fields.' },
-              { icon: '📦', title: 'Zero dependencies', description: 'The core package ships no runtime dependencies — a smaller supply-chain surface.' },
+              { icon: <LayersIcon />, title: 'Structural trust', description: 'Agents decide from typed fields — safety level, confirmation, destructive — never from free text alone.' },
+              { icon: <PenLineIcon />, title: 'Signed manifests', description: 'HMAC-SHA256 over a canonical payload, bound to your domain. Tampering is detected.' },
+              { icon: <SparklesIcon />, title: 'Injection sanitising', description: 'Every string field is checked for prompt injection and length-limited before an agent sees it.' },
+              { icon: <TicketIcon />, title: 'Single-use tokens', description: 'Each agent action carries a short-lived token that is rejected on replay.' },
+              { icon: <EyeOffIcon />, title: 'Abstract conditions', description: 'Contracts say user.hasPaymentMethod, never your database fields.' },
+              { icon: <PackageIcon />, title: 'Zero dependencies', description: 'The core package ships no runtime dependencies — a smaller supply-chain surface.' },
             ]}
           />
         </div>
