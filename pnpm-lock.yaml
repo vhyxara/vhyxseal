@@ -34,11 +34,11 @@ importers:
   apps/docs:
     dependencies:
       '@vhyxchart/core':
-        specifier: 0.1.0-alpha
-        version: 0.1.0-alpha
+        specifier: 0.1.1
+        version: 0.1.1
       '@vhyxchart/react':
-        specifier: 0.1.0-alpha
-        version: 0.1.0-alpha(react@19.2.6)
+        specifier: 0.1.1
+        version: 0.1.1(react@19.2.6)
       '@vhyxseal/cli':
         specifier: workspace:*
         version: link:../../packages/cli
@@ -56,16 +56,16 @@ importers:
         version: link:../../packages/style
       '@vhyxui/blocks':
         specifier: 0.1.2
-        version: 0.1.2(@vhyxui/react@0.4.2(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 0.1.2(@vhyxui/react@0.4.3(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@vhyxui/core':
-        specifier: 0.2.1
-        version: 0.2.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        specifier: 0.2.2
+        version: 0.2.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@vhyxui/icons':
         specifier: 0.1.0
         version: 0.1.0(react@19.2.6)
       '@vhyxui/react':
-        specifier: 0.4.2
-        version: 0.4.2(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        specifier: 0.4.3
+        version: 0.4.3(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@vhyxui/tokens':
         specifier: 0.2.0-alpha
         version: 0.2.0-alpha
@@ -104,11 +104,11 @@ importers:
   apps/playground:
     dependencies:
       '@vhyxchart/core':
-        specifier: 0.1.0-alpha
-        version: 0.1.0-alpha
+        specifier: 0.1.1
+        version: 0.1.1
       '@vhyxchart/react':
-        specifier: 0.1.0-alpha
-        version: 0.1.0-alpha(react@19.2.6)
+        specifier: 0.1.1
+        version: 0.1.1(react@19.2.6)
       '@vhyxseal/cli':
         specifier: workspace:*
         version: link:../../packages/cli
@@ -123,16 +123,16 @@ importers:
         version: link:../../packages/react
       '@vhyxui/blocks':
         specifier: 0.1.2
-        version: 0.1.2(@vhyxui/react@0.4.2(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 0.1.2(@vhyxui/react@0.4.3(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@vhyxui/core':
-        specifier: 0.2.1
-        version: 0.2.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        specifier: 0.2.2
+        version: 0.2.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@vhyxui/icons':
         specifier: 0.1.0
         version: 0.1.0(react@19.2.6)
       '@vhyxui/react':
-        specifier: 0.4.2
-        version: 0.4.2(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        specifier: 0.4.3
+        version: 0.4.3(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@vhyxui/tokens':
         specifier: 0.2.0-alpha
         version: 0.2.0-alpha
@@ -162,26 +162,26 @@ importers:
   apps/web:
     dependencies:
       '@vhyxchart/core':
-        specifier: 0.1.0-alpha
-        version: 0.1.0-alpha
+        specifier: 0.1.1
+        version: 0.1.1
       '@vhyxchart/react':
-        specifier: 0.1.0-alpha
-        version: 0.1.0-alpha(react@19.2.6)
+        specifier: 0.1.1
+        version: 0.1.1(react@19.2.6)
       '@vhyxseal/core':
         specifier: workspace:*
         version: link:../../packages/core
       '@vhyxui/blocks':
         specifier: 0.1.2
-        version: 0.1.2(@vhyxui/react@0.4.2(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 0.1.2(@vhyxui/react@0.4.3(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@vhyxui/core':
-        specifier: 0.2.1
-        version: 0.2.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        specifier: 0.2.2
+        version: 0.2.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@vhyxui/icons':
         specifier: 0.1.0
         version: 0.1.0(react@19.2.6)
       '@vhyxui/react':
-        specifier: 0.4.2
-        version: 0.4.2(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        specifier: 0.4.3
+        version: 0.4.3(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@vhyxui/tokens':
         specifier: 0.2.0-alpha
         version: 0.2.0-alpha
@@ -1203,12 +1203,12 @@ packages:
   '@ungap/structured-clone@1.3.1':
     resolution: {integrity: sha512-mUFwbeTqrVgDQxFveS+df2yfap6iuP20NAKAsBt5jDEoOTDew+zwLAOilHCeQJOVSvmgCX4ogqIrA0mnyr08yQ==}
 
-  '@vhyxchart/core@0.1.0-alpha':
-    resolution: {integrity: sha512-Np466MV9t3gTu4Go811tdtXaEhXSC5IgIfVSISK05W3IQFXf6JJ2w61XOS9ztO9bZiushVD+cd+0P42KvLy5wA==}
+  '@vhyxchart/core@0.1.1':
+    resolution: {integrity: sha512-nLzbbnP+p2sb3i2kQJgG8qnbxY6PAmJrq732+Y8vv6oWDDs5MCPQJgipBkCLPFy21zI+sScIKBsWNif06zUVEA==}
     engines: {node: '>=20.19'}
 
-  '@vhyxchart/react@0.1.0-alpha':
-    resolution: {integrity: sha512-t2i2oj6FNl7jp7AamIhIXeYgxlMm/0vvf8gJ9OX+D9BaDX9WWSokvhoprRbMqcIZFlBy0LQmwatygk/k/W0KeA==}
+  '@vhyxchart/react@0.1.1':
+    resolution: {integrity: sha512-MkJnqk9MwmQ92vDaoR9DW6qis52fdjs7/uWgrATR8SNeZS4zvzmaPrHUS9XF7gV0tucbUTY37ZnLPzr2HTchyg==}
     engines: {node: '>=20.19'}
     peerDependencies:
       react: '>=18'
@@ -1221,8 +1221,8 @@ packages:
       react: '>=18'
       react-dom: '>=18'
 
-  '@vhyxui/core@0.2.1':
-    resolution: {integrity: sha512-kWmZf8IBXgHYQA27nopgfA+1hI9FpJyO0Ozq00/VYiyCMJLO50MJDHBenS0CPhS2f1n5v8sqzFtHdCejLf5ycg==}
+  '@vhyxui/core@0.2.2':
+    resolution: {integrity: sha512-Cm4gqOyDY+PSsL9C+po7e09tODMiPe1trEckMT4VC5qPvaZKQ254h095KydBwbEcVpEdjUfBjdQvWrwBeIT76Q==}
     engines: {node: '>=20.19'}
     peerDependencies:
       react: '>=18'
@@ -1234,8 +1234,8 @@ packages:
     peerDependencies:
       react: '>=18'
 
-  '@vhyxui/react@0.4.2':
-    resolution: {integrity: sha512-kIQFjCw5PI/mZdAmAj1hsNxfIdYlikNyPTpFz07ZZGSoQudBDjaK9hxMdmbuJRYhe4Chlzvui6MQW9amkGikuw==}
+  '@vhyxui/react@0.4.3':
+    resolution: {integrity: sha512-wHpM4s+13OYILQgHMslWU+5bG8poQBvsMqK4gdNuO/ofbUgCyMYsNqh/Bf0uxkTdR7l03d5MYS4jahxhGpqq3Q==}
     engines: {node: '>=20.19'}
     peerDependencies:
       '@testing-library/react': '>=14'
@@ -3190,21 +3190,21 @@ snapshots:
 
   '@ungap/structured-clone@1.3.1': {}
 
-  '@vhyxchart/core@0.1.0-alpha': {}
+  '@vhyxchart/core@0.1.1': {}
 
-  '@vhyxchart/react@0.1.0-alpha(react@19.2.6)':
+  '@vhyxchart/react@0.1.1(react@19.2.6)':
     dependencies:
-      '@vhyxchart/core': 0.1.0-alpha
+      '@vhyxchart/core': 0.1.1
       react: 19.2.6
 
-  '@vhyxui/blocks@0.1.2(@vhyxui/react@0.4.2(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@vhyxui/blocks@0.1.2(@vhyxui/react@0.4.3(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
     dependencies:
       '@vhyxui/icons': 0.1.0(react@19.2.6)
-      '@vhyxui/react': 0.4.2(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      '@vhyxui/react': 0.4.3(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       react: 19.2.6
       react-dom: 19.2.6(react@19.2.6)
 
-  '@vhyxui/core@0.2.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@vhyxui/core@0.2.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
     dependencies:
       '@vhyxseal/core': link:packages/core
       react: 19.2.6
@@ -3214,10 +3214,10 @@ snapshots:
     dependencies:
       react: 19.2.6
 
-  '@vhyxui/react@0.4.2(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@vhyxui/react@0.4.3(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
     dependencies:
       '@vhyxseal/react': link:packages/react
-      '@vhyxui/core': 0.2.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      '@vhyxui/core': 0.2.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@vhyxui/icons': 0.1.0(react@19.2.6)
       react: 19.2.6
       react-dom: 19.2.6(react@19.2.6)
