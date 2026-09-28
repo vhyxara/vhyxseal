@@ -153,6 +153,52 @@ importers:
         specifier: ^5.4.0
         version: 5.9.3
 
+  apps/web:
+    dependencies:
+      '@vhyxchart/core':
+        specifier: 0.1.0-alpha
+        version: 0.1.0-alpha
+      '@vhyxchart/react':
+        specifier: 0.1.0-alpha
+        version: 0.1.0-alpha(react@19.2.6)
+      '@vhyxseal/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@vhyxui/blocks':
+        specifier: 0.1.1
+        version: 0.1.1(@vhyxui/react@0.4.1(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      '@vhyxui/core':
+        specifier: 0.2.1
+        version: 0.2.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      '@vhyxui/react':
+        specifier: 0.4.1
+        version: 0.4.1(@testing-library/react@16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      '@vhyxui/tokens':
+        specifier: 0.2.0-alpha
+        version: 0.2.0-alpha
+      next:
+        specifier: ^15.0.0
+        version: 15.5.18(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      react:
+        specifier: ^19.0.0
+        version: 19.2.6
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.2.6(react@19.2.6)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.19.41
+      '@types/react':
+        specifier: ^19.0.0
+        version: 19.2.14
+      '@types/react-dom':
+        specifier: ^19.0.0
+        version: 19.2.3(@types/react@19.2.14)
+      typescript:
+        specifier: ^5.4.0
+        version: 5.9.3
+
   packages/cli:
     dependencies:
       '@vhyxseal/core':
