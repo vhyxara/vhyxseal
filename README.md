@@ -103,11 +103,11 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and our [Code of Conduct](CODE_OF_CONDUCT
 
 ## Family
 
-VhyxSeal is part of the Vhyxara family:
+VhyxSeal is part of the [Vhyxara](https://vhyxara.com) family:
 
 - [**VhyxUI**](https://github.com/vhyxara/vhyxUI) — accessible React components with VhyxSeal contracts built in
 - [**VhyxChart**](https://github.com/vhyxara/vhyxchart) — animated, text-defined diagrams; `vhyxseal visualize` turns any manifest into one
 
 ## License
 
-[MIT](LICENSE) © Vhyxara · [vhyxseal.com](https://vhyxseal.com)
+[MIT](LICENSE) © [Vhyxara](https://vhyxara.com) · [vhyxseal.com](https://vhyxseal.com)
