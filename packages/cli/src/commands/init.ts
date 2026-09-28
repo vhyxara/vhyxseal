@@ -1,6 +1,6 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { print } from "../utils/output.js";
+import { colors, print, symbols } from "../utils/output.js";
 
 /**
  * Options for the init command.
@@ -71,7 +71,7 @@ export async function init(options: InitOptions = {}): Promise<InitResult> {
   const alreadyExisted = existsSync(configPath);
 
   if (alreadyExisted && !force) {
-    print(`\n⚠️  vhyxseal.config.ts already exists at ${configPath}`);
+    print(`\n${colors.yellow(symbols.warn)} vhyxseal.config.ts already exists at ${configPath}`);
     print(`   Run with --force to overwrite.`);
 
     return {
@@ -104,7 +104,7 @@ export async function init(options: InitOptions = {}): Promise<InitResult> {
     }
   }
 
-  print(`\n✅ Created vhyxseal.config.ts at ${configPath}`);
+  print(`\n${colors.green(symbols.pass)} Created vhyxseal.config.ts at ${configPath}`);
   NEXT_STEPS.forEach((step) => print(`   ${step}`));
 
   return {

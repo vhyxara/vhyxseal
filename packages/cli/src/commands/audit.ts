@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
-import { print, printError } from "../utils/output.js";
+import { colors, print, printError } from "../utils/output.js";
 
 /**
  * Options for the audit command.
@@ -122,7 +122,7 @@ export async function audit(options: AuditOptions = {}): Promise<AuditResult> {
   if (json) {
     print(JSON.stringify(result, null, 2));
   } else {
-    print(`\n🔒 VhyxSeal Audit`);
+    print(`\n${colors.bold("VhyxSeal Audit")}`);
     print(`   Manifest: ${manifestPath}`);
     print(`   Total components:    ${totalComponents}`);
     print(`   Explicit contracts:  ${explicitContracts}`);

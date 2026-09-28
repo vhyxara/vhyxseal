@@ -117,11 +117,11 @@ export async function verify(options: VerifyOptions): Promise<VerifyResult> {
   // Print results
   for (const result of results) {
     if (result.status === "pass") {
-      print(`  ${symbols.pass}  ${colors.green(result.contractId)} — ${result.message}`);
+      print(`  ${colors.green(symbols.pass)} ${colors.green(result.contractId)} — ${result.message}`);
     } else if (result.status === "warn") {
-      print(`  ${symbols.warn} ${colors.yellow(result.contractId)} — ${result.message}`);
+      print(`  ${colors.yellow(symbols.warn)} ${colors.yellow(result.contractId)} — ${result.message}`);
     } else {
-      print(`  ${symbols.fail}  ${colors.red(result.contractId)} — ${result.message} — BLOCKS CI`);
+      print(`  ${colors.red(symbols.fail)} ${colors.red(result.contractId)} — ${result.message} — BLOCKS CI`);
     }
   }
 
