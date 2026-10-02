@@ -1,3 +1,4 @@
+import { ExternalLinkIcon } from '@vhyxui/icons';
 import { CodeBlock } from "../../../components/CodeBlock";
 import { OnThisPage } from "../../../components/OnThisPage";
 import { PrevNext } from "../../../components/PrevNext";
@@ -589,7 +590,7 @@ export default async function Rfc0001Page(): Promise<React.ReactElement> {
                 textDecoration: "none",
               }}
             >
-              Open Discussion ↗
+              Open Discussion <ExternalLinkIcon size="0.9em" />
             </a>
             <a
               href="https://github.com/vhyxara/vhyxseal/blob/main/RFC-0001.md"
@@ -604,7 +605,7 @@ export default async function Rfc0001Page(): Promise<React.ReactElement> {
                 textDecoration: "none",
               }}
             >
-              View on GitHub ↗
+              View on GitHub <ExternalLinkIcon size="0.9em" />
             </a>
           </div>
         </div>
@@ -1629,7 +1630,7 @@ export default async function Rfc0001Page(): Promise<React.ReactElement> {
             textDecoration: "none",
           }}
         >
-          Comment on GitHub Discussions ↗
+          Comment on GitHub Discussions <ExternalLinkIcon size="0.9em" />
         </a>
         <a
           href="https://github.com/vhyxara/vhyxseal/blob/main/RFC-0001.md"
@@ -1643,7 +1644,7 @@ export default async function Rfc0001Page(): Promise<React.ReactElement> {
             textDecoration: "none",
           }}
         >
-          View Raw on GitHub ↗
+          View Raw on GitHub <ExternalLinkIcon size="0.9em" />
         </a>
       </div>
 

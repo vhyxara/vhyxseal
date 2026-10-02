@@ -1,5 +1,6 @@
 "use client";
 
+import { ContrastIcon } from '@vhyxui/icons';
 import { Button } from "@vhyxseal/react";
 import { defineContract, resolveIntentDefaults } from "@vhyxseal/core";
 import { DemoLayout } from "../components/Layout";
@@ -70,7 +71,7 @@ export default function Level1Page() {
             }}
           >
             <p style={{ color: "#3b82f6", fontSize: "11px", fontFamily: "monospace", margin: "0 0 8px" }}>
-              ◑ PARTIAL — intent fills in defaults
+              <ContrastIcon /> PARTIAL — intent fills in defaults
             </p>
             <p style={{ color: "#94a3b8", fontSize: "12px", margin: 0, lineHeight: 1.6 }}>
               safetyLevel: <strong style={{ color: "#ef4444" }}>high</strong>

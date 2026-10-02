@@ -1,3 +1,4 @@
+import { ExternalLinkIcon } from '@vhyxui/icons';
 import { CodeBlock } from "../components/CodeBlock";
 
 const installCode = `npm install @vhyxseal/core @vhyxseal/react`;
@@ -117,7 +118,7 @@ export default function HomePage(): React.ReactElement {
               gap: "6px",
             }}
           >
-            GitHub ↗
+            GitHub <ExternalLinkIcon size="0.9em" />
           </a>
         </div>
 

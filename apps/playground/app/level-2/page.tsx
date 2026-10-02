@@ -1,5 +1,6 @@
 "use client";
 
+import { ContrastIcon } from '@vhyxui/icons';
 import { Button } from "@vhyxseal/react";
 import { defineContract } from "@vhyxseal/core";
 import { DemoLayout } from "../components/Layout";
@@ -82,7 +83,7 @@ export default function Level2Page() {
             }}
           >
             <p style={{ color: "#a855f7", fontSize: "11px", fontFamily: "monospace", margin: "0 0 8px" }}>
-              ◕ PARTIAL — developer specified key fields
+              <ContrastIcon /> PARTIAL — developer specified key fields
             </p>
             <ul style={{ margin: 0, padding: "0 0 0 16px", color: "#94a3b8", fontSize: "12px", lineHeight: 1.8 }}>
               <li>requires: 2 preconditions (auth + cart items)</li>
