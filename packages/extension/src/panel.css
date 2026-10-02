@@ -44,6 +44,9 @@ body {
 }
 
 .refresh-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   background: var(--vhyxseal-color-surface);
   border: 1px solid var(--vhyxseal-color-border);
   color: var(--vhyxseal-color-text);

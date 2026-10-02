@@ -1,5 +1,7 @@
 import React from "react";
 
+// Inline copies of the Vhyxara drawings from @vhyxui/icons (packages here never depend on VhyxUI).
+
 /** Props for the small DevTools status icons. */
 export interface StatusIconProps {
   /** Accessible name. Omit for decorative icons. */
@@ -29,20 +31,20 @@ function Svg({ title, children }: StatusIconProps & { children: React.ReactNode 
 
 /** Padlock: the VhyxSeal mark in DevTools. */
 export function LockIcon(props: StatusIconProps): React.ReactElement {
-  return <Svg {...props}><rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" /></Svg>;
+  return <Svg {...props}><rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /><path d="M12 15v2" /></Svg>;
 }
 
 /** Circle with a check: healthy / no confirmation needed. */
 export function CheckCircleIcon(props: StatusIconProps): React.ReactElement {
-  return <Svg {...props}><circle cx="12" cy="12" r="9" /><path d="m8 12.5 2.5 2.5L16 9.5" /></Svg>;
+  return <Svg {...props}><circle cx="12" cy="12" r="9" /><path d="m8.5 12.25 2.5 2.5 4.75-5" /></Svg>;
 }
 
 /** Circle with a cross: missing or broken. */
 export function XCircleIcon(props: StatusIconProps): React.ReactElement {
-  return <Svg {...props}><circle cx="12" cy="12" r="9" /><path d="m9 9 6 6M15 9l-6 6" /></Svg>;
+  return <Svg {...props}><circle cx="12" cy="12" r="9" /><path d="m9.25 9.25 5.5 5.5M14.75 9.25l-5.5 5.5" /></Svg>;
 }
 
 /** Triangle with an exclamation mark: needs attention. */
 export function AlertIcon(props: StatusIconProps): React.ReactElement {
-  return <Svg {...props}><path d="M10.3 4.2 2.6 18a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 4.2a2 2 0 0 0-3.4 0Z" /><path d="M12 9.5v4" /><path d="M12 17h.01" /></Svg>;
+  return <Svg {...props}><path d="M10.27 4.25 2.94 17A2 2 0 0 0 4.67 20h14.66a2 2 0 0 0 1.73-3L13.73 4.25a2 2 0 0 0-3.46 0Z" /><path d="M12 9.25v4" /><path d="M12 16.5h.01" /></Svg>;
 }
