@@ -1,6 +1,6 @@
 'use client';
 
-import { LockIcon } from '@vhyxui/icons';
+import { BracesIcon, LockIcon, WorkflowIcon } from '@vhyxui/icons';
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -21,9 +21,9 @@ const NAV = [
   {
     label: 'Tools',
     items: [
-      { label: 'Contract visualizer', href: '/visualize', icon: '◈' },
+      { label: 'Contract visualizer', href: '/visualize', icon: <WorkflowIcon /> },
       { label: 'Security lab', href: '/security', icon: <LockIcon /> },
-      { label: 'Agent manifest', href: '/__agent__/manifest.json', icon: '{}', external: true },
+      { label: 'Agent manifest', href: '/__agent__/manifest.json', icon: <BracesIcon />, external: true },
     ],
   },
 ];

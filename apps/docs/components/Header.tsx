@@ -1,6 +1,6 @@
 "use client";
 
-import { LockIcon, MoonIcon, SunIcon } from '@vhyxui/icons';
+import { ContrastIcon, LockIcon, MoonIcon, SunIcon } from '@vhyxui/icons';
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
@@ -96,7 +96,7 @@ export function Header(): React.ReactElement {
         ) : (
           // Placeholder preserves layout during SSR / before hydration
           <span style={themeButtonPlaceholderStyle} aria-hidden="true">
-            ◐
+            <ContrastIcon />
           </span>
         )}
       </div>
