@@ -1,6 +1,6 @@
 {
   "name": "@vhyxseal/vanilla",
-  "version": "1.0.0-rc.5",
+  "version": "1.0.0-rc.6",
   "description": "Framework-free VhyxSeal custom elements (<seal-button>, <seal-form> …), safe to import during SSR",
   "keywords": [
     "vhyxseal",
