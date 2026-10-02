@@ -17,14 +17,14 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "shiki": "^1.0.0",
-    "@vhyxui/react": "0.4.5",
+    "@vhyxui/react": "0.4.6",
     "@vhyxui/tokens": "0.2.0-alpha",
     "@vhyxui/blocks": "0.1.4",
     "@vhyxui/core": "0.2.2",
     "@vhyxchart/react": "0.1.1",
     "@vhyxchart/core": "0.1.1",
     "@vhyxseal/cli": "workspace:*",
-    "@vhyxui/icons": "0.2.2"
+    "@vhyxui/icons": "0.2.3"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
