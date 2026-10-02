@@ -1,6 +1,6 @@
 {
   "name": "@vhyxseal/testing",
-  "version": "1.0.0-rc.5",
+  "version": "1.0.0-rc.6",
   "description": "Test utilities for VhyxSeal: contract verification, drift detection, custom matchers and a mock agent session",
   "keywords": [
     "vhyxseal",
