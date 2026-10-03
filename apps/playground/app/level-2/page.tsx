@@ -47,14 +47,14 @@ export default function Level2Page() {
         <div>
           <div
             style={{
-              backgroundColor: "#1e293b",
-              border: "1px solid #334155",
+              backgroundColor: "var(--seal-surface)",
+              border: "1px solid var(--seal-border)",
               borderRadius: "8px",
               padding: "24px",
               marginBottom: "16px",
             }}
           >
-            <p style={{ color: "#64748b", fontSize: "12px", fontFamily: "monospace", marginBottom: "12px" }}>
+            <p style={{ color: "var(--seal-text-muted)", fontSize: "12px", fontFamily: "monospace", marginBottom: "12px" }}>
               Button with partial contract — 2 preconditions, 1 permission
             </p>
             <Button
@@ -76,7 +76,7 @@ export default function Level2Page() {
           </div>
           <div
             style={{
-              backgroundColor: "#1e293b",
+              backgroundColor: "var(--seal-surface)",
               border: "1px solid #a855f7",
               borderRadius: "8px",
               padding: "16px",
@@ -85,7 +85,7 @@ export default function Level2Page() {
             <p style={{ color: "#a855f7", fontSize: "11px", fontFamily: "monospace", margin: "0 0 8px" }}>
               <ContrastIcon /> PARTIAL — developer specified key fields
             </p>
-            <ul style={{ margin: 0, padding: "0 0 0 16px", color: "#94a3b8", fontSize: "12px", lineHeight: 1.8 }}>
+            <ul style={{ margin: 0, padding: "0 0 0 16px", color: "var(--seal-text-subtle)", fontSize: "12px", lineHeight: 1.8 }}>
               <li>requires: 2 preconditions (auth + cart items)</li>
               <li>requiredPermissions: write:orders</li>
               <li>reversibleWindow: 300s</li>
@@ -96,7 +96,7 @@ export default function Level2Page() {
       }
       right={
         <div>
-          <p style={{ color: "#64748b", fontSize: "12px", fontFamily: "monospace", marginBottom: "8px" }}>
+          <p style={{ color: "var(--seal-text-muted)", fontSize: "12px", fontFamily: "monospace", marginBottom: "8px" }}>
             Resulting contract — partial but richer than Level 1
           </p>
           <CodeBlock value={level2Contract} />

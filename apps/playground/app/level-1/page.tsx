@@ -35,14 +35,14 @@ export default function Level1Page() {
         <div>
           <div
             style={{
-              backgroundColor: "#1e293b",
-              border: "1px solid #334155",
+              backgroundColor: "var(--seal-surface)",
+              border: "1px solid var(--seal-border)",
               borderRadius: "8px",
               padding: "24px",
               marginBottom: "16px",
             }}
           >
-            <p style={{ color: "#64748b", fontSize: "12px", fontFamily: "monospace", marginBottom: "12px" }}>
+            <p style={{ color: "var(--seal-text-muted)", fontSize: "12px", fontFamily: "monospace", marginBottom: "12px" }}>
               Button with intent="place-order"
             </p>
             <Button
@@ -64,7 +64,7 @@ export default function Level1Page() {
           </div>
           <div
             style={{
-              backgroundColor: "#1e293b",
+              backgroundColor: "var(--seal-surface)",
               border: "1px solid #3b82f6",
               borderRadius: "8px",
               padding: "16px",
@@ -73,7 +73,7 @@ export default function Level1Page() {
             <p style={{ color: "#3b82f6", fontSize: "11px", fontFamily: "monospace", margin: "0 0 8px" }}>
               <ContrastIcon /> PARTIAL — intent fills in defaults
             </p>
-            <p style={{ color: "#94a3b8", fontSize: "12px", margin: 0, lineHeight: 1.6 }}>
+            <p style={{ color: "var(--seal-text-subtle)", fontSize: "12px", margin: 0, lineHeight: 1.6 }}>
               safetyLevel: <strong style={{ color: "#ef4444" }}>high</strong>
               {" · "}
               requiresConfirmation: <strong style={{ color: "#22c55e" }}>true</strong>
@@ -85,11 +85,11 @@ export default function Level1Page() {
       }
       right={
         <div>
-          <p style={{ color: "#64748b", fontSize: "12px", fontFamily: "monospace", marginBottom: "8px" }}>
+          <p style={{ color: "var(--seal-text-muted)", fontSize: "12px", fontFamily: "monospace", marginBottom: "8px" }}>
             resolveIntentDefaults("place-order") — what the vocabulary fills in
           </p>
           <CodeBlock value={intentDefaults} />
-          <p style={{ color: "#64748b", fontSize: "12px", fontFamily: "monospace", marginTop: "16px", marginBottom: "8px" }}>
+          <p style={{ color: "var(--seal-text-muted)", fontSize: "12px", fontFamily: "monospace", marginTop: "16px", marginBottom: "8px" }}>
             Resulting contract (intent + minimum fields)
           </p>
           <CodeBlock value={level1Contract} />

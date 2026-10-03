@@ -1,7 +1,10 @@
-import { ExternalLinkIcon } from '@vhyxui/icons';
+import { CheckIcon, FingerprintIcon, GlobeIcon, KeyIcon, LayersIcon, PackageIcon, ShieldCheckIcon, ShieldIcon, TimerIcon } from '@vhyxui/icons';
 import { CodeBlock } from "../components/CodeBlock";
+import { CopyButton } from "../components/CopyButton";
+import { CheckoutFlow } from "../components/home/CheckoutFlow";
+import { GITHUB, PLAYGROUND, VHYXARA, VHYXCHART, VHYXUI } from "../components/links";
 
-const installCode = `npm install @vhyxseal/core @vhyxseal/react`;
+const INSTALL = "pnpm add @vhyxseal/core @vhyxseal/react";
 
 const step2Code = `import { SealProvider } from '@vhyxseal/react'
 
@@ -24,249 +27,135 @@ export const CheckoutButton = withAgentContract(
   contract
 )`;
 
-/**
- * Landing page — three sections exactly.
- *
- * Section 1: Hero — headline, description, action buttons, install command.
- * Section 2: The problem in one scenario — narrative, two paragraphs.
- * Section 3: Three-minute setup — three steps with code blocks.
- *
- * Zero hardcoded colors — all via --docs-* or --vhyxseal-* CSS custom properties.
- */
+const LEVELS = [
+  { level: 0, label: "Level 0 · zero effort", code: "<Button>Place order</Button>", fill: 25, text: "Intent inferred from text and ARIA" },
+  { level: 1, label: "Level 1 · one prop", code: 'intent="place-order"', fill: 55, text: "Safety and confirmation filled in" },
+  { level: 2, label: "Level 2 · partial", code: "contract={{ reversibleWindow: 300 }}", fill: 80, text: "Override the fields that matter" },
+  { level: 3, label: "Level 3 · full contract", code: "defineContract({ … })", fill: 100, text: "Preconditions, consequences, errors" },
+];
+
+const LAYERS = [
+  { icon: <KeyIcon size={16} />, text: "Signed manifests" },
+  { icon: <ShieldIcon size={16} />, text: "Injection filtering" },
+  { icon: <GlobeIcon size={16} />, text: "Domain binding" },
+  { icon: <ShieldCheckIcon size={16} />, text: "Agent policy" },
+  { icon: <FingerprintIcon size={16} />, text: "Single-use tokens" },
+  { icon: <PackageIcon size={16} />, text: "Zero dependencies" },
+  { icon: <LayersIcon size={16} />, text: "Data abstraction" },
+  { icon: <TimerIcon size={16} />, text: "Rate limits" },
+];
+
+/** Landing page: hero with a live-looking manifest, adoption levels, security + flow, setup, footer. */
 export default function HomePage(): React.ReactElement {
   return (
-    <>
-      {/* ── Section 1 — Hero ────────────────────────────────────────── */}
-      <section style={{ padding: "80px 0 64px" }}>
-        <h1
-          style={{
-            fontSize: "clamp(2rem, 5vw, 3.5rem)",
-            fontWeight: 800,
-            letterSpacing: "-0.03em",
-            lineHeight: 1.1,
-            color: "var(--docs-text)",
-            marginBottom: "24px",
-            maxWidth: "700px",
-          }}
-        >
-          The semantic contract layer for AI-agent-readable UI.
-        </h1>
+    <div className="seal-home">
+      <section className="seal-hero seal-grid-bg">
+        <div className="seal-home-inner seal-hero-grid">
+          <div className="seal-hero-copy">
+            <span className="seal-eyebrow">The contract layer for the agentic web</span>
+            <h1 className="seal-hero-title">Tell AI agents what your UI does — and when to ask a human.</h1>
+            <p className="seal-hero-lead">
+              Every component gets a contract: intent, preconditions, consequences, safety. Your site
+              publishes them as one signed manifest agents can trust.
+            </p>
+            <div className="seal-actions">
+              <a href="/getting-started" className="seal-btn seal-btn--primary">Get started</a>
+              <a href={PLAYGROUND} className="seal-btn seal-btn--ghost">Open security lab</a>
+              <span className="seal-install">
+                <span className="seal-install-prompt" aria-hidden="true">$</span>
+                <code>{INSTALL}</code>
+                <CopyButton code={INSTALL} />
+              </span>
+            </div>
+          </div>
 
-        <p
-          style={{
-            fontSize: "clamp(1rem, 2vw, 1.25rem)",
-            color: "var(--docs-text-muted)",
-            maxWidth: "600px",
-            lineHeight: 1.7,
-            marginBottom: "40px",
-          }}
-        >
-          VhyxSeal gives every UI component a machine-readable contract.
-          Agents understand intent, preconditions, consequences, and safety.
-          Your UI becomes navigable — not just visible.
-        </p>
-
-        {/* Three action buttons */}
-        <div
-          style={{
-            display: "flex",
-            gap: "16px",
-            flexWrap: "wrap",
-            marginBottom: "48px",
-          }}
-        >
-          <a
-            href="/getting-started"
-            style={{
-              padding: "12px 24px",
-              backgroundColor: "var(--vhyxseal-color-full)",
-              color: "white",
-              borderRadius: "8px",
-              fontWeight: 600,
-              fontSize: "15px",
-              textDecoration: "none",
-            }}
-          >
-            Get Started
-          </a>
-          <a
-            href="/rfc/0001"
-            style={{
-              padding: "12px 24px",
-              border: "1px solid var(--docs-border)",
-              color: "var(--docs-text)",
-              borderRadius: "8px",
-              fontWeight: 600,
-              fontSize: "15px",
-              textDecoration: "none",
-              backgroundColor: "var(--docs-surface)",
-            }}
-          >
-            Read the RFC
-          </a>
-          <a
-            href="https://github.com/vhyxara/vhyxseal"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              padding: "12px 24px",
-              color: "var(--docs-text-muted)",
-              fontSize: "15px",
-              textDecoration: "none",
-              display: "flex",
-              alignItems: "center",
-              gap: "6px",
-            }}
-          >
-            GitHub <ExternalLinkIcon size="0.9em" />
-          </a>
+          <div className="seal-manifest" aria-label="Example manifest response">
+            <div className="seal-manifest-head">
+              <span>GET /__agent__/manifest.json</span>
+              <span className="seal-manifest-status">200 · signed</span>
+            </div>
+            <pre>{"{\n  "}<span className="k">&quot;domain&quot;</span>{': "shop.example",\n  '}<span className="k">&quot;components&quot;</span>{": 18,\n  "}<span className="k">&quot;capabilities&quot;</span>{': ["purchase-item", "manage-account"],\n  '}<span className="k">&quot;signature&quot;</span>{': "hmac-sha256:9f2c…41ab"\n}'}</pre>
+            <div className="seal-checks">
+              <span className="seal-check"><CheckIcon size={14} /> Signature valid</span>
+              <span className="seal-check"><CheckIcon size={14} /> Domain bound</span>
+              <span className="seal-check"><CheckIcon size={14} /> Injection-clean</span>
+            </div>
+          </div>
         </div>
-
-        {/* Install command — copy button from CodeBlock */}
-        <CodeBlock code={installCode} lang="bash" />
       </section>
 
-      {/* ── Section 2 — The Problem In One Scenario ─────────────────── */}
-      <section
-        style={{
-          padding: "64px 0",
-          borderTop: "1px solid var(--docs-border)",
-        }}
-      >
-        <h2
-          style={{
-            fontSize: "1.75rem",
-            fontWeight: 700,
-            letterSpacing: "-0.02em",
-            color: "var(--docs-text)",
-            marginBottom: "24px",
-          }}
-        >
-          The missing contract problem.
-        </h2>
-
-        <p
-          style={{
-            fontSize: "1.0625rem",
-            lineHeight: 1.75,
-            color: "var(--docs-text-muted)",
-            maxWidth: "680px",
-            marginBottom: "20px",
-          }}
-        >
-          An AI agent lands on a checkout page. It sees a button labeled
-          &ldquo;Submit.&rdquo; It cannot know if pressing it places a $500
-          order, saves a draft, or deletes an account. It guesses. Sometimes it
-          guesses wrong. This is not an agent intelligence problem. It is a
-          missing contract problem.
-        </p>
-
-        <p
-          style={{
-            fontSize: "1.0625rem",
-            lineHeight: 1.75,
-            color: "var(--docs-text-muted)",
-            maxWidth: "680px",
-          }}
-        >
-          VhyxSeal gives that button a contract. Intent: place-order. Safety
-          level: high. Requires confirmation: true. Consequence: charges payment
-          method and triggers fulfillment. The agent reads the contract before
-          acting. No guessing. No wrong calls.
-        </p>
+      <section className="seal-section">
+        <div className="seal-home-inner">
+          <div className="seal-section-head">
+            <h2 className="seal-h2">Adopt at your own pace</h2>
+            <p className="seal-section-lead">Start with zero code. Each level makes the contract richer, and agents get safer at every step.</p>
+          </div>
+          <div className="seal-levels">
+            {LEVELS.map((l) => (
+              <div key={l.level} className="seal-level" data-level={l.level}>
+                <span className="seal-mono-label seal-level-label">{l.label}</span>
+                <code>{l.code}</code>
+                <div className="seal-level-bar" aria-hidden="true"><span style={{ width: `${l.fill}%` }} /></div>
+                <p className="seal-level-text">{l.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
-      {/* ── Section 3 — Three Minute Setup ──────────────────────────── */}
-      <section
-        style={{
-          padding: "64px 0",
-          borderTop: "1px solid var(--docs-border)",
-        }}
-      >
-        <h2
-          style={{
-            fontSize: "1.75rem",
-            fontWeight: 700,
-            letterSpacing: "-0.02em",
-            color: "var(--docs-text)",
-            marginBottom: "48px",
-          }}
-        >
-          Up in three minutes.
-        </h2>
-
-        {/* Step 1 */}
-        <div style={{ marginBottom: "40px" }}>
-          <p
-            style={{
-              fontSize: "13px",
-              fontWeight: 700,
-              textTransform: "uppercase",
-              letterSpacing: "0.08em",
-              color: "var(--vhyxseal-color-full)",
-              marginBottom: "8px",
-            }}
-          >
-            Step 1 — Install
-          </p>
-          <CodeBlock code={installCode} lang="bash" />
+      <section className="seal-section">
+        <div className="seal-home-inner seal-split">
+          <div className="seal-panel">
+            <h2>Eight layers of security</h2>
+            <p className="seal-panel-text">An agent can only act on what your manifest declares, and every manifest is verified before it is read.</p>
+            <ul className="seal-layers">
+              {LAYERS.map((l) => <li key={l.text}>{l.icon}{l.text}</li>)}
+            </ul>
+            <a href="/security" className="seal-chip" style={{ alignSelf: "flex-start" }}>Security architecture →</a>
+          </div>
+          <div className="seal-panel">
+            <span className="seal-mono-label seal-panel-label">Your manifest as a flow · VhyxChart</span>
+            <CheckoutFlow />
+            <p className="seal-panel-text">
+              Run <code>vhyxseal visualize</code> to see exactly where agents must stop for a person.
+            </p>
+            <div className="seal-chips">
+              <a href="/frameworks/react" className="seal-chip">React</a>
+              <a href="/frameworks/nextjs" className="seal-chip">Next.js</a>
+              <a href="/frameworks/vue" className="seal-chip">Vue</a>
+              <a href="/frameworks/vanilla" className="seal-chip">Vanilla JS</a>
+            </div>
+          </div>
         </div>
-
-        {/* Step 2 */}
-        <div style={{ marginBottom: "40px" }}>
-          <p
-            style={{
-              fontSize: "13px",
-              fontWeight: 700,
-              textTransform: "uppercase",
-              letterSpacing: "0.08em",
-              color: "var(--vhyxseal-color-full)",
-              marginBottom: "8px",
-            }}
-          >
-            Step 2 — Wrap your app
-          </p>
-          <CodeBlock code={step2Code} lang="tsx" />
-        </div>
-
-        {/* Step 3 */}
-        <div style={{ marginBottom: "40px" }}>
-          <p
-            style={{
-              fontSize: "13px",
-              fontWeight: 700,
-              textTransform: "uppercase",
-              letterSpacing: "0.08em",
-              color: "var(--vhyxseal-color-full)",
-              marginBottom: "8px",
-            }}
-          >
-            Step 3 — Add a contract
-          </p>
-          <CodeBlock code={step3Code} lang="tsx" />
-        </div>
-
-        <p
-          style={{
-            fontSize: "15px",
-            color: "var(--docs-text-muted)",
-            fontStyle: "italic",
-          }}
-        >
-          Your manifest is now live at{" "}
-          <code
-            style={{
-              backgroundColor: "var(--docs-code-bg)",
-              padding: "2px 6px",
-              borderRadius: "4px",
-              fontSize: "14px",
-              fontStyle: "normal",
-            }}
-          >
-            /__agent__/manifest.json
-          </code>
-        </p>
       </section>
-    </>
+
+      <section className="seal-section">
+        <div className="seal-home-inner">
+          <div className="seal-section-head">
+            <h2 className="seal-h2">Up in three minutes</h2>
+            <p className="seal-section-lead">
+              A button labelled &ldquo;Submit&rdquo; could place a $500 order or delete an account. The contract tells the agent which, before it acts.
+            </p>
+          </div>
+          <div className="seal-steps">
+            <div className="seal-step"><span className="seal-mono-label">01 · Install</span><CodeBlock code={INSTALL} lang="bash" /></div>
+            <div className="seal-step"><span className="seal-mono-label">02 · Wrap your app</span><CodeBlock code={step2Code} lang="tsx" /></div>
+            <div className="seal-step"><span className="seal-mono-label">03 · Add a contract</span><CodeBlock code={step3Code} lang="tsx" /></div>
+          </div>
+          <p className="seal-panel-text" style={{ marginTop: 20 }}>
+            Your manifest is now live at <code>/__agent__/manifest.json</code>.
+          </p>
+        </div>
+      </section>
+
+      <footer className="seal-footer">
+        <span>A <a href={VHYXARA}>Vhyxara</a> project · MIT licensed</span>
+        <span className="seal-footer-links">
+          <a href={VHYXUI}>VhyxUI</a>
+          <a href={VHYXCHART}>VhyxChart</a>
+          <a href={GITHUB}>GitHub</a>
+        </span>
+      </footer>
+    </div>
   );
 }

@@ -1,0 +1,68 @@
+/*
+ * VhyxSeal playground — the Vhyxara look (deep navy, emerald accent, Geist), dark by default.
+ * Same palette as the docs (apps/docs/styles/seal.css); keep the two in sync.
+ */
+
+:root,
+:root[data-theme="dark"] {
+  --seal-bg: #07090f;
+  --seal-bg-subtle: #0a0d15;
+  --seal-surface: #0d111b;
+  --seal-surface-raised: #111726;
+  --seal-border: #1c2333;
+  --seal-border-strong: #2a3247;
+  --seal-text: #e6e9f2;
+  --seal-text-subtle: #a3abbe;
+  --seal-text-muted: #8a93a8;
+  --seal-accent: #34d399;
+  --seal-accent-hover: #6ee7b7;
+  --seal-accent-text: #6ee7b7;
+  --seal-accent-subtle: #0f2a1f;
+  --seal-accent-border: #1e3a2e;
+  --seal-on-accent: #04140c;
+  --seal-grid: #121826;
+  --seal-code-key: #7dd3fc;
+}
+
+:root[data-theme="light"] {
+  --seal-bg: #f7f8fa;
+  --seal-bg-subtle: #f1f3f6;
+  --seal-surface: #ffffff;
+  --seal-surface-raised: #ffffff;
+  --seal-border: #e3e6ec;
+  --seal-border-strong: #cfd4dd;
+  --seal-text: #121620;
+  --seal-text-subtle: #3f4757;
+  --seal-text-muted: #5b6475;
+  --seal-accent: #059669;
+  --seal-accent-hover: #047857;
+  --seal-accent-text: #047857;
+  --seal-accent-subtle: #e7f8f0;
+  --seal-accent-border: #b7e8d2;
+  --seal-on-accent: #ffffff;
+  --seal-grid: #e9ecf1;
+  --seal-code-key: #0369a1;
+}
+
+:root,
+:root[data-theme="dark"],
+:root[data-theme="light"] {
+  /* dogfooded VhyxUI components */
+  --vhyx-font-sans: var(--font-geist), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --vhyx-font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --vhyx-color-bg: var(--seal-bg);
+  --vhyx-color-bg-subtle: var(--seal-bg-subtle);
+  --vhyx-color-surface: var(--seal-surface);
+  --vhyx-color-border: var(--seal-border);
+  --vhyx-color-border-strong: var(--seal-border-strong);
+  --vhyx-color-border-focus: var(--seal-accent);
+  --vhyx-color-text: var(--seal-text);
+  --vhyx-color-text-subtle: var(--seal-text-subtle);
+  --vhyx-color-text-muted: var(--seal-text-muted);
+  --vhyx-color-accent: var(--seal-accent);
+  --vhyx-color-accent-hover: var(--seal-accent-hover);
+  --vhyx-color-accent-active: var(--seal-accent-hover);
+  --vhyx-color-accent-subtle: var(--seal-accent-subtle);
+  --vhyx-color-text-on-accent: var(--seal-on-accent);
+}
+
