@@ -1,193 +1,100 @@
 "use client";
 
-import { ContrastIcon, LockIcon, MoonIcon, SunIcon } from '@vhyxui/icons';
+import { LockIcon, MenuIcon, MoonIcon, SearchIcon, SunIcon, XIcon } from '@vhyxui/icons';
 import { useTheme } from "next-themes";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { GITHUB, PLAYGROUND, VHYXCHART, VHYXUI } from "./links";
 
-/**
- * Sticky docs site header.
- *
- * Client component — uses next-themes useTheme() to read and toggle the
- * active theme. Renders a sun/moon button that switches between light and
- * dark mode. Uses resolvedTheme (not theme) so "system" preference is
- * always resolved to an actual mode for display purposes.
- *
- * The Search button dispatches a custom "vhyxseal:opensearch" event.
- * The Search modal (rendered in layout.tsx) listens for this event.
- * This avoids prop drilling and state lifting across the layout.
- *
- * Zero hardcoded color values — all colors via --docs-* CSS custom properties.
- */
-export function Header(): React.ReactElement {
+function GitHubIcon(): React.ReactElement {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+    </svg>
+  );
+}
+
+const NAV: Array<{ label: string; href: string; match?: (path: string) => boolean }> = [
+  { label: "Docs", href: "/getting-started", match: (p) => ["/getting-started", "/intents", "/frameworks", "/errors", "/rfc", "/changelog", "/visualize"].some((s) => p.startsWith(s)) },
+  { label: "Schema", href: "/schema", match: (p) => p.startsWith("/schema") },
+  { label: "Security", href: "/security", match: (p) => p.startsWith("/security") },
+  { label: "CLI", href: "/cli", match: (p) => p.startsWith("/cli") },
+  { label: "Playground", href: PLAYGROUND },
+];
+
+interface HeaderProps {
+  menuOpen: boolean;
+  onMenuToggle: () => void;
+}
+
+/** Top bar shared across the Vhyxara sites: brand + family | main menu (centred) | search, theme, GitHub. */
+export function Header({ menuOpen, onMenuToggle }: HeaderProps): React.ReactElement {
   const { resolvedTheme, setTheme } = useTheme();
-
-  // Avoid hydration mismatch — theme is unknown on the server.
-  // Render a placeholder toggle until the component mounts.
-  const [mounted, setMounted] = useState<boolean>(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  function toggleTheme(): void {
-    setTheme(resolvedTheme === "light" ? "dark" : "light");
-  }
-
-  function openSearch(): void {
-    window.dispatchEvent(new Event("vhyxseal:opensearch"));
-  }
+  const pathname = usePathname() ?? "/";
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
+  const isDark = !mounted || resolvedTheme !== "light";
 
   return (
-    <header style={headerStyle}>
-      {/* Wordmark */}
-      <a href="/" style={wordmarkStyle}>
-        <LockIcon /> VhyxSeal
-      </a>
+    <header className="seal-header">
+      <div className="seal-header-start">
+        <button
+          type="button"
+          className="seal-icon-btn seal-hamburger"
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={menuOpen}
+          aria-controls="seal-sidebar"
+          onClick={onMenuToggle}
+        >
+          {menuOpen ? <XIcon size={20} /> : <MenuIcon size={20} />}
+        </button>
+        <a href="/" className="seal-brand">
+          <LockIcon size={22} className="seal-brand-mark" />
+          <span>VhyxSeal</span>
+        </a>
+        <nav className="seal-family" aria-label="Vhyxara libraries">
+          <a href={VHYXUI} className="seal-family-link">UI</a>
+          <a href="/" className="seal-family-link" aria-current="true">Seal</a>
+          <a href={VHYXCHART} className="seal-family-link">Chart</a>
+        </nav>
+      </div>
 
-      {/* Center nav */}
-      <nav style={navStyle} aria-label="Main navigation">
-        <a href="/getting-started" style={navLinkStyle}>
-          Getting Started
-        </a>
-        <a href="/schema" style={navLinkStyle}>
-          Schema
-        </a>
-        <a href="/security" style={navLinkStyle}>
-          Security
-        </a>
-        <a href="/frameworks" style={navLinkStyle}>
-          Frameworks
-        </a>
-        <a href="/rfc/0001" style={navLinkStyle}>
-          RFC
-        </a>
+      <nav className="seal-nav" aria-label="Main navigation">
+        {NAV.map((item) => (
+          <a
+            key={item.label}
+            href={item.href}
+            className="seal-nav-link"
+            aria-current={item.match?.(pathname) ? "page" : undefined}
+          >
+            {item.label}
+          </a>
+        ))}
       </nav>
 
-      {/* Right — Search, GitHub link, theme toggle */}
-      <div style={actionsStyle}>
-        {/* Search button — triggers the Search modal via custom event */}
+      <div className="seal-header-actions">
         <button
-          onClick={openSearch}
-          style={searchButtonStyle}
+          type="button"
+          className="seal-search"
           aria-label="Search documentation (Cmd+K)"
+          onClick={() => { window.dispatchEvent(new Event("vhyxseal:opensearch")); }}
         >
-          Search{" "}
-          <kbd style={{ fontSize: "11px", opacity: 0.7 }}>⌘K</kbd>
+          <SearchIcon size={15} />
+          <span className="seal-search-label">Search</span>
+          <kbd>⌘K</kbd>
         </button>
-
-        <a
-          href="https://github.com/vhyxara/vhyxseal"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={navLinkStyle}
-          aria-label="VhyxSeal on GitHub"
+        <button
+          type="button"
+          className="seal-icon-btn"
+          aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
+          onClick={() => { setTheme(isDark ? "light" : "dark"); }}
         >
-          GitHub
+          {isDark ? <SunIcon size={17} /> : <MoonIcon size={17} />}
+        </button>
+        <a href={GITHUB} className="seal-icon-btn" aria-label="VhyxSeal on GitHub" target="_blank" rel="noopener noreferrer">
+          <GitHubIcon />
         </a>
-
-        {/* Theme toggle — only rendered after mount to avoid hydration mismatch */}
-        {mounted ? (
-          <button
-            onClick={toggleTheme}
-            aria-label={`Switch to ${resolvedTheme === "light" ? "dark" : "light"} mode`}
-            style={themeButtonStyle}
-          >
-            {resolvedTheme === "light" ? <MoonIcon /> : <SunIcon />}
-          </button>
-        ) : (
-          // Placeholder preserves layout during SSR / before hydration
-          <span style={themeButtonPlaceholderStyle} aria-hidden="true">
-            <ContrastIcon />
-          </span>
-        )}
       </div>
     </header>
   );
 }
-
-// ── Styles ─────────────────────────────────────────────────────────────────
-// All colors via CSS custom properties — zero hardcoded hex values.
-
-const headerStyle: React.CSSProperties = {
-  position: "fixed",
-  top: 0,
-  left: 0,
-  right: 0,
-  height: "var(--docs-header-height)",
-  backgroundColor: "var(--docs-surface)",
-  borderBottom: "1px solid var(--docs-border)",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  padding: "0 24px",
-  zIndex: 100,
-  gap: "24px",
-};
-
-const wordmarkStyle: React.CSSProperties = {
-  fontFamily: "monospace",
-  fontWeight: "bold",
-  fontSize: "15px",
-  color: "var(--docs-text)",
-  textDecoration: "none",
-  flexShrink: 0,
-  letterSpacing: "-0.01em",
-};
-
-const navStyle: React.CSSProperties = {
-  display: "flex",
-  gap: "20px",
-  alignItems: "center",
-  flex: 1,
-  justifyContent: "center",
-};
-
-const navLinkStyle: React.CSSProperties = {
-  color: "var(--docs-text-muted)",
-  textDecoration: "none",
-  fontSize: "14px",
-  whiteSpace: "nowrap",
-};
-
-const actionsStyle: React.CSSProperties = {
-  display: "flex",
-  gap: "12px",
-  alignItems: "center",
-  flexShrink: 0,
-};
-
-const searchButtonStyle: React.CSSProperties = {
-  background: "none",
-  border: "1px solid var(--docs-border)",
-  borderRadius: "6px",
-  padding: "6px 12px",
-  color: "var(--docs-text-muted)",
-  fontSize: "13px",
-  cursor: "pointer",
-  display: "flex",
-  alignItems: "center",
-  gap: "8px",
-};
-
-const themeButtonStyle: React.CSSProperties = {
-  background: "none",
-  border: "1px solid var(--docs-border)",
-  borderRadius: "6px",
-  cursor: "pointer",
-  padding: "4px 8px",
-  color: "var(--docs-text-muted)",
-  fontSize: "15px",
-  lineHeight: 1,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-};
-
-const themeButtonPlaceholderStyle: React.CSSProperties = {
-  display: "inline-flex",
-  width: "36px",
-  height: "28px",
-  alignItems: "center",
-  justifyContent: "center",
-  color: "var(--docs-text-muted)",
-  fontSize: "15px",
-};

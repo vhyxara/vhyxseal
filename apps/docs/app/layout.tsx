@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
-import { Header } from "../components/Header";
-import { Sidebar } from "../components/Sidebar";
+import { Geist, Geist_Mono } from "next/font/google";
+import { DocsFrame } from "../components/DocsFrame";
 import { Search } from "../components/Search";
 
 // CSS imports — @vhyxseal/style first so its custom properties are declared
@@ -11,6 +11,10 @@ import "@vhyxseal/style";
 import "@vhyxui/tokens/tokens.css";
 import "@vhyxui/react/style.css";
 import "./globals.css";
+import "../styles/seal.css";
+
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
 
 export const metadata: Metadata = {
   title: "VhyxSeal — Semantic contract layer for the agentic web",
@@ -30,54 +34,18 @@ export const metadata: Metadata = {
  * own open state and responds to Cmd+K keyboard shortcuts and the custom
  * "vhyxseal:opensearch" event dispatched by the Header's search button.
  *
- * Layout structure:
- *   <html data-theme="…">
- *     <body>
- *       ← ThemeProvider renders no DOM element —
- *       <Search />         ← modal, full-screen overlay when open
- *       <Header />         ← fixed, full-width, 56px tall
- *       <div>              ← flex row, padded top by header height
- *         <Sidebar />      ← fixed, 240px wide, full height below header
- *         <main>           ← scrolls, offset left by sidebar width
- *           {children}
- *         </main>
- *       </div>
- *     </body>
- *   </html>
+ * Layout: <Search /> modal, then DocsFrame (header, sidebar, main).
+ * Dark is the default theme; light is one click away in the header.
  */
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>): React.ReactElement {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-theme="dark" className={`${geist.variable} ${geistMono.variable}`} suppressHydrationWarning>
       <body>
-        <ThemeProvider
-          attribute="data-theme"
-          defaultTheme="system"
-          enableSystem
-        >
+        <ThemeProvider attribute="data-theme" defaultTheme="dark" enableSystem={false}>
           <Search />
-          <Header />
-          <div
-            style={{
-              display: "flex",
-              paddingTop: "var(--docs-header-height)",
-              minHeight: "100vh",
-            }}
-          >
-            <Sidebar />
-            <main
-              style={{
-                flex: 1,
-                marginLeft: "var(--docs-sidebar-width)",
-                padding: "40px 48px",
-                maxWidth: "860px",
-                minWidth: 0,
-              }}
-            >
-              {children}
-            </main>
-          </div>
+          <DocsFrame>{children}</DocsFrame>
         </ThemeProvider>
       </body>
     </html>

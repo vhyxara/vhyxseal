@@ -1,8 +1,12 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+
 /**
  * Docs site sidebar navigation.
  *
- * Server component — no hooks, no browser APIs. Renders a fixed left panel
- * with six navigation sections covering the full docs structure.
+ * Client component — highlights the current page. Fixed left panel on desktop,
+ * a slide-in drawer below 1024px (opened from the header menu button).
  *
  * Zero hardcoded color values — all colors via --docs-* CSS custom properties.
  * Theme switching is handled by next-themes on <html data-theme="…"> and
@@ -70,16 +74,27 @@ const NAV_SECTIONS: readonly NavSection[] = [
   },
 ] as const;
 
-export function Sidebar(): React.ReactElement {
+interface SidebarProps {
+  open?: boolean;
+  onNavigate?: () => void;
+}
+
+export function Sidebar({ open = false, onNavigate }: SidebarProps): React.ReactElement {
+  const pathname = usePathname() ?? "/";
   return (
-    <aside style={sidebarStyle} aria-label="Docs navigation">
+    <aside id="seal-sidebar" className="seal-sidebar" data-open={open ? "true" : "false"} aria-label="Docs navigation">
       {NAV_SECTIONS.map((section) => (
-        <div key={section.title} style={sectionStyle}>
-          <div style={sectionTitleStyle}>{section.title}</div>
-          <ul style={listStyle}>
+        <div key={section.title} className="seal-sidebar-section">
+          <div className="seal-sidebar-title">{section.title}</div>
+          <ul className="seal-sidebar-list">
             {section.links.map((link) => (
               <li key={link.href}>
-                <a href={link.href} style={linkStyle}>
+                <a
+                  href={link.href}
+                  className="seal-sidebar-link"
+                  aria-current={pathname === link.href ? "page" : undefined}
+                  onClick={onNavigate}
+                >
                   {link.label}
                 </a>
               </li>
@@ -90,45 +105,3 @@ export function Sidebar(): React.ReactElement {
     </aside>
   );
 }
-
-// ── Styles ─────────────────────────────────────────────────────────────────
-// All colors via CSS custom properties — zero hardcoded hex values.
-
-const sidebarStyle: React.CSSProperties = {
-  position: "fixed",
-  top: "var(--docs-header-height)",
-  left: 0,
-  width: "var(--docs-sidebar-width)",
-  height: "calc(100vh - var(--docs-header-height))",
-  overflowY: "auto",
-  borderRight: "1px solid var(--docs-border)",
-  backgroundColor: "var(--docs-surface)",
-  padding: "24px 0",
-};
-
-const sectionStyle: React.CSSProperties = {
-  marginBottom: "24px",
-};
-
-const sectionTitleStyle: React.CSSProperties = {
-  padding: "0 20px 8px",
-  fontSize: "11px",
-  fontWeight: 600,
-  letterSpacing: "0.08em",
-  textTransform: "uppercase",
-  color: "var(--docs-text-muted)",
-};
-
-const listStyle: React.CSSProperties = {
-  listStyle: "none",
-  margin: 0,
-  padding: 0,
-};
-
-const linkStyle: React.CSSProperties = {
-  display: "block",
-  padding: "6px 20px",
-  fontSize: "14px",
-  color: "var(--docs-text-muted)",
-  textDecoration: "none",
-};
