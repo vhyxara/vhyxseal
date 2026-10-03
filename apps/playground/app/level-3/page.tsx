@@ -90,14 +90,14 @@ function Level3Inner() {
         <div>
           <div
             style={{
-              backgroundColor: "#1e293b",
-              border: "1px solid #334155",
+              backgroundColor: "var(--seal-surface)",
+              border: "1px solid var(--seal-border)",
               borderRadius: "8px",
               padding: "24px",
               marginBottom: "16px",
             }}
           >
-            <p style={{ color: "#64748b", fontSize: "12px", fontFamily: "monospace", marginBottom: "12px" }}>
+            <p style={{ color: "var(--seal-text-muted)", fontSize: "12px", fontFamily: "monospace", marginBottom: "12px" }}>
               Button with full contract — 3 preconditions, 2 permissions, 2 error states
             </p>
             <Button
@@ -119,7 +119,7 @@ function Level3Inner() {
           </div>
           <div
             style={{
-              backgroundColor: "#1e293b",
+              backgroundColor: "var(--seal-surface)",
               border: "1px solid #22c55e",
               borderRadius: "8px",
               padding: "16px",
@@ -129,7 +129,7 @@ function Level3Inner() {
             <p style={{ color: "#22c55e", fontSize: "11px", fontFamily: "monospace", margin: "0 0 8px" }}>
               <CircleCheckIcon /> FULL — complete contract
             </p>
-            <ul style={{ margin: 0, padding: "0 0 0 16px", color: "#94a3b8", fontSize: "12px", lineHeight: 1.8 }}>
+            <ul style={{ margin: 0, padding: "0 0 0 16px", color: "var(--seal-text-subtle)", fontSize: "12px", lineHeight: 1.8 }}>
               <li>3 preconditions (auth, cart items, payment method)</li>
               <li>2 permissions (write:orders, read:payment)</li>
               <li>reversible within 300 seconds</li>
@@ -139,17 +139,17 @@ function Level3Inner() {
           </div>
           <div
             style={{
-              backgroundColor: "#1e293b",
-              border: "1px solid #334155",
+              backgroundColor: "var(--seal-surface)",
+              border: "1px solid var(--seal-border)",
               borderRadius: "8px",
               padding: "16px",
             }}
           >
-            <p style={{ color: "#64748b", fontSize: "11px", fontFamily: "monospace", margin: "0 0 8px" }}>
+            <p style={{ color: "var(--seal-text-muted)", fontSize: "11px", fontFamily: "monospace", margin: "0 0 8px" }}>
               Live manifest — updates as contracts register
             </p>
-            <p style={{ color: "#94a3b8", fontSize: "12px", margin: 0 }}>
-              Contracts registered: <strong style={{ color: "#f1f5f9" }}>{capability.contractCount}</strong>
+            <p style={{ color: "var(--seal-text-subtle)", fontSize: "12px", margin: 0 }}>
+              Contracts registered: <strong style={{ color: "var(--seal-text)" }}>{capability.contractCount}</strong>
               {" · "}
               Has contracts: <strong style={{ color: capability.hasContracts ? "#22c55e" : "#ef4444" }}>
                 {String(capability.hasContracts)}
@@ -160,11 +160,11 @@ function Level3Inner() {
       }
       right={
         <div>
-          <p style={{ color: "#64748b", fontSize: "12px", fontFamily: "monospace", marginBottom: "8px" }}>
+          <p style={{ color: "var(--seal-text-muted)", fontSize: "12px", fontFamily: "monospace", marginBottom: "8px" }}>
             Full contract definition
           </p>
           <CodeBlock value={orderContract} />
-          <p style={{ color: "#64748b", fontSize: "12px", fontFamily: "monospace", marginTop: "16px", marginBottom: "8px" }}>
+          <p style={{ color: "var(--seal-text-muted)", fontSize: "12px", fontFamily: "monospace", marginTop: "16px", marginBottom: "8px" }}>
             Live manifest snapshot
           </p>
           <CodeBlock value={manifestDisplay} />

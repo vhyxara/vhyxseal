@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import { Heading, Stack, Text } from '@vhyxui/react';
 
 export function DemoLayout({
   title,
@@ -13,15 +12,15 @@ export function DemoLayout({
   right: ReactNode;
 }) {
   return (
-    <Stack gap={6} style={{ maxWidth: '1200px', margin: '0 auto' }}>
-      <Stack gap={2}>
-        <Heading level={1} size="lg" style={{ fontFamily: 'var(--vhyx-font-mono)' }}>{title}</Heading>
-        <Text tone="subtle">{description}</Text>
-      </Stack>
-      <Stack direction="row" gap={6} align="start" collapseBelow="lg">
-        <div style={{ flex: 1, minWidth: 0 }}>{left}</div>
-        <div style={{ flex: 1, minWidth: 0 }}>{right}</div>
-      </Stack>
-    </Stack>
+    <div className="lab-page">
+      <div className="lab-page-head">
+        <h1>{title}</h1>
+        <p>{description}</p>
+      </div>
+      <div className="lab-grid-2 lab-grid-2--top">
+        <div className="lab-col">{left}</div>
+        <div className="lab-col">{right}</div>
+      </div>
+    </div>
   );
 }

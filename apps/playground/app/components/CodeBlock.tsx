@@ -2,14 +2,14 @@ export function CodeBlock({ value }: { value: unknown }) {
   return (
     <pre
       style={{
-        backgroundColor: "#1e293b",
-        color: "#e2e8f0",
+        backgroundColor: "var(--seal-surface)",
+        color: "var(--seal-text)",
         padding: "16px",
         borderRadius: "8px",
         fontFamily: "monospace",
         fontSize: "12px",
         overflow: "auto",
-        border: "1px solid #334155",
+        border: "1px solid var(--seal-border)",
       }}
     >
       {JSON.stringify(value, null, 2)}
