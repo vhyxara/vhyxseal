@@ -1,11 +1,17 @@
-import { describe, it, expect, beforeEach } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createComponentRegistrationStore } from "../../src/registry/component-registration.js";
 import type { ComponentRegistrationStore } from "../../src/registry/component-registration.js";
 
 let store: ComponentRegistrationStore;
 
 beforeEach(() => {
+  // Fake clock: the timestamp tests advance time exactly instead of sleeping on the real clock.
+  vi.useFakeTimers();
   store = createComponentRegistrationStore();
+});
+
+afterEach(() => {
+  vi.useRealTimers();
 });
 
 describe("createComponentRegistrationStore — register", () => {
@@ -28,7 +34,7 @@ describe("createComponentRegistrationStore — register", () => {
 
   it("register again with same id updates fingerprint and lastSeenAt", async () => {
     store.register("btn-checkout", "fp_v1", "1.0.0");
-    await new Promise(resolve => setTimeout(resolve, 5));
+    vi.advanceTimersByTime(5);
     const updated = store.register("btn-checkout", "fp_v2", "1.1.0");
     expect(updated.fingerprint).toBe("fp_v2");
     expect(updated.contractVersion).toBe("1.1.0");
@@ -36,7 +42,7 @@ describe("createComponentRegistrationStore — register", () => {
 
   it("register again with same id preserves original registeredAt", async () => {
     const first = store.register("btn-checkout", "fp_v1", "1.0.0");
-    await new Promise(resolve => setTimeout(resolve, 5));
+    vi.advanceTimersByTime(5);
     const second = store.register("btn-checkout", "fp_v2", "1.1.0");
     expect(second.registeredAt).toBe(first.registeredAt);
   });
@@ -61,7 +67,7 @@ describe("createComponentRegistrationStore — updateSeen", () => {
   it("updateSeen updates lastSeenAt", async () => {
     store.register("btn-nav", "fp_nav", "1.0.0");
     const before = store.getRegistration("btn-nav")?.lastSeenAt;
-    await new Promise(resolve => setTimeout(resolve, 5));
+    vi.advanceTimersByTime(5);
     store.updateSeen("btn-nav");
     const after = store.getRegistration("btn-nav")?.lastSeenAt;
     expect(after).not.toBe(before);

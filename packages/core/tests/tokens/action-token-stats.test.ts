@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   clearTokens,
   getTokenStats,
@@ -84,11 +84,27 @@ describe("getTokenStats — clearTokens() resets all counters", () => {
 });
 
 describe("getTokenStats — expired counter", () => {
-  it("increments expired >= 1 when a token with 1ms TTL is evicted by a subsequent issueToken()", async () => {
+  // A fake clock makes the expiry exact: with the real clock a 2ms sleep can advance Date.now() by only 1ms,
+  // leaving now === expiresAt (not yet expired) and the test flaky under load.
+  beforeEach(() => {
+    vi.useFakeTimers();
+  });
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  it("increments expired by 1 when a token with 1ms TTL is evicted by a subsequent issueToken()", () => {
     issueToken("c1", "comp1", "place-order", 1);
-    await new Promise<void>((resolve) => setTimeout(resolve, 2));
+    vi.advanceTimersByTime(2);
     // triggering evictExpired via issueToken
     issueToken("c2", "comp2", "search");
-    expect(getTokenStats().expired).toBeGreaterThanOrEqual(1);
+    expect(getTokenStats().expired).toBe(1);
+  });
+
+  it("does not count a token as expired at the exact moment it reaches its TTL", () => {
+    issueToken("c1", "comp1", "place-order", 1);
+    vi.advanceTimersByTime(1);
+    issueToken("c2", "comp2", "search");
+    expect(getTokenStats().expired).toBe(0);
   });
 });
