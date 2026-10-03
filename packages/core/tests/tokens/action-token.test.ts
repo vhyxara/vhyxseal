@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
   clearTokens,
   issueToken,
@@ -50,9 +50,10 @@ describe("verifyToken — used token", () => {
 });
 
 describe("verifyToken — expired token", () => {
-  it("returns false after TTL passes", async () => {
+  it("returns false after TTL passes", () => {
+    vi.useFakeTimers();
     const id = issueToken("contract-1", "button-1", "place-order", 1);
-    await new Promise<void>((resolve) => setTimeout(resolve, 10));
+    vi.advanceTimersByTime(10);
     expect(
       verifyToken(id, {
         contractId: "contract-1",
@@ -60,6 +61,7 @@ describe("verifyToken — expired token", () => {
         intent: "place-order",
       }),
     ).toBe(false);
+    vi.useRealTimers();
   });
 });
 
