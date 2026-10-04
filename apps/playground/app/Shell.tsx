@@ -66,7 +66,7 @@ export function Shell({ children }: { children: React.ReactNode }): React.ReactE
   }
 
   return (
-    <VhyxUIProvider theme={theme} domain="playground.vhyxseal.com">
+    <VhyxUIProvider theme={theme} domain="play.vhyxseal.com">
       <header className="lab-header">
         <div className="lab-header-start">
           <button type="button" className="lab-icon-btn lab-hamburger" aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} aria-controls="lab-sidebar" onClick={() => { setMenuOpen((o) => !o); }}>
