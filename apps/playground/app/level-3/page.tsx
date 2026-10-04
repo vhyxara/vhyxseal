@@ -58,7 +58,7 @@ const orderContract = defineContract({
 });
 
 const sealConfig = {
-  domain: "playground.vhyxseal.com",
+  domain: "play.vhyxseal.com",
   domainVerified: false,
   verificationToken: "",
 };
