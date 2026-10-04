@@ -1,6 +1,9 @@
 export function CodeBlock({ value }: { value: unknown }) {
   return (
+    // Contracts carry a lastVerified timestamp (set by defineContract), so the prerendered text and
+    // the browser render differ by design; keep the server text instead of failing hydration.
     <pre
+      suppressHydrationWarning
       style={{
         backgroundColor: "var(--seal-surface)",
         color: "var(--seal-text)",
