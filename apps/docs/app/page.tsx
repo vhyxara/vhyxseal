@@ -60,7 +60,7 @@ export default function HomePage(): React.ReactElement {
             </p>
             <div className="seal-actions">
               <a href="/getting-started" className="seal-btn seal-btn--primary">Get started</a>
-              <a href={PLAYGROUND} className="seal-btn seal-btn--ghost">Open security lab</a>
+              <a href={`${PLAYGROUND}/security`} className="seal-btn seal-btn--ghost">Open security lab</a>
               <span className="seal-install">
                 <span className="seal-install-prompt" aria-hidden="true">$</span>
                 <code>{INSTALL}</code>

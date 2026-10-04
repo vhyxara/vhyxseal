@@ -7,7 +7,7 @@ import { VhyxChart } from '@vhyxchart/react';
 import { Badge, Button, Card, Container, Heading, HStack, Stack, Text, VhyxUIProvider, toast } from '@vhyxui/react';
 import { CTASection, FeatureGrid, Hero, MarketingLayout } from '@vhyxui/blocks';
 import { AGENT_FLOW } from '../components/diagram';
-import { DOCS, GITHUB, NPM, RFC, VHYXCHART, VHYXUI, VHYXARA } from '../components/links';
+import { DOCS, GET_STARTED, GITHUB, NPM, PLAYGROUND, RFC, SECURITY_DOCS, SECURITY_LAB, VHYXCHART, VHYXUI, VHYXARA } from '../components/links';
 
 const INSTALL = 'npm install @vhyxseal/react @vhyxseal/core';
 
@@ -139,12 +139,13 @@ export default function Home() {
             { label: 'How it works', href: '#how' },
             { label: 'Security', href: '#security' },
             { label: 'Packages', href: '#packages' },
-            { label: 'RFC', href: RFC, external: true },
+            { label: 'Docs', href: DOCS, external: true },
+            { label: 'Playground', href: PLAYGROUND, external: true },
             { label: 'GitHub', href: GITHUB, external: true },
           ],
           actions: (
-            <Button size="sm" asChild contract={{ id: 'get-started', intent: 'navigate', description: 'Open the VhyxSeal documentation' }}>
-              <a href={DOCS}>Get started</a>
+            <Button size="sm" asChild contract={{ id: 'get-started', intent: 'navigate', description: 'Open the VhyxSeal getting started guide' }}>
+              <a href={GET_STARTED}>Get started</a>
             </Button>
           ),
         }}
@@ -152,7 +153,9 @@ export default function Home() {
           brand: 'VhyxSeal',
           tagline: <>Seal the contract between your UI and the agentic web. MIT licensed, by <a href={VHYXARA} className="brand-link">Vhyxara</a>.</>,
           columns: [
-            { title: 'Project', links: [{ label: 'Documentation', href: DOCS }, { label: 'RFC-0001', href: RFC }, { label: 'npm', href: NPM }, { label: 'GitHub', href: GITHUB }] },
+            { title: 'Learn', links: [{ label: 'Documentation', href: DOCS }, { label: 'Security architecture', href: SECURITY_DOCS }, { label: 'RFC-0001', href: RFC }] },
+            { title: 'Try it', links: [{ label: 'Playground', href: PLAYGROUND }, { label: 'Security lab', href: SECURITY_LAB }] },
+            { title: 'Project', links: [{ label: 'npm', href: NPM }, { label: 'GitHub', href: GITHUB }] },
             { title: 'Family', links: [{ label: 'VhyxUI — components', href: VHYXUI }, { label: 'VhyxChart — animated diagrams', href: VHYXCHART }] },
           ],
           legal: <>© 2026 <a href={VHYXARA} className="brand-link">Vhyxara</a></>,
@@ -163,8 +166,8 @@ export default function Home() {
           title="Seal the contract between your UI and the agentic web."
           description="AI agents now use websites for people — but they only see pixels. VhyxSeal gives every component a machine-readable contract: what it does, how risky it is, and when a human must confirm."
           actions={[
-            { label: 'Get started', href: DOCS },
-            { label: 'Read the RFC', href: RFC, variant: 'outline' },
+            { label: 'Get started', href: GET_STARTED },
+            { label: 'Try the security lab', href: SECURITY_LAB, variant: 'outline' },
           ]}
         />
 
@@ -292,7 +295,7 @@ export default function Home() {
             <div className="family">
               {[
                 { name: 'VhyxUI', role: 'Components', text: 'Accessible React components with VhyxSeal contracts built in.', href: VHYXUI },
-                { name: 'VhyxSeal', role: 'Agents', text: 'The contract layer between your UI and AI agents.', href: GITHUB },
+                { name: 'VhyxSeal', role: 'Agents', text: 'The contract layer between your UI and AI agents.', href: DOCS },
                 { name: 'VhyxChart', role: 'Diagrams', text: 'Animated diagrams — vhyxseal visualize draws your contracts.', href: VHYXCHART },
               ].map((p) => (
                 <Card key={p.name} variant="outline" padding="lg">
@@ -312,8 +315,9 @@ export default function Home() {
             title="Make your UI safe for agents"
             description="Give every component a contract, publish a signed manifest, and keep people in control."
             actions={[
-              { label: 'Get started', href: DOCS },
-              { label: 'Star on GitHub', href: GITHUB, variant: 'outline' },
+              { label: 'Get started', href: GET_STARTED },
+              { label: 'Open playground', href: PLAYGROUND, variant: 'outline' },
+              { label: 'Star on GitHub', href: GITHUB, variant: 'ghost' },
             ]}
           />
         </Container>

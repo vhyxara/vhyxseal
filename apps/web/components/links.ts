@@ -1,6 +1,10 @@
 export const GITHUB = 'https://github.com/vhyxara/vhyxseal';
-export const DOCS = 'https://github.com/vhyxara/vhyxseal#readme';
-export const RFC = 'https://github.com/vhyxara/vhyxseal/blob/main/RFC-0001.md';
+export const DOCS = 'https://docs.vhyxseal.com';
+export const GET_STARTED = `${DOCS}/getting-started`;
+export const SECURITY_DOCS = `${DOCS}/security`;
+export const RFC = `${DOCS}/rfc/0001`;
+export const PLAYGROUND = 'https://play.vhyxseal.com';
+export const SECURITY_LAB = `${PLAYGROUND}/security`;
 export const NPM = 'https://www.npmjs.com/package/@vhyxseal/core';
 export const VHYXUI = 'https://vhyxui.com';
 export const VHYXCHART = 'https://github.com/vhyxara/vhyxchart';
