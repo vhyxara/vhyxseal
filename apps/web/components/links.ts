@@ -7,5 +7,5 @@ export const PLAYGROUND = 'https://play.vhyxseal.com';
 export const SECURITY_LAB = `${PLAYGROUND}/security`;
 export const NPM = 'https://www.npmjs.com/package/@vhyxseal/core';
 export const VHYXUI = 'https://vhyxui.com';
-export const VHYXCHART = 'https://github.com/vhyxara/vhyxchart';
+export const VHYXCHART = 'https://vhyxchart.com';
 export const VHYXARA = 'https://vhyxara.com';
