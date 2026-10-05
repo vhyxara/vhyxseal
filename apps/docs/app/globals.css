@@ -56,14 +56,17 @@ body {
 
 /* ── Typography ────────────────────────────────────────────────────────── */
 
-a {
-  color: var(--docs-link);
-  text-decoration: none;
-}
+/* In the `base` layer so VhyxUI components (layered) keep their own link colours, e.g. Button asChild <a>. */
+@layer base {
+  a {
+    color: var(--docs-link);
+    text-decoration: none;
+  }
 
-a:hover {
-  color: var(--docs-link-hover);
-  text-decoration: underline;
+  a:hover {
+    color: var(--docs-link-hover);
+    text-decoration: underline;
+  }
 }
 
 h1,

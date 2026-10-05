@@ -10,11 +10,12 @@
   --vhyx-color-border-focus: #34d399;
 }
 :root[data-theme='light'] {
-  --vhyx-color-accent: #059669;
-  --vhyx-color-accent-hover: #047857;
-  --vhyx-color-accent-active: #065f46;
+  /* One step darker than emerald-600 so white button text passes 4.5:1. */
+  --vhyx-color-accent: #047857;
+  --vhyx-color-accent-hover: #065f46;
+  --vhyx-color-accent-active: #064e3b;
   --vhyx-color-accent-subtle: #e7f8f0;
   --vhyx-color-accent-muted: #c6f0dc;
   --vhyx-color-text-on-accent: #ffffff;
-  --vhyx-color-border-focus: #059669;
+  --vhyx-color-border-focus: #047857;
 }
