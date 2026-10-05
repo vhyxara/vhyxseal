@@ -9,8 +9,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@vhyxchart/core": "0.1.2",
-    "@vhyxchart/react": "0.1.2",
+    "@vhyxchart/core": "0.2.0",
+    "@vhyxchart/react": "0.2.0",
     "@vhyxseal/core": "workspace:*",
     "@vhyxui/blocks": "0.1.5",
     "@vhyxui/core": "0.2.3",

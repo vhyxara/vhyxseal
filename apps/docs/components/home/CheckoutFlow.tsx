@@ -24,5 +24,5 @@ scenario An agent checks out
 
 /** A checkout manifest drawn as an animated VhyxChart flow. */
 export function CheckoutFlow(): React.ReactElement {
-  return <VhyxChart source={SOURCE} autoplay controls />;
+  return <VhyxChart source={SOURCE} autoplay controls layout="plain" />;
 }
