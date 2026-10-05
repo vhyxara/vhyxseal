@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { Shell } from './Shell';
 import './globals.css';
+import '../styles/atmosphere.css';
 import '../styles/seal.css';
 import '../styles/lab.css';
 

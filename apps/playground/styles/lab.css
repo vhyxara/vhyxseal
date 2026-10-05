@@ -147,3 +147,11 @@ body { margin: 0; background: var(--seal-bg); color: var(--seal-text); font-fami
 @media (max-width: 640px) {
   .lab-levels { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* ── Brand atmosphere: the landing page's card treatment (tint, glowing top edge, lift) ── */
+.lab-level, .lab-tool { position: relative; isolation: isolate; overflow: hidden; transition: border-color .3s var(--atmo-ease), transform .3s var(--atmo-ease), box-shadow .3s var(--atmo-ease); }
+.lab-level { background: linear-gradient(180deg, color-mix(in srgb, var(--level-tone) 7%, var(--seal-surface)), var(--seal-surface) 60%); }
+.lab-tool { --level-tone: var(--atmo-brand); background: linear-gradient(180deg, color-mix(in srgb, var(--atmo-brand) 6%, var(--seal-surface)), var(--seal-surface) 60%); }
+.lab-level::after, .lab-tool::after { content: ''; position: absolute; left: 20px; right: 20px; top: 0; height: 1px; pointer-events: none; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--level-tone) 70%, transparent), transparent); opacity: .7; }
+.lab-level:hover, .lab-tool:hover { transform: translateY(-3px); box-shadow: 0 24px 60px -32px color-mix(in srgb, var(--level-tone) 40%, transparent); }
+@media (prefers-reduced-motion: reduce) { .lab-level:hover, .lab-tool:hover { transform: none; } }

@@ -274,3 +274,21 @@ code, pre, kbd, samp { font-family: var(--vhyx-font-mono); }
 .seal-step { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
 .seal-step .seal-mono-label { color: var(--seal-text-muted); }
 @media (max-width: 1080px) { .seal-steps { grid-template-columns: minmax(0, 1fr); } .seal-step:nth-child(3) { grid-column: auto; grid-row: auto; } }
+
+/* ── Brand atmosphere mapping (styles/atmosphere.css reads these) ── */
+:root {
+  --atmo-brand: var(--seal-accent);
+  --atmo-brand-hover: var(--seal-accent-hover);
+  --atmo-on-brand: var(--seal-on-accent);
+  --atmo-surface: var(--seal-surface);
+  --atmo-border: var(--seal-border);
+  --atmo-border-strong: var(--seal-border-strong);
+  --atmo-text: var(--seal-text);
+  --atmo-muted: var(--seal-text-muted);
+  --atmo-bg: var(--seal-bg);
+}
+/* Brand-light text inside dark cards stays readable on the light theme too. */
+.dh .atmo-card p { color: var(--seal-text-subtle); }
+/* The shared CopyButton is absolutely positioned; anchor it inside the docs-home install pill. */
+.dh .dh-install { position: relative; padding-right: 76px; }
+.dh-install > button { top: 50% !important; right: 6px !important; transform: translateY(-50%); }
