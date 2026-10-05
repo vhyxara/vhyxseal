@@ -1,0 +1,20 @@
+/* VhyxSeal brand: emerald (Vhyxara family — UI rose, Seal emerald, Chart sky). Overrides the VhyxUI accent tokens. */
+:root,
+:root[data-theme='dark'] {
+  --vhyx-color-accent: #34d399;
+  --vhyx-color-accent-hover: #6ee7b7;
+  --vhyx-color-accent-active: #10b981;
+  --vhyx-color-accent-subtle: #0f2a1f;
+  --vhyx-color-accent-muted: #13372a;
+  --vhyx-color-text-on-accent: #04140c;
+  --vhyx-color-border-focus: #34d399;
+}
+:root[data-theme='light'] {
+  --vhyx-color-accent: #059669;
+  --vhyx-color-accent-hover: #047857;
+  --vhyx-color-accent-active: #065f46;
+  --vhyx-color-accent-subtle: #e7f8f0;
+  --vhyx-color-accent-muted: #c6f0dc;
+  --vhyx-color-text-on-accent: #ffffff;
+  --vhyx-color-border-focus: #059669;
+}
