@@ -67,6 +67,8 @@
 }
 .dh-btn--primary { background: var(--atmo-brand); color: var(--atmo-on-brand); }
 .dh-btn--primary:hover { background: var(--atmo-brand-hover, var(--atmo-brand)); }
+.dh-btn--outline { border-color: color-mix(in srgb, var(--atmo-brand) 60%, var(--atmo-border)); color: var(--atmo-text); }
+.dh-btn--outline:hover { border-color: var(--atmo-brand); background: var(--atmo-soft); }
 .dh-btn--ghost { color: var(--atmo-text); }
 .dh-btn--ghost:hover { background: var(--atmo-soft); }
 .dh-btn:focus-visible { outline: 2px solid var(--atmo-brand); outline-offset: 2px; }
