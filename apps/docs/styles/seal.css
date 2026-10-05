@@ -35,8 +35,8 @@
   --seal-text: #121620;
   --seal-text-subtle: #3f4757;
   --seal-text-muted: #5b6475;
-  --seal-accent: #059669;
-  --seal-accent-hover: #047857;
+  --seal-accent: #047857;
+  --seal-accent-hover: #065f46;
   --seal-accent-text: #047857;
   --seal-accent-subtle: #e7f8f0;
   --seal-accent-border: #b7e8d2;
@@ -176,7 +176,7 @@ code, pre, kbd, samp { font-family: var(--vhyx-font-mono); }
   .seal-header { grid-template-columns: minmax(0, 1fr) auto; height: auto; min-height: var(--docs-header-height); padding: 10px 16px; row-gap: 8px; }
   .seal-hamburger { display: inline-flex; }
   .seal-family { display: none; }
-  .seal-nav { grid-column: 1 / -1; order: 3; overflow-x: auto; scrollbar-width: none; mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); }
+  .seal-nav { grid-column: 1 / -1; order: 3; overflow-x: auto; scrollbar-width: none; mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent); }
   .seal-search { width: 36px; padding: 0; justify-content: center; }
   .seal-search-label, .seal-search kbd { display: none; }
   .seal-body { padding-top: 108px; }

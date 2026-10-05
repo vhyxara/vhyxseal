@@ -28,7 +28,8 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
-a { color: inherit; }
+/* In the `base` layer so VhyxUI components (layered) keep their own link colours, e.g. Button asChild <a>. */
+@layer base { a { color: inherit; } }
 .lp-inner { width: 100%; max-width: var(--lp-max); margin: 0 auto; padding: 0 32px; box-sizing: border-box; }
 .lp-mono { font-family: var(--vhyx-font-mono); }
 .lp-eyebrow { font-family: var(--vhyx-font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--lp-brand); }
@@ -242,7 +243,7 @@ a { color: inherit; }
 }
 @media (max-width: 860px) {
   .lp-header { grid-template-columns: minmax(0, 1fr) auto; height: auto; padding: 10px 16px; row-gap: 8px; }
-  .lp-nav { grid-column: 1 / -1; order: 3; overflow-x: auto; scrollbar-width: none; mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); }
+  .lp-nav { grid-column: 1 / -1; order: 3; overflow-x: auto; scrollbar-width: none; mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent); }
   .lp-family { display: none; }
   .lp-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .lp-stat:nth-child(3) { border-left: 0; }
@@ -256,6 +257,7 @@ a { color: inherit; }
   .lp-tile, .lp-tile--4, .lp-tile--2 { grid-column: auto; }
   .lp-section { padding-top: 80px; }
   .lp-cta { padding: 48px 20px; }
+  .lp-cta .lp-actions { flex-direction: column; align-items: stretch; width: 100%; max-width: 300px; }
   .lp-install { max-width: 100%; overflow-x: auto; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -286,9 +288,15 @@ a { color: inherit; }
 .mf-check[data-on='true'] { background: var(--lp-brand-soft); color: var(--lp-brand); border-color: color-mix(in srgb, var(--lp-brand) 35%, transparent); }
 .mf-check[data-on='true'] svg { opacity: 1; transform: none; }
 .mf-log { margin: 0; padding: 12px 0 0; list-style: none; display: flex; flex-direction: column; gap: 8px; border-top: 1px solid var(--vhyx-color-border); font: 12.5px/1.4 var(--vhyx-font-mono); }
-.mf-log li { display: flex; justify-content: space-between; gap: 12px; opacity: .25; transform: translateX(-6px); transition: opacity .4s var(--lp-ease), transform .4s var(--lp-ease); }
+.mf-log li { display: flex; flex-wrap: wrap; justify-content: space-between; column-gap: 12px; row-gap: 2px; opacity: .25; transform: translateX(-6px); transition: opacity .4s var(--lp-ease), transform .4s var(--lp-ease); }
 .mf-log li[data-on='true'] { opacity: 1; transform: none; }
 .mf-log li span { color: var(--vhyx-color-text-subtle); }
+/* When the verdict doesn't fit beside the line it drops below it, right-aligned, instead of wrapping mid-word. */
+.mf-log li b { margin-left: auto; white-space: nowrap; }
+@media (max-width: 640px) {
+  .mf { padding: 18px; }
+  .mf-json { white-space: pre; overflow-x: auto; font-size: 12px; }
+}
 .mf-log li[data-tone='ok'] b { color: var(--lp-brand); font-weight: 500; }
 .mf-log li[data-tone='warn'] b { color: #fbbf24; font-weight: 500; }
 .mf-log li[data-tone='stop'] b { color: #f87171; font-weight: 500; }
