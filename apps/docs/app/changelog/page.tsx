@@ -1,5 +1,50 @@
 import { PrevNext } from "../../components/PrevNext";
 
+type GroupKind = "Added" | "Changed" | "Fixed" | "Security";
+
+const GROUP_COLOR: Record<GroupKind, string> = {
+  Added: "var(--vhyxseal-color-full)",
+  Changed: "var(--vhyxseal-color-info)",
+  Fixed: "var(--vhyxseal-color-capability)",
+  Security: "var(--vhyxseal-color-missing)",
+};
+
+/** Inline code in changelog entries. */
+function C({ children }: { children: React.ReactNode }): React.ReactElement {
+  return <code style={{ fontFamily: "monospace", fontSize: "13px" }}>{children}</code>;
+}
+
+/** One release: version heading, date, optional Latest badge, and its groups. */
+function Release({ version, date, latest = false, children }: { version: string; date: string; latest?: boolean; children: React.ReactNode }): React.ReactElement {
+  const id = version.replace(/\./g, "-");
+  return (
+    <section style={{ marginBottom: "64px" }}>
+      <div style={{ display: "flex", alignItems: "baseline", gap: "16px", marginBottom: "24px", flexWrap: "wrap" }}>
+        <h2 id={id} style={{ fontSize: "22px", fontWeight: 700, color: "var(--docs-text)", margin: 0, fontFamily: "monospace" }}>{version}</h2>
+        <span style={{ fontSize: "14px", color: "var(--docs-text-muted)" }}>{date}</span>
+        {latest && (
+          <span style={{ display: "inline-block", padding: "2px 10px", borderRadius: "999px", fontSize: "12px", fontWeight: 600, backgroundColor: "var(--vhyxseal-color-info)", color: "white" }}>Latest</span>
+        )}
+      </div>
+      {children}
+    </section>
+  );
+}
+
+/** A labelled list of changes inside a release. */
+function Group({ kind, version, children }: { kind: GroupKind; version: string; children: React.ReactNode }): React.ReactElement {
+  const color = GROUP_COLOR[kind];
+  return (
+    <div style={{ marginBottom: "32px" }}>
+      <h3 id={`${kind.toLowerCase()}-${version.replace(/\./g, "-")}`} style={{ fontSize: "16px", fontWeight: 700, color, marginBottom: "12px", display: "flex", alignItems: "center", gap: "8px" }}>
+        <span style={{ display: "inline-block", width: "8px", height: "8px", borderRadius: "50%", backgroundColor: color, flexShrink: 0 }} />
+        {kind}
+      </h3>
+      <ul style={{ paddingLeft: "20px", margin: 0, color: "var(--docs-text)", lineHeight: 1.8, fontSize: "14px" }}>{children}</ul>
+    </div>
+  );
+}
+
 export default function ChangelogPage(): React.ReactElement {
   return (
     <div>
@@ -23,6 +68,55 @@ export default function ChangelogPage(): React.ReactElement {
       >
         All notable changes to VhyxSeal packages. Most recent release first.
       </p>
+
+      {/* ── 1.0.0-rc.6 ────────────────────────────────────────────────── */}
+      <Release version="1.0.0-rc.6" date="2026-10-03" latest>
+        <Group kind="Changed" version="1.0.0-rc.6">
+          <li><C>@vhyxseal/devtools</C> and the browser extension use the current Vhyxara icon drawings for lock, check, cross and alert; the extension&apos;s Refresh button draws an icon instead of a text glyph. The packages keep their own inline SVGs and still depend on nothing else.</li>
+        </Group>
+      </Release>
+
+      {/* ── 1.0.0-rc.5 ────────────────────────────────────────────────── */}
+      <Release version="1.0.0-rc.5" date="2026-09-28">
+        <Group kind="Fixed" version="1.0.0-rc.5">
+          <li><C>@vhyxseal/devtools</C>, the audit dashboard and the extension panel draw small inline SVG status icons with accessible labels instead of emoji.</li>
+          <li><C>@vhyxseal/cli</C> prints plain-text status symbols (✔ ! ✖ i) in its existing colours; emoji rendered inconsistently across terminals and broke column alignment.</li>
+        </Group>
+      </Release>
+
+      {/* ── 1.0.0-rc.4 ────────────────────────────────────────────────── */}
+      <Release version="1.0.0-rc.4" date="2026-09-27">
+        <Group kind="Fixed" version="1.0.0-rc.4">
+          <li>Every generated manifest now references <C>https://vhyxseal.com/schema/&lt;version&gt;</C>. Manifests, the <C>vhyxseal init</C> message and package metadata pointed at a domain the project does not own.</li>
+          <li><C>@vhyxseal/vanilla</C> is safe to import during server-side rendering (Next.js, Nuxt, Astro); it no longer extends <C>HTMLElement</C> at module load outside the browser.</li>
+        </Group>
+        <Group kind="Changed" version="1.0.0-rc.4">
+          <li>A README for every published package, plus description, keywords, homepage, repository and issue links on npm.</li>
+          <li>Requires Node 20.19 or newer (<C>engines.node</C>), needed to <C>require()</C> the ESM builds.</li>
+        </Group>
+      </Release>
+
+      {/* ── 1.0.0-rc.3 ────────────────────────────────────────────────── */}
+      <Release version="1.0.0-rc.3" date="2026-09-26">
+        <Group kind="Security" version="1.0.0-rc.3">
+          <li><C>signManifest</C> / <C>verifyManifest</C> do real HMAC-SHA256 over a canonical manifest payload, replacing the placeholder signature; weak keys and legacy placeholder signatures are rejected. Adds <C>attachSignature</C> and <C>canonicalManifestPayload</C>.</li>
+        </Group>
+        <Group kind="Added" version="1.0.0-rc.3">
+          <li>A real <C>vhyxseal</C> CLI binary with <C>init</C>, <C>simulate</C>, <C>verify</C> and <C>audit</C>, plus new <C>diff</C> (detects changes that break agents), <C>keygen</C>, <C>sign</C> / <C>verify</C> and <C>visualize</C> (draws a manifest as an animated VhyxChart flow).</li>
+        </Group>
+        <Group kind="Fixed" version="1.0.0-rc.3">
+          <li><C>@vhyxseal/core</C> works in the browser: SHA-256, HMAC-SHA256 and random ids use <C>globalThis.crypto</C> instead of importing Node&apos;s <C>crypto</C>, which broke browser bundles. Checked against the FIPS and RFC 4231 test vectors.</li>
+          <li><C>withAgentContract</C> forwards refs and warns once per contract id. <C>SealProvider</C> falls back to the current host when the domain is empty, memoises inline config objects, and no longer reads <C>process.env</C> unguarded.</li>
+          <li>Package exports list <C>types</C> first with a <C>require</C> condition; <C>@vhyxseal/core</C> no longer advertises a missing CommonJS build.</li>
+        </Group>
+      </Release>
+
+      {/* ── 1.0.0-rc.2 ────────────────────────────────────────────────── */}
+      <Release version="1.0.0-rc.2" date="2026-05-29">
+        <Group kind="Added" version="1.0.0-rc.2">
+          <li><C>defineContractTemplate()</C> — a contract without an <C>id</C>, for component libraries whose instance ids are added at render time. Templates are frozen and fingerprinted, and identical templates share a fingerprint.</li>
+        </Group>
+      </Release>
 
       {/* ── 1.0.0-rc.1 ────────────────────────────────────────────────── */}
       <section style={{ marginBottom: "64px" }}>
@@ -54,19 +148,6 @@ export default function ChangelogPage(): React.ReactElement {
             }}
           >
             2026-05-26
-          </span>
-          <span
-            style={{
-              display: "inline-block",
-              padding: "2px 10px",
-              borderRadius: "999px",
-              fontSize: "12px",
-              fontWeight: 600,
-              backgroundColor: "var(--vhyxseal-color-info)",
-              color: "white",
-            }}
-          >
-            Latest
           </span>
         </div>
 
