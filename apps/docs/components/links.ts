@@ -1,3 +1,5 @@
+/** Marketing site (landing page). */
+export const SITE = 'https://vhyxseal.com';
 export const PLAYGROUND = process.env.NEXT_PUBLIC_PLAYGROUND_URL ?? 'https://play.vhyxseal.com';
 export const VHYXUI = 'https://docs.vhyxui.com';
 export const VHYXCHART = 'https://docs.vhyxchart.com';

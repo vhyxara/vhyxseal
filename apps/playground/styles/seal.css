@@ -66,3 +66,13 @@
   --vhyx-color-text-on-accent: var(--seal-on-accent);
 }
 
+
+/* ── Brand atmosphere mapping (styles/atmosphere.css reads these) ── */
+:root {
+  --atmo-brand: var(--seal-accent);
+  --atmo-surface: var(--seal-surface);
+  --atmo-border: var(--seal-border);
+  --atmo-text: var(--seal-text);
+  --atmo-muted: var(--seal-text-muted);
+  --atmo-bg: var(--seal-bg);
+}

@@ -115,7 +115,7 @@ export function Shell({ children }: { children: React.ReactNode }): React.ReactE
           ))}
         </aside>
         {menuOpen && <div className="lab-scrim" aria-hidden="true" onClick={() => { setMenuOpen(false); }} />}
-        <main id="lab-main" className="lab-main">{children}</main>
+        <main id="lab-main" className="lab-main atmo-page-glow">{children}</main>
       </div>
     </VhyxUIProvider>
   );

@@ -11,7 +11,9 @@ import "@vhyxseal/style";
 import "@vhyxui/tokens/tokens.css";
 import "@vhyxui/react/style.css";
 import "./globals.css";
+import "../styles/atmosphere.css";
 import "../styles/seal.css";
+import "../styles/docs-home.css";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });

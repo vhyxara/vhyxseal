@@ -17,7 +17,7 @@ export function DocsFrame({ children }: { children: React.ReactNode }): React.Re
       <div className="seal-body" data-full={fullWidth ? "true" : "false"}>
         {(!fullWidth || menuOpen) && <Sidebar open={menuOpen} onNavigate={() => { setMenuOpen(false); }} />}
         {menuOpen && <div className="seal-scrim" aria-hidden="true" onClick={() => { setMenuOpen(false); }} />}
-        <main id="seal-main" className={fullWidth ? "seal-main seal-main--full" : "seal-main"}>
+        <main id="seal-main" className={fullWidth ? "seal-main seal-main--full" : "seal-main atmo-page-glow"}>
           {children}
         </main>
       </div>
